@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/app/login/components/bottomLinks.dart';
 import 'package:flutter_todo/app/login/components/topCurve.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
 import 'package:flutter_todo/shared/components/customTextField.dart';
@@ -37,6 +38,7 @@ class Body extends StatelessWidget {
                   ),
                   SizedBox(height: 25),
                   CustomProceedButton(title: 'Login'),
+                  BottomLinks(),
                 ],
               ),
             ),
