@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/app/login/welcome.dart';
+import 'package:flutter_todo/authentication/welcome/welcome.dart';
 import 'package:flutter_todo/theme/light.dart';
 import 'theme/extentions.dart';
 
@@ -14,7 +14,9 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: lightTextTheme,
-      home: const SafeArea(child:  LoginScreen()),
+      home: const SafeArea(
+        child: WelcomeScreen(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
