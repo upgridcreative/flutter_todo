@@ -93,9 +93,15 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
               ],
             ),
             const SizedBox(height: 5),
-            const CustomTextField(hint: 'Email'),
+            const CustomTextField(
+              hint: 'Email',
+              textFieldType: CustomTextFieldType.email,
+            ),
             const SizedBox(height: 5),
-            const CustomTextField(hint: 'Password'),
+            const CustomTextField(
+              hint: 'Password',
+              textFieldType: CustomTextFieldType.password,
+            ),
             const SizedBox(height: 20),
             const CustomProceedButton(
               title: 'Sign Up',
