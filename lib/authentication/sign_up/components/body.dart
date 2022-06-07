@@ -5,7 +5,6 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_todo/animations/animations.dart';
 import 'package:flutter_todo/authentication/sign_in/sign_in.dart';
-import 'package:flutter_todo/authentication/sign_up/sign_up.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
 import 'package:flutter_todo/shared/components/customTextField.dart';
 
@@ -41,7 +40,7 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Center(
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -53,7 +52,7 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                   ? 50
                   : MediaQuery.of(context).size.height * 0.3,
               child: AnimatedContainer(
-                curve: Curves.decelerate,
+                curve: Curves.linear,
                 duration: const Duration(milliseconds: 450),
                 height: iskeyboardVisivle
                     ? 0
@@ -61,7 +60,7 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                 child: AnimatedOpacity(
                   child: SvgPicture.asset('assets/svg/sign_up.svg'),
                   duration: const Duration(milliseconds: 450),
-                  curve: Curves.decelerate,
+                  curve: Curves.linear,
                   opacity: iskeyboardVisivle ? 0 : 1,
                 ),
               ),
@@ -77,20 +76,9 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
               ),
             ),
             const SizedBox(height: 20),
-            Row(
-              children: const [
-                Flexible(
-                  flex: 10,
-                  child: CustomTextField(hint: 'First Name'),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Flexible(
-                  flex: 10,
-                  child: CustomTextField(hint: 'Last Name'),
-                ),
-              ],
+            const CustomTextField(
+              hint: 'Name',
+              textFieldType: CustomTextFieldType.regular,
             ),
             const SizedBox(height: 5),
             const CustomTextField(
