@@ -20,7 +20,7 @@ class SignUpLink extends StatelessWidget {
             TextSpan(
               text: 'Don\'t have an account? ',
               style: TextStyle(
-                color: Colors.black.withOpacity(.9),
+                color: Colors.black.withOpacity(.7),
                 fontFamily: 'Main',
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
@@ -31,7 +31,7 @@ class SignUpLink extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'Main',
-                    fontSize: 19,
+                    fontSize: 15,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -39,7 +39,7 @@ class SignUpLink extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 80),
+        const SizedBox(height: 20),
       ],
     );
   }

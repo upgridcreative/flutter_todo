@@ -4,27 +4,29 @@ class CustomProceedButton extends StatelessWidget {
   const CustomProceedButton({
     Key? key,
     required this.title,
+    this.heightFactor = 1,
   }) : super(key: key);
 
   final String title;
+  final double heightFactor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 73 * heightFactor,
       width: double.infinity,
-      height: 70,
-      alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: const Color(0xFF9CB898),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(12),
+        color: const Color(0xFF1F6FEB),
       ),
+      alignment: Alignment.center,
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 25,
+          color: Colors.white.withOpacity(.90),
           fontFamily: 'Main',
-          color: Colors.white.withOpacity(.9),
-          fontWeight: FontWeight.w700,
+          fontSize: 19,
+          fontWeight: FontWeight.w800,
         ),
       ),
     );

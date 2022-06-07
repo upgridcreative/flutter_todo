@@ -1,18 +1,13 @@
-
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
     required this.hint,
-    required this.title,
     this.obscure = false,
   }) : super(key: key);
 
   final String hint;
-
-  final String title;
-
   final bool obscure;
 
   @override
@@ -20,39 +15,28 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Padding(
-        //   padding: const EdgeInsets.only(left:10.0),
-        //   child: Text(
-        //     title,
-        //     style: const TextStyle(
-        //       color: Color(0xFF121212),
-        //       fontWeight: FontWeight.w600,
-        //       fontFamily: 'Main',
-        //       fontSize: 16,
-        //     ),
-        //   ),
-        // ),
         TextFormField(
           style: const TextStyle(
-            color: Color(0xFF121212),
-            fontWeight: FontWeight.w600,
+            color: Color(0xFF000000),
+            fontWeight: FontWeight.w700,
             fontFamily: 'Main',
-            fontSize: 19,
+            fontSize: 15,
           ),
           obscureText: obscure,
           decoration: InputDecoration(
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide.none,
             ),
-            fillColor: const Color(0xFFDCDCDC),
+            fillColor: const Color(0xFFc2c2c2).withOpacity(.4),
             filled: true,
-            contentPadding: const EdgeInsets.all(28),
+            contentPadding: const EdgeInsets.all(22),
             hintText: hint,
-            hintStyle: TextStyle(
-              color: const Color(0xFF121212).withOpacity(.6),
+            hintStyle: const TextStyle(
+              color: Color(0xFF000000),
               fontFamily: 'Main',
-              fontSize: 17,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),

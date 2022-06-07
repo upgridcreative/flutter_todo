@@ -18,17 +18,17 @@ class AuthenticationButtons extends StatelessWidget {
             ),
           ),
           child: Container(
-            height: 80,
+            height: 65,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: const Color(0xFF1F6FEB),
             ),
             alignment: Alignment.center,
-            child: Text(
+            child:const Text(
               'Sign In With Email ID',
               style: TextStyle(
-                color: Colors.white.withOpacity(.95),
+                color: Colors.white,
                 fontFamily: 'Main',
                 fontSize: 19,
                 fontWeight: FontWeight.w600,
@@ -38,7 +38,7 @@ class AuthenticationButtons extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Container(
-          height: 80,
+          height: 65,
           margin: const EdgeInsets.symmetric(horizontal: 2),
           width: double.infinity,
           decoration: BoxDecoration(
