@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/animations/animations.dart';
 import 'package:flutter_todo/authentication/sign_in/sign_in.dart';
+import 'package:flutter_todo/shared/components/customProceedButton.dart';
 
 class AuthenticationButtons extends StatelessWidget {
   const AuthenticationButtons({Key? key}) : super(key: key);
@@ -10,29 +11,18 @@ class AuthenticationButtons extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 100),
-        GestureDetector(
-          onTap: () => Navigator.of(context).push(
+        CustomProceedButton(
+          title: 'Sign in with Email ID',
+          customTextStyle: const TextStyle(
+            color: Colors.white,
+            fontFamily: 'Main',
+            fontSize: 19,
+            fontWeight: FontWeight.w600,
+          ),
+          onPressed: () => Navigator.of(context).push(
             PageTransition(
               child: const SignInScreen(),
               type: PageTransitionType.fromRight,
-            ),
-          ),
-          child: Container(
-            height: 65,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: const Color(0xFF1F6FEB),
-            ),
-            alignment: Alignment.center,
-            child:const Text(
-              'Sign In With Email ID',
-              style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Main',
-                fontSize: 19,
-                fontWeight: FontWeight.w600,
-              ),
             ),
           ),
         ),
