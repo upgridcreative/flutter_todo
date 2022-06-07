@@ -87,7 +87,7 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
             const SizedBox(height: 10),
             Center(
               child: GestureDetector(
-                onTap: () => Navigator.of(context).push(
+                onTap: () => Navigator.of(context).pushReplacement(
                   PageTransition(
                     child: const SignUpScreen(),
                     type: PageTransitionType.fromRight,
