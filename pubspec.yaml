@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/logos/
     - assets/svg/
+    - assets/icons/
 
   fonts:
     - family: Main

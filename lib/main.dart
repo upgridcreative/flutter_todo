@@ -13,14 +13,15 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+    // final screenSize = MediaQuery.of(context).size;
     return MaterialApp(
       theme: lightTextTheme,
       home: SafeArea(
         child: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-                maxWidth: screenSize.width > 600 ? 600 : screenSize.width),
+                // maxWidth: screenSize.width > 600 ? 600 : screenSize.width
+                ),
             child: WelcomeScreen(),
           ),
         ),

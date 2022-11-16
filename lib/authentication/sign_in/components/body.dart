@@ -5,6 +5,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_todo/animations/animations.dart';
 import 'package:flutter_todo/authentication/sign_up/sign_up.dart';
+import 'package:flutter_todo/home/home.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
 import 'package:flutter_todo/shared/components/customTextField.dart';
 
@@ -84,7 +85,14 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
             const CustomTextField(
                 hint: 'Password', textFieldType: CustomTextFieldType.password),
             const SizedBox(height: 20),
-            const CustomProceedButton(
+             CustomProceedButton(
+              onPressed: (){
+Navigator.of(context).push(
+                  PageTransition(
+                    child: const HomeScreen(),
+                    type: PageTransitionType.fromRight,
+                  ));
+              },
               title: 'Login',
               heightFactor: 1,
             ),
