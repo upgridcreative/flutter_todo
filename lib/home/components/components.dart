@@ -15,18 +15,26 @@ class HomeComponent {
     );
   }
 
-  static Widget popUpButton() {
+  static Widget popUpButton(List mypopUpList) {
     return PopupMenuButton(
       // color: ,
-      shape:RoundedRectangleBorder(borderRadius: borderRadius) ,
-      icon: const Icon(Icons.filter_alt),
-      itemBuilder: (context) => List.generate(popUpList.length,(index){
+      shape: RoundedRectangleBorder(borderRadius: borderRadius),
+      icon: const Icon(Icons.more_vert),
+      itemBuilder: (context) => List.generate(mypopUpList.length, (index) {
         return PopupMenuItem<String>(
           child: Text(
             popUpList[index],
           ),
         );
       }),
+    );
+  }
+
+  static AppBar simpleAppBar() {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: Colors.white,
+      title: Text("Manage Categories",style: largeTitle,),
     );
   }
 }
