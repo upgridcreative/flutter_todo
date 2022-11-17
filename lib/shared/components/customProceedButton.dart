@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/theme/colors.dart';
 
 enum CustomProceedButtonType {
   primary, // default
@@ -30,7 +31,7 @@ class CustomProceedButton extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: const Color(0xFF1F6FEB),
+          color: ColorClass.primary,
         ),
         alignment: Alignment.center,
         child: Text(
