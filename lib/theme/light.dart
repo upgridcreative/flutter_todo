@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 final lightTextTheme = ThemeData(
   colorScheme: const ColorScheme.light().copyWith(
     background: Colors.white,
-    primary: const Color(0xFF43506C),
+    primary: const Color(0xFF484B6A),
     secondary: const Color(0xFF000000),
   ),
   scaffoldBackgroundColor: Colors.white,
