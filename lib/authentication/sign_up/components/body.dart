@@ -46,20 +46,20 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
           children: [
             const SizedBox(height: 50),
             AnimatedContainer(
-              duration: const Duration(milliseconds: 450),
+              duration: const Duration(milliseconds: 200),
               curve: Curves.decelerate,
               height: iskeyboardVisivle
                   ? 50
                   : MediaQuery.of(context).size.height * 0.3,
               child: AnimatedContainer(
                 curve: Curves.linear,
-                duration: const Duration(milliseconds: 450),
+                duration: const Duration(milliseconds: 200),
                 height: iskeyboardVisivle
                     ? 0
                     : MediaQuery.of(context).size.height * 0.3,
                 child: AnimatedOpacity(
                   child: SvgPicture.asset('assets/svg/sign_up.svg'),
-                  duration: const Duration(milliseconds: 450),
+                  duration: const Duration(milliseconds: 200),
                   curve: Curves.linear,
                   opacity: iskeyboardVisivle ? 0 : 1,
                 ),

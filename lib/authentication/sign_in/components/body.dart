@@ -47,20 +47,20 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
           children: [
             const SizedBox(height: 50),
             AnimatedContainer(
-              duration: const Duration(milliseconds: 450),
+              duration: const Duration(milliseconds: 200),
               curve: Curves.decelerate,
               height: iskeyboardVisivle
                   ? 50
                   : MediaQuery.of(context).size.height * 0.3,
               child: AnimatedContainer(
                 curve: Curves.decelerate,
-                duration: const Duration(milliseconds: 450),
+                duration: const Duration(milliseconds: 200),
                 height: iskeyboardVisivle
                     ? 0
                     : MediaQuery.of(context).size.height * 0.3,
                 child: AnimatedOpacity(
                   child: SvgPicture.asset('assets/svg/sign_in.svg'),
-                  duration: const Duration(milliseconds: 450),
+                  duration: const Duration(milliseconds: 200),
                   curve: Curves.decelerate,
                   opacity: iskeyboardVisivle ? 0 : 1,
                 ),
