@@ -88,6 +88,8 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               textFieldType: CustomTextFieldType.password,
             ),
             const SizedBox(height: 20),
+
+
             CustomProceedButton(
               onPressed: () {
                 Navigator.of(context).push(PageTransition(
@@ -103,7 +105,7 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               child: GestureDetector(
                 onTap: () => Navigator.of(context).pushReplacement(
                   PageTransition(
-                    child: const SignUpScreen(),
+                    child:  SignUpScreen(),
                     type: PageTransitionType.fromRight,
                   ),
                 ),

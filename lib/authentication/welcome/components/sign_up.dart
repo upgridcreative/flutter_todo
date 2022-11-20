@@ -12,7 +12,7 @@ class SignUpLink extends StatelessWidget {
         GestureDetector(
           onTap: () => Navigator.of(context).push(
             PageTransition(
-              child: const SignUpScreen(),
+              child:  SignUpScreen(),
               type: PageTransitionType.fromRight,
             ),
           ),

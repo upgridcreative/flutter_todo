@@ -3,41 +3,40 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_todo/animations/animations.dart';
-import 'package:flutter_todo/authentication/sign_in/sign_in.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
 import 'package:flutter_todo/shared/components/customTextField.dart';
 import 'package:flutter_todo/view_model/sign_up.dart';
-
 import 'package:get/get.dart';
 
-class SignUpScreenBody extends StatefulWidget {
-  const SignUpScreenBody({Key? key}) : super(key: key);
+class SignUpScreenBodyCompletetion extends StatefulWidget {
+  const SignUpScreenBodyCompletetion({Key? key}) : super(key: key);
 
   @override
-  State<SignUpScreenBody> createState() => _SignUpScreenBodyState();
+  State<SignUpScreenBodyCompletetion> createState() =>
+      _SignUpScreenBodyCompletetionState();
 }
 
-class _SignUpScreenBodyState extends State<SignUpScreenBody> {
+class _SignUpScreenBodyCompletetionState
+    extends State<SignUpScreenBodyCompletetion> {
   bool iskeyboardVisivle = false;
-  late final StreamSubscription keyboardStream;
+  // late final StreamSubscription keyboardStream;
   @override
   void initState() {
     super.initState();
-    final keyboardVisibilityController = KeyboardVisibilityController();
+    // final keyboardVisibilityController = KeyboardVisibilityController();
 
-    // iskeyboardVisivle = true;
-
-    keyboardStream =
-        keyboardVisibilityController.onChange.listen((bool visible) {
-      iskeyboardVisivle = visible;
-      setState(() {});
-    });
+    // iskeyboardVisivle = keyboardVisibilityController.isVisible;
+    // keyboardStream =
+    //     keyboardVisibilityController.onChange.listen((bool visible) {
+    //   iskeyboardVisivle = visible;
+    //   setState(() {});
+    // });
+    iskeyboardVisivle = true;
   }
 
   @override
   void dispose() {
-    keyboardStream.cancel();
+    // keyboardStream.cancel();
     super.dispose();
   }
 
@@ -77,75 +76,70 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Enter Your Name',
+                  'Complete Setup',
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'Metro',
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
+                    letterSpacing: 1.2,
                   ),
                 ),
                 const SizedBox(height: 20),
                 CustomTextField(
-                  controller: controller.firstNameController,
-                  hint: 'First Name',
-                  textFieldType: CustomTextFieldType.regular,
-                  node: controller.firstNameFocusNode,
-                  nextNode: controller.lastNameFocusNode,
+                  controller: controller.emaiController,
+                  hint: 'Email',
+                  textFieldType: CustomTextFieldType.email,
+                  node: controller.emailFocusNode,
+                  autoFocus: true,
+                  nextNode: controller.passwordFocusNode,
                 ),
                 const SizedBox(height: 5),
                 CustomTextField(
-                  controller: controller.lastNameController,
-                  hint: 'Last Name',
-                  textFieldType: CustomTextFieldType.regular,
-                  node: controller.lastNameFocusNode,
-                  onFieldSubmitted: (p0) => controller.nextTab(context),
+                  controller: controller.passwordController,
+                  hint: 'Password',
+                  textFieldType: CustomTextFieldType.password,
+                  node: controller.passwordFocusNode,
                 ),
               ],
             ),
-
             const SizedBox(height: 20),
             CustomProceedButton(
-              title: 'Next',
+              title: 'Sign Up',
               heightFactor: 1,
-              onPressed: () => controller.nextTab(context),
+              onPressed: controller.back,
             ),
             const SizedBox(height: 10),
-            Center(
-              child: GestureDetector(
-                onTap: () => Navigator.of(context).pushReplacement(
-                  PageTransition(
-                    child: const SignInScreen(),
-                    type: PageTransitionType.fromLeft,
+            const Padding(
+              padding: EdgeInsets.only(left: 5.0),
+              child: Text.rich(
+                TextSpan(
+                  style: TextStyle(
+                    color: Colors.black38,
+                    fontFamily: 'Metro',
+                    fontWeight: FontWeight.w500,
                   ),
-                ),
-                child: Text.rich(
-                  TextSpan(
-                    text: 'Already have an account? ',
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(.6),
-                      fontFamily: 'Metro',
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    children: const [
-                      TextSpan(
-                        text: 'Sign In',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Metro',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
+                  children: [
+                    TextSpan(text: 'By continuing  you agree to our '),
+                    TextSpan(
+                      text: 'Terms of Conditions ',
+                      style: TextStyle(
+                        fontFamily: 'Metro',
+                        color: Colors.blue,
                       ),
-                    ],
-                  ),
+                    ),
+                    TextSpan(text: 'and '),
+                    TextSpan(
+                      text: 'Privicy Policy ',
+                      style: TextStyle(
+                        fontFamily: 'Metro',
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-
-            // if (!iskeyboardVisivle)
-            // const SizedBox(height: 100),
           ],
         ),
       ),

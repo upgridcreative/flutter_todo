@@ -12,11 +12,20 @@ class CustomTextField extends StatefulWidget {
     Key? key,
     required this.hint,
     this.textFieldType = CustomTextFieldType.regular,
+    this.controller,
+    this.autoFocus = false,
+    this.node,
+    this.nextNode,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   final String hint;
   final CustomTextFieldType textFieldType;
-
+  final TextEditingController? controller;
+  final bool autoFocus;
+  final FocusNode? node;
+  final FocusNode? nextNode;
+  final Function(String)? onFieldSubmitted;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -42,6 +51,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onFieldSubmitted: widget.onFieldSubmitted ??
+          (value) {
+            if (widget.node != null) {
+              widget.node!.unfocus();
+              FocusScope.of(context).requestFocus(widget.nextNode);
+            }
+          },
+      autofocus: widget.autoFocus,
+      focusNode: widget.node,
+      controller: widget.controller,
       keyboardType: getKeyboardType(widget.textFieldType),
       style: const TextStyle(
         color: Color(0xFF000000),

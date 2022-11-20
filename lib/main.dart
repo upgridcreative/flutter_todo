@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/authentication/welcome/welcome.dart';
-import 'package:flutter_todo/shared/components/habitTile.dart';
 import 'package:flutter_todo/theme/light.dart';
-import 'theme/extentions.dart';
+import 'package:flutter_todo/view_model/sign_up.dart';
+import 'package:get/get.dart';
 
 void main() {
+  Get.put(SignUpController());
   runApp(const Main());
 }
 

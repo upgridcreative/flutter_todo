@@ -36,6 +36,8 @@ dependencies:
   flutter_svg: ^1.0.3
   keyboard_visibility: ^0.5.6
   flutter_keyboard_visibility: ^5.2.0
+  get: ^4.6.5
+  introduction_screen: ^3.0.2
 
 dev_dependencies:
   flutter_test:
