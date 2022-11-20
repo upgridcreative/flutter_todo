@@ -15,7 +15,7 @@ class AuthenticationButtons extends StatelessWidget {
           title: 'Sign in with Email ID',
           customTextStyle: const TextStyle(
             color: Colors.white,
-            fontFamily: 'Main',
+            fontFamily: 'Metro',
             fontSize: 19,
             fontWeight: FontWeight.w600,
           ),
@@ -52,7 +52,7 @@ class AuthenticationButtons extends StatelessWidget {
                   'Continue With Google',
                   style: TextStyle(
                     color: Colors.black,
-                    fontFamily: 'Main',
+                    fontFamily: 'Metro',
                     fontSize: 19,
                     fontWeight: FontWeight.w600,
                   ),

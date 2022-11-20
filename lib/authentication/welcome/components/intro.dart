@@ -9,63 +9,45 @@ class WelcomeIntro extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 0.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 10),
-          const FittedBox(
+        children: const [
+          SizedBox(height: 10),
+          FittedBox(
             child: Text(
-              'Write And Acomplish',
+              'Manage Your Tasks',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black,
-                fontFamily: 'Main',
-                fontSize: 29,
+                fontFamily: 'Metro',
+                fontSize: 25,
+                letterSpacing: 1.5,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          const Text(
-            'Your Goals',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: 'Main',
-              fontSize: 29,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-
-          const SizedBox(height: 25),
+          SizedBox(height: 15),
           Text(
-            'Task Your Goals.',
+            'Keep Track Of Your',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: const Color(0XFF0a0a0a).withOpacity(.7),
-              fontFamily: 'Main',
-              fontSize: 18,
-              letterSpacing: 1.2,
+              color: Colors.black54,
+              fontFamily: 'Metro',
+              fontSize: 16,
+              letterSpacing: 1.5,
               fontWeight: FontWeight.w600,
             ),
           ),
-          // const SizedBox(height: 25),
-          // Text(
-          //   'Keep Track Of Your',
-          //   textAlign: TextAlign.center,
-          //   style: TextStyle(
-          //     color: const Color(0XFF0a0a0a).withOpacity(.9),
-          //     fontFamily: 'Main',
-          //     fontSize: 16,
-          //     fontWeight: FontWeight.w600,
-          //   ),
-          // ),
-          // Text(
-          //   'Tasks and Habits.',
-          //   style: TextStyle(
-          //     color: const Color(0XFF0a0a0a).withOpacity(.9),
-          //     fontFamily: 'Main',
-          //     fontSize: 16,
-          //     fontWeight: FontWeight.w600,
-          //   ),
-          // ),
+          SizedBox(height: 5),
+
+          Text(
+            'Tasks and Habits.',
+            style: TextStyle(
+              color: Colors.black54,
+              fontFamily: 'Metro',
+              fontSize: 16,
+              letterSpacing: 1.5,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ],
       ),
     );

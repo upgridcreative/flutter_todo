@@ -71,9 +71,10 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               'Sign In',
               style: TextStyle(
                 color: Colors.black,
-                fontFamily: 'Main',
+                fontFamily: 'Metro',
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
+                letterSpacing: 1.2,
               ),
             ),
             const SizedBox(height: 20),
@@ -83,18 +84,19 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
             ),
             const SizedBox(height: 5),
             const CustomTextField(
-                hint: 'Password', textFieldType: CustomTextFieldType.password),
+              hint: 'Password',
+              textFieldType: CustomTextFieldType.password,
+            ),
             const SizedBox(height: 20),
-             CustomProceedButton(
-              onPressed: (){
-Navigator.of(context).push(
-                  PageTransition(
-                    child: const HomeScreen(),
-                    type: PageTransitionType.fromRight,
-                  ));
+            CustomProceedButton(
+              onPressed: () {
+                Navigator.of(context).push(PageTransition(
+                  child: const HomeScreen(),
+                  type: PageTransitionType.fromRight,
+                ));
               },
               title: 'Login',
-              heightFactor: 1,
+              heightFactor: .9,
             ),
             const SizedBox(height: 10),
             Center(
@@ -109,8 +111,8 @@ Navigator.of(context).push(
                   TextSpan(
                     text: 'Don\'t have an account? ',
                     style: TextStyle(
-                      color: Colors.black.withOpacity(.9),
-                      fontFamily: 'Main',
+                      color: Colors.black.withOpacity(.6),
+                      fontFamily: 'Metro',
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
@@ -119,7 +121,7 @@ Navigator.of(context).push(
                         text: 'Sign Up',
                         style: TextStyle(
                           color: Colors.black,
-                          fontFamily: 'Main',
+                          fontFamily: 'Metro',
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
                         ),
@@ -135,7 +137,7 @@ Navigator.of(context).push(
                 'Forgot Password?',
                 style: TextStyle(
                   color: Colors.blue,
-                  fontFamily: 'Main',
+                  fontFamily: 'Metro',
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
                 ),

@@ -45,9 +45,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: getKeyboardType(widget.textFieldType),
       style: const TextStyle(
         color: Color(0xFF000000),
-        fontWeight: FontWeight.w700,
-        fontFamily: 'Main',
-        fontSize: 15,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'RHD',
+        fontSize: 16,
       ),
       obscureText: widget.textFieldType == CustomTextFieldType.password
           ? _obscure
@@ -68,15 +68,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,
         ),
-        fillColor: const Color(0xFFc2c2c2).withOpacity(.4),
+        fillColor: const Color(0xFFEEEEEE),
         filled: true,
         contentPadding: const EdgeInsets.all(22),
         hintText: widget.hint,
         hintStyle: const TextStyle(
-          color: Color(0xFF000000),
-          fontFamily: 'Main',
-          fontSize: 15,
-          fontWeight: FontWeight.w600,
+          color: Colors.black54,
+          fontFamily: 'RHD',
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
         ),
       ),
     );

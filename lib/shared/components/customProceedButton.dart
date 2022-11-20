@@ -27,7 +27,7 @@ class CustomProceedButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 73 * heightFactor,
+        height: 69 * heightFactor,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -38,10 +38,10 @@ class CustomProceedButton extends StatelessWidget {
           title,
           style: customTextStyle ??
               TextStyle(
-                color: Colors.white.withOpacity(.90),
-                fontFamily: 'Main',
-                fontSize: 19,
-                fontWeight: FontWeight.w800,
+                color: Colors.white.withOpacity(1),
+                fontFamily: 'Metro',
+                fontSize: 21,
+                fontWeight: FontWeight.w700,
               ),
         ),
       ),

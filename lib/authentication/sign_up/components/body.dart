@@ -70,7 +70,7 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
               'Sign Up',
               style: TextStyle(
                 color: Colors.black,
-                fontFamily: 'Main',
+                fontFamily: 'Metro',
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
               ),
@@ -108,8 +108,8 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                   TextSpan(
                     text: 'Already have an account? ',
                     style: TextStyle(
-                      color: Colors.black.withOpacity(.9),
-                      fontFamily: 'Main',
+                      color: Colors.black.withOpacity(.6),
+                      fontFamily: 'Metro',
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
@@ -118,7 +118,7 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                         text: 'Sign In',
                         style: TextStyle(
                           color: Colors.black,
-                          fontFamily: 'Main',
+                          fontFamily: 'Metro',
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
                         ),

@@ -12,7 +12,7 @@ extension TextThemeExtention on ColorScheme {
             ? const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
-                fontFamily: 'Main',
+                fontFamily: 'Metro',
                 fontWeight: FontWeight.w700,
               )
             : const TextStyle(),

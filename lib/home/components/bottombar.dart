@@ -16,21 +16,26 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-        selectedItemColor: mainColor,
-        currentIndex: currentIndex,
-        onTap: (value) {
-          setState(() {
-            currentIndex = value;
-          });
-        },
-        items: List.generate(myBottomBar.length, (index) {
+      selectedItemColor: mainColor,
+      currentIndex: currentIndex,
+      onTap: (value) {
+        setState(() {
+          currentIndex = value;
+        });
+      },
+      items: List.generate(
+        myBottomBar.length,
+        (index) {
           print("assets/icons/" + myBottomBar[index]);
           return BottomNavigationBarItem(
-              label: "",
-              icon: SvgPicture.asset(
-                "assets/icons/" + myBottomBar[index],
-                color: currentIndex==index?mainColor:Colors.black,
-              ));
-        }));
+            label: "",
+            icon: SvgPicture.asset(
+              "assets/icons/" + myBottomBar[index],
+              color: currentIndex == index ? mainColor : Colors.black,
+            ),
+          );
+        },
+      ),
+    );
   }
 }
