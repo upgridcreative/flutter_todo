@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/app/login/welcome.dart';
-import 'package:flutter_todo/theme/light.dart';
-import 'theme/extentions.dart';
+import 'package:flutter_todo/public.dart';
+import 'package:flutter_todo/shared/theme/light.dart';
+import 'package:flutter_todo/view/welcome/welcome.dart';
+import 'package:flutter_todo/view_model/sign_in.dart';
+import 'package:flutter_todo/view_model/sign_up.dart';
+import 'package:get/get.dart';
 
 void main() {
+  Get.put(SignUpController());
+  Get.put(SignInViewModel());
   runApp(const Main());
 }
 
@@ -12,9 +17,20 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final screenSize = MediaQuery.of(context).size;
     return MaterialApp(
+      navigatorKey: navKey,
       theme: lightTextTheme,
-      home: const SafeArea(child:  LoginScreen()),
+      home: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+                // maxWidth: screenSize.width > 600 ? 600 : screenSize.width
+                ),
+            child: WelcomeScreen(),
+          ),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
