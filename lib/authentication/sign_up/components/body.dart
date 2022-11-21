@@ -7,6 +7,7 @@ import 'package:flutter_todo/animations/animations.dart';
 import 'package:flutter_todo/authentication/sign_in/sign_in.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
 import 'package:flutter_todo/shared/components/customTextField.dart';
+import 'package:flutter_todo/shared/validitors.dart';
 import 'package:flutter_todo/view_model/sign_up.dart';
 
 import 'package:get/get.dart';
@@ -86,20 +87,28 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                CustomTextField(
-                  controller: controller.firstNameController,
-                  hint: 'First Name',
-                  textFieldType: CustomTextFieldType.regular,
-                  node: controller.firstNameFocusNode,
-                  nextNode: controller.lastNameFocusNode,
-                ),
-                const SizedBox(height: 5),
-                CustomTextField(
-                  controller: controller.lastNameController,
-                  hint: 'Last Name',
-                  textFieldType: CustomTextFieldType.regular,
-                  node: controller.lastNameFocusNode,
-                  onFieldSubmitted: (p0) => controller.nextTab(context),
+                Form(
+                  key: controller.nameScreenFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        controller: controller.firstNameController,
+                        hint: 'First Name',
+                        textFieldType: CustomTextFieldType.regular,
+                        node: controller.firstNameFocusNode,
+                        validator: (value) => lengthValidator(value, 3),
+                        nextNode: controller.lastNameFocusNode,
+                      ),
+                      const SizedBox(height: 5),
+                      CustomTextField(
+                        controller: controller.lastNameController,
+                        hint: 'Last Name',
+                        textFieldType: CustomTextFieldType.regular,
+                        node: controller.lastNameFocusNode,
+                        onFieldSubmitted: (p0) => controller.nextTab(context),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

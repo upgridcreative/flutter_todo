@@ -5,6 +5,8 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
 import 'package:flutter_todo/shared/components/customTextField.dart';
+import 'package:flutter_todo/shared/components/custom_progress_button.dart';
+import 'package:flutter_todo/shared/validitors.dart';
 import 'package:flutter_todo/view_model/sign_up.dart';
 import 'package:get/get.dart';
 
@@ -86,28 +88,47 @@ class _SignUpScreenBodyCompletetionState
                   ),
                 ),
                 const SizedBox(height: 20),
-                CustomTextField(
-                  controller: controller.emaiController,
-                  hint: 'Email',
-                  textFieldType: CustomTextFieldType.email,
-                  node: controller.emailFocusNode,
-                  autoFocus: true,
-                  nextNode: controller.passwordFocusNode,
-                ),
-                const SizedBox(height: 5),
-                CustomTextField(
-                  controller: controller.passwordController,
-                  hint: 'Password',
-                  textFieldType: CustomTextFieldType.password,
-                  node: controller.passwordFocusNode,
+                Obx(
+                  () => Form(
+                    key: controller.credentialScreenFormKey,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          controller: controller.emaiController,
+                          hint: 'Email',
+                          textFieldType: CustomTextFieldType.email,
+                          node: controller.emailFocusNode,
+                          validator: emailValidator,
+                          autoFocus: true,
+                          enabled: !controller.disablePage.value,
+                          nextNode: controller.passwordFocusNode,
+                        ),
+                        const SizedBox(height: 5),
+                        CustomTextField(
+                          controller: controller.passwordController,
+                          hint: 'Password',
+                          enabled: !controller.disablePage.value,
+                          validator: passwordValidator,
+                          textFieldType: CustomTextFieldType.password,
+                          node: controller.passwordFocusNode,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 20),
-            CustomProceedButton(
-              title: 'Sign Up',
-              heightFactor: 1,
-              onPressed: controller.back,
+            Obx(
+              () => controller.disablePage.value
+                  ? const CustomProgressButton(
+                      title: 'Signing in',
+                    )
+                  : CustomProceedButton(
+                      title: 'Sign Up',
+                      heightFactor: 1,
+                      onPressed: controller.signUp,
+                    ),
             ),
             const SizedBox(height: 10),
             const Padding(

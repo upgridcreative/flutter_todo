@@ -13,27 +13,40 @@ class SignUpController extends GetxController {
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
 
-  Rx<SignUpTabs> currentTab = SignUpTabs.name.obs;
+  final nameScreenFormKey = GlobalKey<FormState>();
+  final credentialScreenFormKey = GlobalKey<FormState>();
+
   final pageController = PageController();
 
+  Rx<SignUpTabs> currentTab = SignUpTabs.name.obs;
+  RxBool disablePage = false.obs;
+
   void nextTab(context) {
+    lastNameFocusNode.unfocus();
+
+    if (!nameScreenFormKey.currentState!.validate()) {
+      firstNameFocusNode.requestFocus();
+      return;
+    }
 
     lastNameFocusNode.unfocus();
     pageController.nextPage(
       duration: const Duration(milliseconds: 350),
       curve: Curves.ease,
     );
-    
-    Future.delayed(const Duration(milliseconds: 350)).then((value) {
-      FocusScope.of(context).requestFocus(emailFocusNode);
-    });
+
+    Future.delayed(const Duration(milliseconds: 350)).then(
+      (value) {
+        FocusScope.of(context).requestFocus(emailFocusNode);
+      },
+    );
   }
 
-  void back() {
-    pageController.previousPage(
-      duration: const Duration(milliseconds: 350),
-      curve: Curves.easeIn,
-    );
+  void signUp() {
+    if (!credentialScreenFormKey.currentState!.validate()) {
+      return;
+    }
+    disablePage(true);
   }
 
   SignUpTabs get getCurrentTab => currentTab.value;
