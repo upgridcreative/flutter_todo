@@ -102,6 +102,9 @@ class _SignUpScreenBodyCompletetionState
                           autoFocus: true,
                           enabled: !controller.disablePage.value,
                           nextNode: controller.passwordFocusNode,
+                          errorMessage: controller.emailExists.value
+                              ? 'Email already Exists'
+                              : null,
                         ),
                         const SizedBox(height: 5),
                         CustomTextField(

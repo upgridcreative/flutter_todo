@@ -21,6 +21,7 @@ class CustomTextField extends StatefulWidget {
     this.hasError = false,
     this.errorMessage,
     this.enabled = true,
+    this.textInputAction,
   }) : super(key: key);
 
   final String hint;
@@ -34,6 +35,7 @@ class CustomTextField extends StatefulWidget {
   final bool hasError;
   final bool enabled;
   final String? errorMessage;
+  final TextInputAction? textInputAction;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -90,6 +92,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             filled: true,
             contentPadding: const EdgeInsets.all(22),
             hintText: widget.hint,
+            errorText: widget.errorMessage,
             hintStyle: const TextStyle(
               color: Colors.black54,
               fontFamily: 'RHD',
@@ -98,18 +101,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
           ),
         ),
-        if (widget.hasError)
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 5),
-            child: Text(
-              widget.errorMessage!,
-              style: TextStyle(
-                  color: Colors.red.shade500,
-                  fontFamily: 'Metro',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 10),
-            ),
-          ),
+        // if ((widget.errorMessage ?? '').isNotEmpty)
+        //   Padding(
+        //     padding: const EdgeInsets.only(left: 8.0, top: 5),
+        //     child: Text(
+        //       widget.errorMessage!,
+        //       style: TextStyle(
+        //         color: Colors.red.shade500,
+        //         fontFamily: 'Metro',
+        //         fontWeight: FontWeight.w600,
+        //         fontSize: 10,
+        //       ),
+        //     ),
+        //   ),
       ],
     );
   }

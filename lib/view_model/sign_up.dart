@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_todo/repository/auth.dart';
 import 'package:flutter_todo/shared/enums/tabs.dart';
+import 'package:flutter_todo/shared/route_manager/route_manager.dart';
 import 'package:get/get.dart';
 
 class SignUpController extends GetxController {
+  final repo = AuthenticationRepository();
+
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final emaiController = TextEditingController();
@@ -20,6 +24,7 @@ class SignUpController extends GetxController {
 
   Rx<SignUpTabs> currentTab = SignUpTabs.name.obs;
   RxBool disablePage = false.obs;
+  RxBool emailExists = false.obs;
 
   void nextTab(context) {
     lastNameFocusNode.unfocus();
@@ -42,11 +47,30 @@ class SignUpController extends GetxController {
     );
   }
 
-  void signUp() {
+  void signUp() async {
     if (!credentialScreenFormKey.currentState!.validate()) {
       return;
     }
+
     disablePage(true);
+
+    final String code = await repo.signUp(
+      firstNameController.text,
+      lastNameController.text,
+      passwordController.text,
+      emaiController.text,
+    );
+
+    switch (code) {
+      case 'proceed':
+        RouteManager().getToHome();
+        break;
+      case 'already-exists':
+        disablePage.value = false;
+        emailExists(true);
+        update();
+        break;
+    }
   }
 
   SignUpTabs get getCurrentTab => currentTab.value;

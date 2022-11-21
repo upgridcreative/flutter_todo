@@ -6,7 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_todo/animations/animations.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
 import 'package:flutter_todo/shared/components/customTextField.dart';
+import 'package:flutter_todo/shared/components/custom_progress_button.dart';
+import 'package:flutter_todo/shared/validitors.dart';
 import 'package:flutter_todo/view/sign_up/sign_up.dart';
+import 'package:flutter_todo/view_model/sign_in.dart';
+import 'package:get/get.dart';
 
 class SignInScreenBody extends StatefulWidget {
   const SignInScreenBody({Key? key}) : super(key: key);
@@ -16,6 +20,7 @@ class SignInScreenBody extends StatefulWidget {
 }
 
 class _SignInScreenBodyState extends State<SignInScreenBody> {
+  final SignInViewModel _viewModel = Get.find();
   bool iskeyboardVisivle = false;
   late final StreamSubscription keyboardStream;
   @override
@@ -77,27 +82,58 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               ),
             ),
             const SizedBox(height: 20),
-            const CustomTextField(
-              hint: 'Email',
-              textFieldType: CustomTextFieldType.email,
-            ),
-            const SizedBox(height: 5),
-            const CustomTextField(
-              hint: 'Password',
-              textFieldType: CustomTextFieldType.password,
+            Obx(
+              () => Form(
+                key: _viewModel.loginFormKey,
+                child: Column(
+                  children: [
+                    CustomTextField(
+                      hint: 'Email',
+                      textFieldType: CustomTextFieldType.email,
+                      controller: _viewModel.emailController,
+                      validator: emailValidator,
+                      enabled: !_viewModel.disablePage.value,
+                      node: _viewModel.emailFocusNode,
+                      nextNode: _viewModel.passwordFocusNode,
+                      autoFocus: true,
+                      errorMessage: _viewModel.invalidEmail.value
+                          ? 'Email doesn\'t exist'
+                          : null,
+                    ),
+                    const SizedBox(height: 5),
+                    CustomTextField(
+                      hint: 'Password',
+                      textFieldType: CustomTextFieldType.password,
+                      controller: _viewModel.passwordController,
+                      enabled: !_viewModel.disablePage.value,
+                      node: _viewModel.passwordFocusNode,
+                      onFieldSubmitted: (value) => _viewModel.signIn(),
+                      errorMessage: _viewModel.invalidPassword.value
+                          ? 'Incorect Password'
+                          : null,
+                    ),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(height: 20),
-
-            const CustomProceedButton(
-              title: 'Login',
-              heightFactor: .9,
+            Obx(
+              () => _viewModel.disablePage.value
+                  ? const CustomProgressButton(
+                      title: 'Loging in',
+                    )
+                  : CustomProceedButton(
+                      title: 'Login',
+                      heightFactor: 1,
+                      onPressed: _viewModel.signIn,
+                    ),
             ),
             const SizedBox(height: 10),
             Center(
               child: GestureDetector(
                 onTap: () => Navigator.of(context).pushReplacement(
                   PageTransition(
-                    child: SignUpScreen(),
+                    child: const SignUpScreen(),
                     type: PageTransitionType.fromRight,
                   ),
                 ),
