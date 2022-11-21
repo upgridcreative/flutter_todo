@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_todo/enums/tabs.dart';
+import 'package:flutter_todo/shared/enums/tabs.dart';
 import 'package:get/get.dart';
 
 class SignUpController extends GetxController {

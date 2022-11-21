@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/theme/colors.dart';
+import 'package:flutter_todo/shared/theme/colors.dart';
 
 class CustomProgressButton extends StatelessWidget {
   const CustomProgressButton({
@@ -42,7 +42,7 @@ class CustomProgressButton extends StatelessWidget {
           SizedBox(
             height: 20 * heightFactor,
             width: 20 * heightFactor,
-            child:  CircularProgressIndicator(
+            child: CircularProgressIndicator(
               strokeWidth: 2,
               color: Colors.white.withOpacity(.8),
             ),

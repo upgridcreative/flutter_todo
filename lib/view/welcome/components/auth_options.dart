@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/animations/animations.dart';
-import 'package:flutter_todo/authentication/sign_in/sign_in.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
+import 'package:flutter_todo/view/sign_in/sign_in.dart';
 
 class AuthenticationButtons extends StatelessWidget {
   const AuthenticationButtons({Key? key}) : super(key: key);

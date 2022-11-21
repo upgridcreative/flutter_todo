@@ -4,25 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_todo/animations/animations.dart';
-import 'package:flutter_todo/authentication/sign_up/sign_up.dart';
-import 'package:flutter_todo/home/home.dart';
 import 'package:flutter_todo/shared/components/customProceedButton.dart';
 import 'package:flutter_todo/shared/components/customTextField.dart';
+import 'package:flutter_todo/shared/validitors.dart';
+import 'package:flutter_todo/view/sign_in/sign_in.dart';
+import 'package:flutter_todo/view_model/sign_up.dart';
 
-class SignInScreenBody extends StatefulWidget {
-  const SignInScreenBody({Key? key}) : super(key: key);
+import 'package:get/get.dart';
+
+class SignUpScreenBody extends StatefulWidget {
+  const SignUpScreenBody({Key? key}) : super(key: key);
 
   @override
-  State<SignInScreenBody> createState() => _SignInScreenBodyState();
+  State<SignUpScreenBody> createState() => _SignUpScreenBodyState();
 }
 
-class _SignInScreenBodyState extends State<SignInScreenBody> {
+class _SignUpScreenBodyState extends State<SignUpScreenBody> {
   bool iskeyboardVisivle = false;
   late final StreamSubscription keyboardStream;
   @override
   void initState() {
     super.initState();
     final keyboardVisibilityController = KeyboardVisibilityController();
+
+    // iskeyboardVisivle = true;
 
     keyboardStream =
         keyboardVisibilityController.onChange.listen((bool visible) {
@@ -36,6 +41,8 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
     keyboardStream.cancel();
     super.dispose();
   }
+
+  SignUpController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -53,65 +60,77 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
                   ? 50
                   : MediaQuery.of(context).size.height * 0.3,
               child: AnimatedContainer(
-                curve: Curves.decelerate,
+                curve: Curves.linear,
                 duration: const Duration(milliseconds: 200),
                 height: iskeyboardVisivle
                     ? 0
                     : MediaQuery.of(context).size.height * 0.3,
                 child: AnimatedOpacity(
-                  child: SvgPicture.asset('assets/svg/sign_in.svg'),
+                  child: SvgPicture.asset('assets/svg/sign_up.svg'),
                   duration: const Duration(milliseconds: 200),
-                  curve: Curves.decelerate,
+                  curve: Curves.linear,
                   opacity: iskeyboardVisivle ? 0 : 1,
                 ),
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Sign In',
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Metro',
-                fontSize: 30,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 1.2,
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Enter Your Name',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Metro',
+                    fontSize: 30,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Form(
+                  key: controller.nameScreenFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        controller: controller.firstNameController,
+                        hint: 'First Name',
+                        textFieldType: CustomTextFieldType.regular,
+                        node: controller.firstNameFocusNode,
+                        validator: (value) => lengthValidator(value, 3),
+                        nextNode: controller.lastNameFocusNode,
+                      ),
+                      const SizedBox(height: 5),
+                      CustomTextField(
+                        controller: controller.lastNameController,
+                        hint: 'Last Name',
+                        textFieldType: CustomTextFieldType.regular,
+                        node: controller.lastNameFocusNode,
+                        onFieldSubmitted: (p0) => controller.nextTab(context),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            const CustomTextField(
-              hint: 'Email',
-              textFieldType: CustomTextFieldType.email,
-            ),
-            const SizedBox(height: 5),
-            const CustomTextField(
-              hint: 'Password',
-              textFieldType: CustomTextFieldType.password,
-            ),
-            const SizedBox(height: 20),
 
-
+            const SizedBox(height: 20),
             CustomProceedButton(
-              onPressed: () {
-                Navigator.of(context).push(PageTransition(
-                  child: const HomeScreen(),
-                  type: PageTransitionType.fromRight,
-                ));
-              },
-              title: 'Login',
-              heightFactor: .9,
+              title: 'Next',
+              heightFactor: 1,
+              onPressed: () => controller.nextTab(context),
             ),
             const SizedBox(height: 10),
             Center(
               child: GestureDetector(
                 onTap: () => Navigator.of(context).pushReplacement(
                   PageTransition(
-                    child:  SignUpScreen(),
-                    type: PageTransitionType.fromRight,
+                    child: const SignInScreen(),
+                    type: PageTransitionType.fromLeft,
                   ),
                 ),
                 child: Text.rich(
                   TextSpan(
-                    text: 'Don\'t have an account? ',
+                    text: 'Already have an account? ',
                     style: TextStyle(
                       color: Colors.black.withOpacity(.6),
                       fontFamily: 'Metro',
@@ -120,7 +139,7 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
                     ),
                     children: const [
                       TextSpan(
-                        text: 'Sign Up',
+                        text: 'Sign In',
                         style: TextStyle(
                           color: Colors.black,
                           fontFamily: 'Metro',
@@ -133,18 +152,7 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
-            const Center(
-              child: Text(
-                'Forgot Password?',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontFamily: 'Metro',
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
+
             // if (!iskeyboardVisivle)
             // const SizedBox(height: 100),
           ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/theme/colors.dart';
+import 'package:flutter_todo/shared/theme/colors.dart';
 
 enum CustomProceedButtonType {
   primary, // default

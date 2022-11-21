@@ -1,3 +1,3 @@
 library public;
 
-export 'theme/extentions.dart';
+export 'shared/theme/extentions.dart';

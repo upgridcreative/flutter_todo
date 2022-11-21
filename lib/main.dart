@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/authentication/welcome/welcome.dart';
-import 'package:flutter_todo/theme/light.dart';
+import 'package:flutter_todo/shared/theme/light.dart';
+import 'package:flutter_todo/view/welcome/welcome.dart';
 import 'package:flutter_todo/view_model/sign_up.dart';
 import 'package:get/get.dart';
 

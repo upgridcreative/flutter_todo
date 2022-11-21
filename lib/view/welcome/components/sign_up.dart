@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/animations/page_transition.dart';
-import 'package:flutter_todo/authentication/sign_up/sign_up.dart';
+import 'package:flutter_todo/view/sign_up/sign_up.dart';
 
 class SignUpLink extends StatelessWidget {
   const SignUpLink({Key? key}) : super(key: key);

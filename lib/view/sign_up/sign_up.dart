@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/authentication/sign_up/components/body.dart';
-import 'package:flutter_todo/authentication/sign_up/components/complete_setup.dart';
+import 'package:flutter_todo/view/sign_up/components/body.dart';
+import 'package:flutter_todo/view/sign_up/components/complete_setup.dart';
 import 'package:flutter_todo/view_model/sign_up.dart';
 import 'package:get/get.dart';
 
