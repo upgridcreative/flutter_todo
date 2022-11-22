@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/authentication/welcome/welcome.dart';
-import 'package:flutter_todo/shared/components/habitTile.dart';
-import 'package:flutter_todo/theme/light.dart';
-import 'theme/extentions.dart';
+import 'package:flutter_todo/public.dart';
+import 'package:flutter_todo/shared/theme/light.dart';
+import 'package:flutter_todo/view/welcome/welcome.dart';
+import 'package:flutter_todo/view_model/sign_in.dart';
+import 'package:flutter_todo/view_model/sign_up.dart';
+import 'package:get/get.dart';
 
 void main() {
+  Get.put(SignUpController());
+  Get.put(SignInViewModel());
   runApp(const Main());
 }
 
@@ -15,6 +19,7 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     // final screenSize = MediaQuery.of(context).size;
     return MaterialApp(
+      navigatorKey: navKey,
       theme: lightTextTheme,
       home: SafeArea(
         child: Center(

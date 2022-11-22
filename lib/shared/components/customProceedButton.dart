@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/shared/theme/colors.dart';
 
 enum CustomProceedButtonType {
   primary, // default
@@ -26,21 +27,21 @@ class CustomProceedButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 73 * heightFactor,
+        height: 69 * heightFactor,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: const Color(0xFF1F6FEB),
+          color: ColorClass.primary,
         ),
         alignment: Alignment.center,
         child: Text(
           title,
           style: customTextStyle ??
               TextStyle(
-                color: Colors.white.withOpacity(.90),
-                fontFamily: 'Main',
-                fontSize: 19,
-                fontWeight: FontWeight.w800,
+                color: Colors.white.withOpacity(1),
+                fontFamily: 'Metro',
+                fontSize: 21,
+                fontWeight: FontWeight.w700,
               ),
         ),
       ),

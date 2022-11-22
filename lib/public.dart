@@ -1,3 +1,6 @@
 library public;
 
-export 'theme/extentions.dart';
+import 'package:flutter/cupertino.dart';
+
+export 'shared/theme/extentions.dart';
+final navKey =  GlobalKey<NavigatorState>();
