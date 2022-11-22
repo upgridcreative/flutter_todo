@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/public.dart';
 import 'package:flutter_todo/shared/theme/light.dart';
+import 'package:flutter_todo/view/home/home.dart';
 import 'package:flutter_todo/view/welcome/welcome.dart';
 import 'package:flutter_todo/view_model/sign_in.dart';
 import 'package:flutter_todo/view_model/sign_up.dart';
 import 'package:get/get.dart';
+
+import 'view/manage_categories/manage_categories.dart';
 
 void main() {
   Get.put(SignUpController());
@@ -27,7 +30,7 @@ class Main extends StatelessWidget {
             constraints: BoxConstraints(
                 // maxWidth: screenSize.width > 600 ? 600 : screenSize.width
                 ),
-            child: WelcomeScreen(),
+            child: HomeScreen(),
           ),
         ),
       ),
