@@ -6,7 +6,7 @@ class RouteManager {
   void getToHome() {
     navKey.currentState!.pushAndRemoveUntil(
       PageTransition(
-        child: const Home(),
+        child: const HomeScreen(),
         type: PageTransitionType.fromRight,
       ),
       (route) => false,
