@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../constants/decoration.dart';
 import '../../../constants/lists.dart';
 import '../../../model/category.dart';
-import '../../home/components/homecomponents.dart';
+import '../../home/components/components.dart';
+
 
 class CategoriesTile extends StatelessWidget {
   final Color color;
@@ -15,7 +16,7 @@ class CategoriesTile extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.1,
+      height: 54,
       padding: const EdgeInsets.all(12),
       margin: const EdgeInsets.all(8),
       key: Key(category.id.toString()),

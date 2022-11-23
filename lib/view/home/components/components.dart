@@ -18,8 +18,11 @@ class HomeComponent {
   static Widget popUpButton(List mypopUpList) {
     return PopupMenuButton(
       // color: ,
+      padding: EdgeInsets.zero,
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
-      icon: const Icon(Icons.more_vert),
+      icon: const Icon(
+        Icons.more_vert,
+      ),
       itemBuilder: (context) => List.generate(mypopUpList.length, (index) {
         return PopupMenuItem<String>(
           child: Text(
@@ -30,11 +33,5 @@ class HomeComponent {
     );
   }
 
-  static AppBar simpleAppBar() {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.white,
-      title: Text("Manage Categories",style: largeTitle,),
-    );
-  }
+  
 }
