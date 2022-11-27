@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_todo/constants/decoration.dart';
 
@@ -10,7 +9,24 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [Text(title,style:largeTitle ,)],
+      children: [
+        if (Navigator.of(context).canPop())
+          InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: const Icon(Icons.arrow_back_ios_new)),
+        SizedBox(
+          width: 10,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Text(
+            title,
+            style: largeTitle,
+          ),
+        )
+      ],
     );
   }
 }

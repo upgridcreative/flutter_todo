@@ -16,7 +16,7 @@ class CategoryList extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
   int category=10;
     return ListView.builder(
-          shrinkWrap: true,  padding: const EdgeInsets.symmetric(horizontal: 18.0),
+          shrinkWrap: true,
           itemCount: category+1,
           itemBuilder: (BuildContext context, int index) {
          if(index==category){
@@ -78,7 +78,7 @@ class CategoryList extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: size.height * 0.1,
+          height: size.height * 0.05,
         ),
         Text("Long Press To Drag", style: subTitle.copyWith(color:Colors.black.withOpacity(0.4)))
       ],
