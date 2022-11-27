@@ -16,13 +16,9 @@ class ManageCategories extends StatefulWidget {
 class _ManageCategoriesState extends State<ManageCategories> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-      body: Column(
-        children: [
-          MyAppBar(title: 'Manage Category',),
-          const CategoryList(),
-        ],
+    return const SafeArea(
+      child:  Scaffold(
+        body: CategoryList(),
       ),
     );
   }
