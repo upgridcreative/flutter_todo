@@ -55,9 +55,23 @@ class HomeComponent {
   }
 
   static Widget divider() {
-    return Divider(
+    return const Divider(
       color: Colors.black,
       thickness: 1,
     );
+  }
+   static Widget verticalDivider() {
+    return  Text("|",style:noteTag);
+  }
+
+
+  static Widget clockTitle({required String title,required Color color,required String image}) {
+    return Row(children: [
+    SvgPicture.asset("assets/icons/$image",
+    color: color,
+    ),
+    const SizedBox(width: 5,),
+    Text(title,style:noteTag.copyWith(color:color))
+    ],);
   }
 }

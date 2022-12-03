@@ -25,8 +25,10 @@ class HomeBodyComponent extends StatelessWidget {
              Text("Help Lakshya with Help4You",style: noteTitle,),
              Text("Help Lakshya with Help4You",style: noteTitle.copyWith(decoration: TextDecoration.lineThrough
              
-             ),),
+             ),), HomeComponent. verticalDivider(),
              Text("Help Lakshya with Help4You",style: noteTag,),
+             HomeComponent.clockTitle(title: "Today",color: mainColor,image: "calender.svg"),
+                
       ],
     ),
     );
