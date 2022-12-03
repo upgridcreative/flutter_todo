@@ -26,7 +26,7 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
           });
         },
         items: List.generate(myBottomBar.length, (index) {
-          print("assets/icons/" + myBottomBar[index]);
+       
           return BottomNavigationBarItem(
               label: "",
               icon: SvgPicture.asset(

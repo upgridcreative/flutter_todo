@@ -11,9 +11,11 @@ class HomeComponent {
       {required String text, required Color textColor, required Color color}) {
     return Container(
       padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.all(12),
       decoration: BoxDecoration(borderRadius: borderRadius, color: color),
       child: Text(
         text,
+        style: TextStyle(color: textColor),
       ),
     );
   }
