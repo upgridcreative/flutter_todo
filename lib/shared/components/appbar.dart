@@ -17,13 +17,13 @@ class MyAppBar extends StatelessWidget {
               },
               child: const Icon(Icons.arrow_back_ios_new)),
         SizedBox(
-          width: 10,
+          width: 20,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Text(
             title,
-            style: largeTitle,
+            style: appBarTitle,
           ),
         )
       ],

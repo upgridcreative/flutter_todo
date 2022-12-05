@@ -16,3 +16,4 @@ const lightThemeAppBarTextStyle = TextStyle(
 );
 const Color mainColor = Color(0xFF484B6A);
 const Color lightGreen = Color(0xFF80B231);
+const Color redcolor = Color(0xFFDD0000);

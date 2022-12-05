@@ -22,11 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: HomeComponent.getTab(
-            text: "All", textColor: Colors.white, color: mainColor),
+      // appBar: AppBar(
+      //   title: HomeComponent.getTab(
+      //       text: "All", textColor: Colors.white, color: mainColor),
         
-      ),
+      // ),
       body: PageView(
         controller: _pageController,
         children: const <Widget>[

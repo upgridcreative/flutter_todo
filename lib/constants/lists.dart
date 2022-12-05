@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 const List popUpList = ["Manage Categories", "Sort By", "Upgrade to Pro"];
 const List categoryList = ["Hide", "Delete", "Edit"];
 const List settingsList = [
-  {"title": "Privacy and Account", "icon": "user.svg"},
+  {"title": "Privacy and Account", "icon": Icons.person},
 ];
 const List homePageList = ["Home",];
 const List privacyList = [
-  {"title": "Logout", "icon": "user.svg"},
+  {"title": "Logout", "icon": Icons.logout},
   {"title": "Delete account", "icon": "user.svg"},
 ];
 const List taskList = [
