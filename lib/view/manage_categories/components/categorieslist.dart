@@ -94,5 +94,6 @@ class CategoryList extends StatelessWidget {
             );
           }
         });
+        
   }
 }
