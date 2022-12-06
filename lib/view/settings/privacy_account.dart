@@ -25,7 +25,7 @@ class PrivacySettings extends StatelessWidget {
                   color:index==0? mainColor:redcolor,
                   isForward: false,
                     title: privacyList[index]["title"],
-                    icon: null,
+                    icon: privacyList[index]["icon"],
                     onTap: () {});
               },
             ),

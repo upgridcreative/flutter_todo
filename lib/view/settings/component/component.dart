@@ -10,11 +10,11 @@ class SettingsComponent {
       {required String title, required IconData? icon, required Function onTap,required bool isForward,required Color color}) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(5.0),
         color: ColorClass.grey,
       ),
-      height: 75,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      height: 83,
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       margin: const EdgeInsets.all(8),
       child: InkWell(
         onTap: () {
@@ -22,9 +22,9 @@ class SettingsComponent {
         },
         child: Row(children: [
         if(icon!=null)   Icon(
-            Icons.person,
+            icon,
             color: color,
-          ),
+          )else SizedBox(width: 24,),
           const SizedBox(width: 10),
           Text(
             title,

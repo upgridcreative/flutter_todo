@@ -8,7 +8,6 @@ import 'package:flutter_todo/view/settings/component/component.dart';
 import 'package:flutter_todo/view/settings/privacy_account.dart';
 
 import '../../animations/page_transition.dart';
-import '../../constants/decoration.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -18,14 +17,15 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-         MyAppBar(title: "Settings"),  
+          const MyAppBar(title: "Settings"),
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               itemCount: settingsList.length,
               itemBuilder: (BuildContext context, int index) {
-                return SettingsComponent.settingTile( color:mainColor,
-                  isForward: true,
+                return SettingsComponent.settingTile(
+                    color: mainColor,
+                    isForward: true,
                     title: settingsList[index]["title"],
                     icon: settingsList[index]["icon"],
                     onTap: () {

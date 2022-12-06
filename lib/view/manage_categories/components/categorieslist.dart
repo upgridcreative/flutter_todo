@@ -87,7 +87,7 @@ class CategoryList extends StatelessWidget {
 return CategoriesTile(
               key: Key(index.toString()),
               category: Category(id: index),
-              color: lightGreen.withOpacity(0.6),
+              color: lightGreen,
             );
           }
          }

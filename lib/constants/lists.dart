@@ -8,7 +8,7 @@ const List settingsList = [
 const List homePageList = ["Home",];
 const List privacyList = [
   {"title": "Logout", "icon": Icons.logout},
-  {"title": "Delete account", "icon": "user.svg"},
+  {"title": "Delete account", },
 ];
 const List taskList = [
   {
