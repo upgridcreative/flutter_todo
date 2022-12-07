@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter_todo/shared/theme/colors.dart';
+import 'package:flutter_todo/shared/theme/light.dart';
 
 import '../../../constants/decoration.dart';
 import '../../../constants/lists.dart';
@@ -7,10 +10,12 @@ class HomeComponent {
   static Widget getTab(
       {required String text, required Color textColor, required Color color}) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.all(12),
       decoration: BoxDecoration(borderRadius: borderRadius, color: color),
       child: Text(
         text,
+        style: TextStyle(color: textColor),
       ),
     );
   }
@@ -33,5 +38,42 @@ class HomeComponent {
     );
   }
 
-  
+  static Widget radioButtonActive() {
+    return SvgPicture.asset(
+      "assets/icons/done.svg",
+      height: 25,
+      width: 25,
+    );
+  }
+
+  static Widget radioButtonInActive() {
+    return Container(
+      height: 25,
+      width: 25,
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(width: 2, color: mainColor)),
+    );
+  }
+
+  static Widget divider() {
+    return const Divider(
+      color: Colors.black,
+      thickness: 1,
+    );
+  }
+   static Widget verticalDivider() {
+    return  Text("|",style:noteTag);
+  }
+
+
+  static Widget clockTitle({required String title,required Color color,required String image}) {
+    return Row(children: [
+    SvgPicture.asset("assets/icons/$image",
+    color: color,
+    ),
+    const SizedBox(width: 5,),
+    Text(title,style:noteTag.copyWith(color:color))
+    ],);
+  }
 }

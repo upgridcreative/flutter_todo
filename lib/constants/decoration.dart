@@ -11,6 +11,20 @@ TextStyle subTitle = const TextStyle(
     color: mainColor);
 TextStyle largeTitle = const TextStyle(
     fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black);
+    TextStyle appBarTitle = const TextStyle(
+    fontSize: 30, fontWeight: FontWeight.w900, color: Colors.black);
+    TextStyle noteTitle = const TextStyle(
+    fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black,fontFamily: 'Montserrat');
+      TextStyle listTileTitle = const TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color:mainColor,
+    fontFamily: 'Montserrat');
+    TextStyle noteTag = const TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    fontFamily: 'Montserrat');
 InputDecoration textFieldDecoration = InputDecoration(
     enabledBorder: textfieldBorder,
     border: textfieldBorder,

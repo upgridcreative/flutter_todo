@@ -115,6 +115,12 @@ class CategoryList extends StatelessWidget {
                     const SizedBox(height: 10),
                   ],
                 ),
+                SizedBox(
+                  height: size.height * 0.05,
+                ),
+                Text("Long Press To Drag",
+                    style:
+                        subTitle.copyWith(color: Colors.black.withOpacity(0.4)))
               ],
             ),
           ),
