@@ -14,7 +14,6 @@ class MyAppBar extends StatelessWidget {
           Text(
             title,
             style: const TextStyle(
-              fontFamily: 'Main',
               fontWeight: FontWeight.w600,
               fontSize: 22,
               color: Colors.black,
