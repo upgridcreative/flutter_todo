@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_todo/public.dart';
 import 'package:flutter_todo/shared/theme/light.dart';
 import 'package:flutter_todo/view/home/home.dart';
@@ -28,13 +29,20 @@ class Main extends StatelessWidget {
         statusBarColor: Colors.white,
       ),
     );
-    return MaterialApp(
-      navigatorKey: navKey,
-      theme: lightTextTheme,
-      home: const SafeArea(
-        child: HomeScreen(),
-      ),
-      debugShowCheckedModeBanner: false,
+    return ScreenUtilInit(
+      designSize: const Size(367, 800),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          navigatorKey: navKey,
+          theme: lightTextTheme,
+          home: const SafeArea(
+            child: HomeScreen(),
+          ),
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }
