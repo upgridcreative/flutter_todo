@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_todo/public.dart';
 import 'package:flutter_todo/shared/theme/light.dart';
 import 'package:flutter_todo/view/home/home.dart';
@@ -21,20 +23,26 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final screenSize = MediaQuery.of(context).size;
-    return MaterialApp(
-      navigatorKey: navKey,
-      theme: lightTextTheme,
-      home: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-                // maxWidth: screenSize.width > 600 ? 600 : screenSize.width
-                ),
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.white,
+      ),
+    );
+    return ScreenUtilInit(
+      designSize: const Size(367, 800),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          navigatorKey: navKey,
+          theme: lightTextTheme,
+          home: const SafeArea(
             child: HomeScreen(),
           ),
-        ),
-      ),
-      debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }
