@@ -38,24 +38,6 @@ class HomeComponent {
     );
   }
 
-  static Widget radioButtonActive() {
-    return SvgPicture.asset(
-      "assets/icons/done.svg",
-      height: 25,
-      width: 25,
-    );
-  }
-
-  static Widget radioButtonInActive() {
-    return Container(
-      height: 25,
-      width: 25,
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(width: 2, color: mainColor)),
-    );
-  }
-
   static Widget divider() {
     return const Divider(
       color: Colors.black,
@@ -67,13 +49,4 @@ class HomeComponent {
   }
 
 
-  static Widget clockTitle({required String title,required Color color,required String image}) {
-    return Row(children: [
-    SvgPicture.asset("assets/icons/$image",
-    color: color,
-    ),
-    const SizedBox(width: 5,),
-    Text(title,style:noteTag.copyWith(color:color))
-    ],);
-  }
 }

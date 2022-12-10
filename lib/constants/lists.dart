@@ -5,38 +5,56 @@ const List categoryList = ["Hide", "Delete", "Edit"];
 const List settingsList = [
   {"title": "Privacy and Account", "icon": Icons.person},
 ];
-const List homePageList = ["Home",];
+const List homePageList = [
+  "Home",
+];
 const List privacyList = [
   {"title": "Logout", "icon": Icons.logout},
-  {"title": "Delete account", },
+  {
+    "title": "Delete account",
+  },
 ];
+
+const List<String> catagories = [
+  'My Day',
+  'All',
+  'Work',
+  'Office',
+  'Upgrid Creative',
+];
+
 const List taskList = [
   {
-    "title": "Teamwork is best",
-    "time": "Today",
+    "title": "Terms and conditions review with Aprameya",
     "category": "Work",
-    "active": true,
-    "completed": true
+    "completed": false,
+    "due": "Today",
+    'isDue': false,
+    "subTasks": 1,
+    "subTasksCompleted": 0,
   },
   {
-    "title": "Teamwork is best",
-    "time": "Yesterday",
+    "title": "Help Lakshya with Help4You",
     "category": "",
-    "active": false,
-    "completed": true
+    "completed": false,
+    "due": "Yesterday",
+    'isDue': true,
+    "subTasks": 0,
   },
   {
-    "title": "Teamwork is best",
-    "time": "Today",
-    "category": "Work",
-    "active": true,
-    "completed": false
+    "title": "Finalise Macroservices",
+    "category": "",
+    "completed": false,
+    "due": "",
+    'isDue': false,
+    "subTasks": 0,
   },
   {
-    "title": "Teamwork is best",
-    "time": "Today",
-    "category": "Work",
-    "active": true,
-    "completed": true
+    "title": "Design Review with Client",
+    "completed": true,
+    "due": "Today",
+    'isDue': false,
+    "category": 'Office',
+    "subTasks": 0,
   }
 ];

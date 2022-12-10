@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_todo/constants/decoration.dart';
 
 class MyAppBar extends StatelessWidget {
   const MyAppBar({Key? key, required this.title}) : super(key: key);
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        if (Navigator.of(context).canPop())
-          InkWell(
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-              child: const Icon(Icons.arrow_back_ios_new)),
-        SizedBox(
-          width: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Text(
+    return Padding(
+      padding: const EdgeInsets.only(top: 20, left: 25, right: 15),
+      child: Row(
+        children: [
+          const Icon(Icons.arrow_back_ios),
+          const SizedBox(width: 10),
+          Text(
             title,
-            style: appBarTitle,
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 22,
+              color: Colors.black,
+            ),
           ),
-        )
-      ],
+          const Spacer(),
+        ],
+      ),
     );
   }
 }

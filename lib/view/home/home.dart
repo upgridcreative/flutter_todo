@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/constants/lists.dart';
 import 'package:flutter_todo/view/settings/settings.dart';
 
 import '../../animations/page_transition.dart';
@@ -7,7 +6,6 @@ import '../../shared/theme/light.dart';
 import '../manage_categories/manage_categories.dart';
 import 'components/body.dart';
 import 'components/bottombar.dart';
-import 'components/components.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
