@@ -5,6 +5,7 @@ import 'package:flutter_todo/shared/theme/colors.dart';
 import 'package:flutter_todo/shared/theme/light.dart';
 
 import '../../../model/category.dart';
+import '../../../shared/components/alertdialog.dart';
 import '../../../shared/components/custom_short_button.dart';
 import 'categoriestile.dart';
 
@@ -48,45 +49,13 @@ class CategoryList extends StatelessWidget {
                       ),
                       child: InkWell(
                         onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                backgroundColor: ColorClass.grey,
-                                actionsPadding:
-                                    const EdgeInsets.only(right: 12),
-                                title: const Text("Create new Category"),
-                                content: TextFormField(
-                                    decoration: textFieldDecoration.copyWith(
-                                        hintText: "e.g. Personal,work")),
-                                actions: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text(
-                                          "Cancel",
-                                          style: subTitle.copyWith(
-                                            color: ColorClass.black70,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      CustomShortButton(
-                                        title: 'Save',
-                                        heightFactor: 0.25,
-                                        customTextStyle: subTitle.copyWith(
-                                            color: Colors.white),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              );
-                            },
-                          );
+                          AlertDialogFunction.showDialogBox(
+                              context: context,
+                              title: "Create new catogory",
+                              content: TextFormField(
+                                decoration: textFieldDecoration.copyWith(hintText: "e.g personal , work, office") ,
+                              ),
+                              buttonName: "Save");
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -115,12 +84,7 @@ class CategoryList extends StatelessWidget {
                     const SizedBox(height: 10),
                   ],
                 ),
-                SizedBox(
-                  height: size.height * 0.05,
-                ),
-                Text("Long Press To Drag",
-                    style:
-                        subTitle.copyWith(color: Colors.black.withOpacity(0.4)))
+              
               ],
             ),
           ),

@@ -20,7 +20,7 @@ class HomeComponent {
     );
   }
 
-  static Widget popUpButton(List mypopUpList) {
+  static Widget popUpButton(List myList) {
     return PopupMenuButton(
       // color: ,
       padding: EdgeInsets.zero,
@@ -28,10 +28,10 @@ class HomeComponent {
       icon: const Icon(
         Icons.more_vert,
       ),
-      itemBuilder: (context) => List.generate(mypopUpList.length, (index) {
+      itemBuilder: (context) => List.generate(myList.length, (index) {
         return PopupMenuItem<String>(
           child: Text(
-            popUpList[index],
+            myList[index],
           ),
         );
       }),

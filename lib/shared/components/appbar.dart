@@ -9,7 +9,7 @@ class MyAppBar extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20, left: 25, right: 15),
       child: Row(
         children: [
-          const Icon(Icons.arrow_back_ios),
+          const InkWell(child: Icon(Icons.arrow_back_ios)),
           const SizedBox(width: 10),
           Text(
             title,
