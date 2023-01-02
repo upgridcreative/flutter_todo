@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/view/calendar/calender.dart';
 import 'package:flutter_todo/view/settings/settings.dart';
 
 import '../../animations/page_transition.dart';
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: const <Widget>[
           HomeBodyComponent(),
           SettingsScreen(),
-          HomeBodyComponent(),
+          CalenderScreen(),
           SettingsScreen()
         ],
       ),
