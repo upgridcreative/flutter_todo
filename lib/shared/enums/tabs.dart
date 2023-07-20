@@ -1,0 +1,4 @@
+enum SignUpTabs {
+  name,
+  completeSetup,
+}
