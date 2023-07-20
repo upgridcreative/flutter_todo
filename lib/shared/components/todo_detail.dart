@@ -290,7 +290,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                                   horizontal: 20.0,
                                 ),
                                 child: Text(
-                                  widget.task.categoryTempId.toString(),
+                                  widget.task.category.toString(),
                                   style: TextStyle(
                                     fontSize: 15.sp,
                                     fontWeight: FontWeight.w600,

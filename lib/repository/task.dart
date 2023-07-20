@@ -53,7 +53,10 @@ class TaskRepository extends GetxController {
   }
 
   void onCategoryDeleted(CategoryController category){
-    //Todo: Delete all categories with category as `category`
+    _allTasks.forEach((element) {
+      element.removeCategory();
+    });
+
   }
 
   //For now let's test
@@ -63,17 +66,17 @@ class TaskRepository extends GetxController {
       ..tempId = DateTime.now().toString()
       ..isChecked = false;
 
-    // newTask.save(); // Saved into the DB //Todo: Check if this returns an erro
+    // newTask.save(); ///Todo: Check if this returns an erro
 
     box.put(newTask.tempId, newTask);
 
-    _allTasks.add(newTask.asController); // Add to  runtine memory
+    _allTasks.add(newTask.asController); 
   }
 
   void addTask(Task task) {
-    box.put(task.tempId, task); // Save to the DB
+    box.put(task.tempId, task); 
 
-    _allTasks.add(task.asController); // Add to runtine memory
+    _allTasks.add(task.asController); 
   }
 
   void deleteTask(TaskController task) {
@@ -83,9 +86,9 @@ class TaskRepository extends GetxController {
   }
 
   void toggleCheck(TaskController task) {
-    task.isChecked.value = !task.isChecked.value; // In app runtine memory
+    task.isChecked.value = !task.isChecked.value; 
 
     task.hive.isChecked = task.isChecked.value;
-    task.hive.save(); // Save the changes in DB
+    task.hive.save(); 
   }
 }

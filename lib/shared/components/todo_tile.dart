@@ -112,7 +112,7 @@ class TodoTile extends StatelessWidget {
                               ),
                             if (task.categoryTempId.value != null)
                               Text(
-                                task.categoryTempId.toString(),
+                                task.category,
                                 style: const TextStyle(
                                   fontSize: 11,
                                   fontWeight: FontWeight.w700,

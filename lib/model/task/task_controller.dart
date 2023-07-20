@@ -1,6 +1,8 @@
+import 'package:flutter_todo/model/category.dart';
 import 'package:flutter_todo/model/task/task.dart';
+import 'package:flutter_todo/repository/category.dart';
 import 'package:flutter_todo/shared/functions/date_functions.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 
 class TaskController extends GetxController {
   // final box = Hive.box('tasks');
@@ -62,6 +64,7 @@ class TaskController extends GetxController {
     this.content.value = content;
     update(); // Update the User interface
   }
+
   void updateDescription(String description) {
     this.description.value = description;
     update(); // Update the User interface
@@ -76,12 +79,24 @@ class TaskController extends GetxController {
     update();
   }
 
+  void removeCategory() {
+    categoryTempId.value = null;
+
+    hiveInstance.categoryTempId = null;
+    hiveInstance.save();
+    update();
+  }
+
+  void updateController() {
+    update();
+  }
+
   void setDueDate(DateTime? newDate) {
     final formattedDate =
         newDate == null ? null : dateFormatter.format(newDate);
 
     due.value = formattedDate;
-    
+
     hive.due = formattedDate;
     hiveInstance.save();
 
@@ -94,5 +109,11 @@ class TaskController extends GetxController {
     return DateTime.parse(due.value!).isAtSameMomentAs(
       DateTime(now.year, now.month, now.day),
     );
+  }
+
+  String get category {
+    final CategoryRepository repo = Get.find();
+
+    return repo.getCategoryByTempId(categoryTempId.value!).title.value;
   }
 }

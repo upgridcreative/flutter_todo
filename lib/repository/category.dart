@@ -58,4 +58,7 @@ class CategoryRepository extends GetxController {
   CategoryController getCategoryByName(String name) {
     return _categories.where((p0) => p0.title.value == name).first;
   }
+   CategoryController getCategoryByTempId(String id) {
+    return _categories.where((p0) => p0.tempId.value == id).first;
+  }
 }

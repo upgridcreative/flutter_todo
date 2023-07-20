@@ -24,9 +24,9 @@ void main() async {
   HiveManagement.registerAdapters();
   await HiveManagement.openBoxes();
 
-  await HiveManagement.deleteAll();
-  await TaskRepoDummy.createDummyCategories();
-  await TaskRepoDummy.createDummyTasksWithCategory();
+  // await HiveManagement.deleteAll();
+  // await TaskRepoDummy.createDummyCategories();
+  // await TaskRepoDummy.createDummyTasksWithCategory();
 
   Get.put(CategoryRepository());
   Get.put(TaskRepository());
