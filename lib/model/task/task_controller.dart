@@ -112,6 +112,10 @@ class TaskController extends GetxController {
   }
 
   String get category {
+
+    if (categoryTempId.value == null) {
+      return '';
+    }
     final CategoryRepository repo = Get.find();
 
     return repo.getCategoryByTempId(categoryTempId.value!).title.value;
