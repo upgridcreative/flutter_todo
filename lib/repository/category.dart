@@ -39,8 +39,6 @@ class CategoryRepository extends GetxController {
   void deleteCategory(CategoryController category) {
     //! When sync is implemented , find a better way to delete in order to maintain sync status properly
     box.delete(category.tempId.value);
-
-    //Todo: Remove refrence to this model from todos or make it that this category is labled as deleted
     
     _categories.remove(category);
   }
@@ -50,6 +48,8 @@ class CategoryRepository extends GetxController {
 
   void editColor(CategoryController instance, String color) =>
       instance.setColor(color);
+
+
 
   bool hasCategoryWithTitle(String title) {
     return _categories.where((p0) => p0.title.value == title).isNotEmpty;

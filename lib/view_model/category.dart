@@ -50,6 +50,8 @@ class CategoryPageViewModel extends GetxController {
   }
 
   int getTaskCountOf(CategoryController category) {
-    return _taskRepository.getTasksByCategory(category).length;
+    return _taskRepository.getAllTasks
+        .where((p0) => p0.categoryTempId.value == category.tempId.value)
+        .length;
   }
 }

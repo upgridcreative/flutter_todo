@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/shared/components/todo_detail.dart';
+import 'package:flutter_todo/view/todo/todo_detail.dart';
 
 import 'package:flutter_todo/shared/components/todo_tile.dart';
 import 'package:flutter_todo/view/manage_categories/manage_categories.dart';

@@ -3,7 +3,7 @@ import 'package:flutter_todo/shared/theme/colors.dart';
 
 enum CustomProceedButtonType {
   primary, // default
-  secondary, // Todo (apram): Implement
+  secondary, 
 }
 
 class CustomProceedButton extends StatelessWidget {

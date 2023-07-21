@@ -1,4 +1,3 @@
-import 'package:flutter_todo/model/category.dart';
 import 'package:flutter_todo/model/task/task.dart';
 import 'package:flutter_todo/repository/category.dart';
 import 'package:flutter_todo/shared/functions/date_functions.dart';
@@ -110,7 +109,7 @@ class TaskController extends GetxController {
       DateTime(now.year, now.month, now.day),
     );
   }
-
+  
   String get category {
 
     if (categoryTempId.value == null) {

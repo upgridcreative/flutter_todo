@@ -26,37 +26,10 @@ class TaskRepository extends GetxController {
 
   RxList<TaskController> get getAllTasks => _allTasks;
 
-  Map<String, List<TaskController>> getTasksByCategories() {
-    final groupedByCategories = groupBy(
-      _allTasks,
-      (TaskController element) => element.categoryTempId.toString(),
-    );
-
-    return groupedByCategories;
-  }
-
-  RxList<TaskController> getTasksByCategory(CategoryController category) {
-    final groupedByCategory = _allTasks
-        .where((p0) => p0.categoryTempId.value == category.tempId.value);
-
-    return RxList(groupedByCategory.toList());
-  }
-
-  RxList<TaskController> get dueToday {
-    DateTime now = DateTime.now();
-    DateTime today = DateTime(now.year, now.month, now.day);
-
-    final tasksDueToday = _allTasks
-        .where((p0) => DateTime.parse(p0.due.value ?? '2022-12-22') == today);
-
-    return RxList(tasksDueToday.toList());
-  }
-
-  void onCategoryDeleted(CategoryController category){
-    _allTasks.forEach((element) {
+  void onCategoryDeleted(CategoryController category) {
+    for (var element in _allTasks) {
       element.removeCategory();
-    });
-
+    }
   }
 
   //For now let's test
@@ -70,25 +43,25 @@ class TaskRepository extends GetxController {
 
     box.put(newTask.tempId, newTask);
 
-    _allTasks.add(newTask.asController); 
+    _allTasks.add(newTask.asController);
   }
 
   void addTask(Task task) {
-    box.put(task.tempId, task); 
+    box.put(task.tempId, task);
 
-    _allTasks.add(task.asController); 
+    _allTasks.add(task.asController);
   }
 
   void deleteTask(TaskController task) {
-    box.delete(task.tempId); //DB
+    box.delete(task.tempId); 
 
-    _allTasks.remove(task); //runtine memory
+    _allTasks.remove(task); 
   }
 
   void toggleCheck(TaskController task) {
-    task.isChecked.value = !task.isChecked.value; 
+    task.isChecked.value = !task.isChecked.value;
 
     task.hive.isChecked = task.isChecked.value;
-    task.hive.save(); 
+    task.hive.save();
   }
 }

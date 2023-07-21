@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_todo/model/task/task_controller.dart';
-import 'package:flutter_todo/repository/category.dart';
-import 'package:flutter_todo/repository/task.dart';
 import 'package:flutter_todo/shared/theme/light.dart';
+import 'package:flutter_todo/view_model/task_view_model.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,42 +19,13 @@ class TodoDetailPage extends StatefulWidget {
 }
 
 class _TodoDetailPageState extends State<TodoDetailPage> {
-  final TaskRepository controller = Get.find();
-
-  final CategoryRepository categoryRepository = Get.find();
-
-  final TextEditingController todoTitleController = TextEditingController();
-
-  final TextEditingController todoDescriptionController =
-      TextEditingController();
-
-  final FocusNode todoTitleFocusNode = FocusNode();
-
-  final FocusNode todoDescriptionFocusNode = FocusNode();
+  final TaskViewModel viewModel = Get.find();
 
   @override
-  void initState() {
+  initState() {
     super.initState();
 
-    todoTitleFocusNode.addListener(
-      () {
-        if (!todoTitleFocusNode.hasFocus) {
-          if (todoTitleController.text.isEmpty) {
-            todoTitleController.text = widget.task.content.value;
-          } else {
-            widget.task.updateTask(todoTitleController.text);
-          }
-        }
-      },
-    );
-
-    todoDescriptionFocusNode.addListener(
-      () {
-        if (!todoDescriptionFocusNode.hasFocus) {
-          widget.task.updateDescription(todoDescriptionController.text);
-        }
-      },
-    );
+    viewModel.setCurrentTask(widget.task);
   }
 
   @override
@@ -96,7 +66,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                     Row(
                       children: [
                         GestureDetector(
-                          onTap: () => controller.toggleCheck(widget.task),
+                          onTap: () => viewModel.toggleCheck(),
                           child: Flexible(
                             flex: 1,
                             child: !widget.task.isChecked.value
@@ -129,9 +99,8 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                         Flexible(
                           flex: 10,
                           child: TextFormField(
-                            focusNode: todoTitleFocusNode,
-                            controller: todoTitleController
-                              ..text = widget.task.content.value,
+                            focusNode: viewModel.todoTitleFocusNode,
+                            controller: viewModel.todoTitleController,
                             enableInteractiveSelection: false,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
@@ -140,7 +109,6 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                               disabledBorder: null,
                               enabledBorder: null,
                               focusedErrorBorder: null,
-                            
                             ),
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
@@ -166,15 +134,13 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                         Flexible(
                           flex: 10,
                           child: TextFormField(
-                            focusNode: todoDescriptionFocusNode,
+                            focusNode: viewModel.todoDescriptionFocusNode,
                             minLines: 1,
                             maxLines: 6,
-                            controller: todoDescriptionController
-                              ..text = widget.task.description.value ?? '',
-                   
+                            controller: viewModel.todoDescriptionController,
                             enableInteractiveSelection: false,
-                            decoration:  InputDecoration(
-                                hintText: 'Description',
+                            decoration: InputDecoration(
+                              hintText: 'Description',
                               hintStyle: TextStyle(
                                 fontSize: 14.sp,
                                 color: const Color(0xFF828282),
@@ -210,7 +176,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                           lastDate: DateTime(2069, 01, 01),
                         );
 
-                        widget.task.setDueDate(datePicked);
+                        viewModel.setDueDate(datePicked);
                       },
                       child: Row(
                         children: [
@@ -240,7 +206,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                     ),
                     const SizedBox(height: 60),
                     DropdownButton(
-                      items: categoryRepository.categories.map(
+                      items: viewModel.categories.map(
                         (element) {
                           return DropdownMenuItem(
                             value: element.tempId.value,
@@ -277,7 +243,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                         ),
                       ),
                       alignment: Alignment.centerLeft,
-                      selectedItemBuilder: (c) => categoryRepository.categories
+                      selectedItemBuilder: (c) => viewModel.categories
                           .map(
                             (element) => Container(
                               decoration: BoxDecoration(

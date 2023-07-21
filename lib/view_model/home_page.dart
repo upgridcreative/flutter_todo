@@ -1,9 +1,11 @@
+import 'package:flutter_todo/model/category/category_controller.dart';
 import 'package:flutter_todo/model/task/task.dart';
 import 'package:flutter_todo/model/task/task_controller.dart';
 import 'package:flutter_todo/repository/category.dart';
 import 'package:flutter_todo/repository/task.dart';
 import 'package:flutter_todo/shared/functions/date_functions.dart';
 import 'package:get/get.dart';
+import 'package:collection/collection.dart';
 
 
 class HomePageViewModel extends GetxController {
@@ -30,13 +32,13 @@ class HomePageViewModel extends GetxController {
     }
 
     if (currentTab.value == 'My Day') {
-      return taskRepository.dueToday;
+      return dueToday;
     }
 
     final tabAsCategory =
         categoryRepository.getCategoryByName(currentTab.value);
 
-    return taskRepository.getTasksByCategory(tabAsCategory);
+    return getTasksByCategory(tabAsCategory);
   }
 
   void setTab(String categoryTitle) {
@@ -69,4 +71,33 @@ class HomePageViewModel extends GetxController {
 
     taskRepository.addTask(newTask);
   }
+
+
+  RxList<TaskController> get dueToday {
+    DateTime now = DateTime.now();
+    DateTime today = DateTime(now.year, now.month, now.day);
+
+    final tasksDueToday = taskRepository.getAllTasks
+        .where((p0) => DateTime.parse(p0.due.value ?? '2022-12-22') == today);
+
+    return RxList(tasksDueToday.toList());
+  }
+
+    Map<String, List<TaskController>> getTasksByCategories() {
+    final groupedByCategories = groupBy(
+      taskRepository.getAllTasks,
+      (TaskController element) => element.categoryTempId.toString(),
+    );
+
+    return groupedByCategories;
+  }
+
+  RxList<TaskController> getTasksByCategory(CategoryController category) {
+    final groupedByCategory = taskRepository.getAllTasks
+        .where((p0) => p0.categoryTempId.value == category.tempId.value);
+
+    return RxList(groupedByCategory.toList());
+  }
+
+  
 }
