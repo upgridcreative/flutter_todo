@@ -27,7 +27,9 @@ class TaskRepository extends GetxController {
   RxList<TaskController> get getAllTasks => _allTasks;
 
   void onCategoryDeleted(CategoryController category) {
-    for (var element in _allTasks) {
+    for (var element in _allTasks.where(
+      (p0) => p0.categoryTempId.value == category.tempId.value,
+    )) {
       element.removeCategory();
     }
   }
@@ -53,9 +55,9 @@ class TaskRepository extends GetxController {
   }
 
   void deleteTask(TaskController task) {
-    box.delete(task.tempId); 
+    box.delete(task.tempId);
 
-    _allTasks.remove(task); 
+    _allTasks.remove(task);
   }
 
   void toggleCheck(TaskController task) {
