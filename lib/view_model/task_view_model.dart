@@ -24,7 +24,6 @@ class TaskViewModel extends GetxController {
   void onInit() {
     super.onInit();
 
-    todoDescriptionController.text = task.description.value ?? '';
 
     todoTitleFocusNode.addListener(
       () {
@@ -49,6 +48,9 @@ class TaskViewModel extends GetxController {
 
   void setCurrentTask(TaskController currentTask) {
     task = currentTask;
+    todoDescriptionController.text = task.description.value ?? '';
+    todoTitleController.text = task.content.value;
+
   }
 
   void toggleCheck() {
