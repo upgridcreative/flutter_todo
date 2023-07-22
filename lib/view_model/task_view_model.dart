@@ -7,7 +7,7 @@ import 'package:flutter_todo/shared/functions/date_functions.dart';
 import 'package:get/get.dart';
 
 class TaskViewModel extends GetxController {
-  late final TaskController task;
+  TaskController? task;
 
   final TaskRepository repository = Get.find();
   final CategoryRepository categoryRepository = Get.find();
@@ -29,9 +29,9 @@ class TaskViewModel extends GetxController {
       () {
         if (!todoTitleFocusNode.hasFocus) {
           if (todoTitleController.text.isEmpty) {
-            todoTitleController.text = task.content.value;
+            todoTitleController.text = task!.content.value;
           } else {
-            task.updateTask(todoTitleController.text);
+            task!.updateTask(todoTitleController.text);
           }
         }
       },
@@ -40,7 +40,7 @@ class TaskViewModel extends GetxController {
     todoDescriptionFocusNode.addListener(
       () {
         if (!todoDescriptionFocusNode.hasFocus) {
-          task.updateDescription(todoDescriptionController.text);
+          task!.updateDescription(todoDescriptionController.text);
         }
       },
     );
@@ -48,17 +48,17 @@ class TaskViewModel extends GetxController {
 
   void setCurrentTask(TaskController currentTask) {
     task = currentTask;
-    todoDescriptionController.text = task.description.value ?? '';
-    todoTitleController.text = task.content.value;
+    todoDescriptionController.text = task!.description.value ?? '';
+    todoTitleController.text = task!.content.value;
 
   }
 
   void toggleCheck() {
-    repository.toggleCheck(task);
+    repository.toggleCheck(task!);
   }
 
   void setDueDate(DateTime? dueDate) {
-    task.setDueDate(dueDate);
+    task!.setDueDate(dueDate);
   }
 
   RxList<CategoryController> get categories {
