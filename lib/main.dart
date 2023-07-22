@@ -13,6 +13,7 @@ import 'package:flutter_todo/view_model/category.dart';
 import 'package:flutter_todo/view_model/home_page.dart';
 import 'package:flutter_todo/view_model/sign_in.dart';
 import 'package:flutter_todo/view_model/sign_up.dart';
+import 'package:flutter_todo/view_model/task_view_model.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -33,6 +34,7 @@ void main() async {
 
   Get.put(HomePageViewModel());
   Get.put(CategoryPageViewModel());
+  Get.put(TaskViewModel());
 
   runApp(const Main());
 }
