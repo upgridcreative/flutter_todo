@@ -19,33 +19,48 @@ class CalendarPage extends StatelessWidget {
             const SizedBox(height: 5),
             Row(
               children: [
-                Text(
-                  "Today",
-                  style: TextStyle(
-                    fontFamily: "Montserrat",
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xff000000),
-                    height: 24 / 20,
+                GestureDetector(
+                  onTap: viewModel.resetDate,
+                  child: Text(
+                    "Today",
+                    style: TextStyle(
+                      fontFamily: "Montserrat",
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xff000000),
+                      height: 24 / 20,
+                    ),
                   ),
                 ),
                 const Spacer(),
-                Container(
-                  width: 50.h,
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF484B6A),
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    DateTime.now().day.toString(),
-                    style: TextStyle(
-                      fontFamily: "Montserrat",
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      height: 18 / 15,
+                GestureDetector(
+                  onTap: () async {
+                final datePicked = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000, 01, 01),
+                          lastDate: DateTime(2069, 01, 01),
+                        );
+
+                        viewModel.setDate(datePicked);
+                  },
+                  child: Container(
+                    width: 50.h,
+                    height: 50.h,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF484B6A),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      DateTime.now().day.toString(),
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        height: 18 / 15,
+                      ),
                     ),
                   ),
                 ),
@@ -60,64 +75,66 @@ class CalendarPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 color: const Color(0XffD2D3DB),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: viewModel.daysOfWeek
-                    .map(
-                      (mapKey) => GestureDetector(
-                        onTap: () => viewModel
-                            .selectDateFromDateRow(mapKey.values.first),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              mapKey.keys.first,
-                              style: TextStyle(
-                                fontFamily: "Montserrat",
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xff000000),
-                                height: 15 / 12,
+              child: Obx(
+                ()=>  Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: viewModel.daysOfWeek
+                      .map(
+                        (mapKey) => GestureDetector(
+                          onTap: () => viewModel
+                              .selectDateFromDateRow(mapKey.values.first),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                mapKey.keys.first,
+                                style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xff000000),
+                                  height: 15 / 12,
+                                ),
+                                textAlign: TextAlign.left,
                               ),
-                              textAlign: TextAlign.left,
-                            ),
-                            const SizedBox(height: 10),
-                            Obx(
-                              () => Container(
-                                height: 41.h,
-                                width: 35.w,
-                                alignment: Alignment.center,
-                                decoration: mapKey.values.first ==
-                                        viewModel.currentDate.value
-                                    ? BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: ColorClass.primary,
-                                      )
-                                    : null,
-                                child: Obx(
-                                  () => Text(
-                                    mapKey.values.first.toString(),
-                                    style: TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w600,
-                                      color: mapKey.values.first ==
-                                              viewModel.currentDate.value
-                                          ? Colors.white
-                                          : const Color(0xff010100),
-                                      height: 15 / 12,
+                              const SizedBox(height: 10),
+                              Obx(
+                                () => Container(
+                                  height: 41.h,
+                                  width: 35.w,
+                                  alignment: Alignment.center,
+                                  decoration: mapKey.values.first ==
+                                          viewModel.currentDate.value
+                                      ? BoxDecoration(
+                                          borderRadius: BorderRadius.circular(12),
+                                          color: ColorClass.primary,
+                                        )
+                                      : null,
+                                  child: Obx(
+                                    () => Text(
+                                      mapKey.values.first.toString(),
+                                      style: TextStyle(
+                                        fontFamily: "Montserrat",
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: mapKey.values.first ==
+                                                viewModel.currentDate.value
+                                            ? Colors.white
+                                            : const Color(0xff010100),
+                                        height: 15 / 12,
+                                      ),
+                                      textAlign: TextAlign.left,
                                     ),
-                                    textAlign: TextAlign.left,
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                    .toList(),
+                      )
+                      .toList(),
+                ),
               ),
             ),
             const SizedBox(height: 15),

@@ -7,10 +7,10 @@ class CalanderPageViewModel extends GetxController {
   final TaskRepository taskRepository = Get.find();
   final dateTime = DateTime.now();
 
-  DateTime currentFirstWeekDay = DateTime.now();
+  late DateTime currentFirstWeekDay;
   Rx<DateTime> currentSelectedDate = DateTime.now().obs;
 
-  late RxList<Map<String, int>> daysOfWeek;
+  RxList<Map<String, int>> daysOfWeek = <Map<String, int>>[].obs;
 
   final RxBool showFinishedTasks = true.obs;
   final RxBool showUnFinishedTasks = true.obs;
@@ -18,21 +18,39 @@ class CalanderPageViewModel extends GetxController {
   @override
   onInit() {
     super.onInit();
-    daysOfWeek = getNext7Days(findFirstDateOfTheWeek(dateTime));
+    currentFirstWeekDay = findFirstDateOfTheWeek(dateTime);
+    daysOfWeek.value = getNext7Days(findFirstDateOfTheWeek(dateTime));
   }
 
   RxBool isCurrentDaySelected(int day) {
     return RxBool(currentSelectedDate.value.day == day);
   }
 
+  void setDate(DateTime? newDate) {
+    if (newDate == null) {
+      return;
+    }
+    currentSelectedDate.value = newDate;
+    daysOfWeek.value = getNext7Days(findFirstDateOfTheWeek(newDate));
+    currentFirstWeekDay = findFirstDateOfTheWeek(newDate);
+    update();
+  }
+
+  void resetDate() {
+    currentFirstWeekDay = findFirstDateOfTheWeek(dateTime);
+    currentSelectedDate(dateTime);
+    daysOfWeek.value = getNext7Days(findFirstDateOfTheWeek(dateTime));
+  }
+
   RxInt get currentDate => currentSelectedDate.value.day.obs;
 
   DateTime findFirstDateOfTheWeek(DateTime dateTime) {
-    return dateTime.subtract(Duration(days: dateTime.weekday - 1));
+    print(dateTime.subtract(Duration(days: dateTime.weekday)));
+    return dateTime.subtract(Duration(days: dateTime.weekday));
   }
 
-  RxList<Map<String, int>> getNext7Days(DateTime startDate) {
-    RxList<Map<String, int>> days = <Map<String, int>>[].obs;
+  List<Map<String, int>> getNext7Days(DateTime startDate) {
+    List<Map<String, int>> days = <Map<String, int>>[];
     for (int i = 0;
         i <=
             startDate.add(const Duration(days: 6)).difference(startDate).inDays;
@@ -79,7 +97,8 @@ class CalanderPageViewModel extends GetxController {
                 currentSelectedDate.value.month, currentSelectedDate.value.day),
           );
     }).length;
-  } 
+  }
+
   int get finishedTasksCount {
     return taskRepository.getAllTasks.where((p0) {
       if (p0.due.value == null) {
