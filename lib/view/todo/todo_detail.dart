@@ -65,10 +65,10 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                   children: [
                     Row(
                       children: [
-                        GestureDetector(
-                          onTap: () => viewModel.toggleCheck(),
-                          child: Flexible(
-                            flex: 1,
+                        Flexible(
+                          flex: 1,
+                          child: GestureDetector(
+                            onTap: viewModel.toggleCheck,
                             child: !widget.task.isChecked.value
                                 ? Container(
                                     height: 25,
