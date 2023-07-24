@@ -9,6 +9,7 @@ import 'package:flutter_todo/repository/task.dart';
 import 'package:flutter_todo/repository/testing/dummy/taskRepo.dart';
 import 'package:flutter_todo/shared/theme/light.dart';
 import 'package:flutter_todo/view/home/home.dart';
+import 'package:flutter_todo/view_model/calander_view.dart';
 import 'package:flutter_todo/view_model/category.dart';
 import 'package:flutter_todo/view_model/home_page.dart';
 import 'package:flutter_todo/view_model/sign_in.dart';
@@ -35,6 +36,7 @@ void main() async {
   Get.put(HomePageViewModel());
   Get.put(CategoryPageViewModel());
   Get.put(TaskViewModel());
+  Get.put(CalanderPageViewModel());
 
   runApp(const Main());
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/repository/category.dart';
 import 'package:flutter_todo/shared/theme/colors.dart';
+import 'package:flutter_todo/view/calander/calander.dart';
 import 'package:flutter_todo/view/settings/settings.dart';
 import 'package:flutter_todo/view_model/home_page.dart';
 import 'package:get/get.dart';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         controller: _pageController,
         children: <Widget>[
           HomeBodyComponent(),
-          const SettingsScreen(),
+           CalendarPage(),
           HomeBodyComponent(),
           const SettingsScreen()
         ],
@@ -245,7 +246,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                   icon: const Icon(Icons.arrow_forward),
                   color: Colors.white.withOpacity(.9),
                   onPressed: () {
-                    if(contextTextEditingController.text == '') {
+                    if (contextTextEditingController.text == '') {
                       return;
                     }
                     viewModel.addTaskFromScratch(
