@@ -23,10 +23,9 @@ class TodoTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            GestureDetector(
-              onTap: () => controller.toggleCheck(task),
-              child: Flexible(
-                flex: 1,
+            Flexible(
+              flex: 1,
+              child: GestureDetector(
                 child: !task.isChecked.value
                     ? Container(
                         height: 25,
