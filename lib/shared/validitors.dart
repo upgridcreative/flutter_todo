@@ -26,7 +26,7 @@ String? passwordValidator(value) {
     return 'Enter a password';
   }
   if (!validatePassword(value)) {
-    return 'Password must be at least 8 charecters';
+    return 'Password must be at least 8 characters';
   }
   return null;
 }
@@ -36,5 +36,5 @@ String? lengthValidator(value, int length) {
     return null;
   }
 
-  return 'Minimum of three charecters';
+  return 'Minimum of three characters';
 }
