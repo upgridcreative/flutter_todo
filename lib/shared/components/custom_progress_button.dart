@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/shared/theme/colors.dart';
+import '../theme/colors.dart';
 
 class CustomProgressButton extends StatelessWidget {
   const CustomProgressButton({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_todo/shared/theme/colors.dart';
-import 'package:flutter_todo/shared/theme/light.dart';
+import '../../../shared/theme/colors.dart';
+import '../../../shared/theme/light.dart';
 
 import '../../../constants/decoration.dart';
 

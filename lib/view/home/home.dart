@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/repository/category.dart';
-import 'package:flutter_todo/shared/theme/colors.dart';
-import 'package:flutter_todo/view/calander/calander.dart';
-import 'package:flutter_todo/view/settings/settings.dart';
-import 'package:flutter_todo/view_model/home_page.dart';
+import '../../repository/category.dart';
+import '../../shared/theme/colors.dart';
+import '../calander/calander.dart';
+import '../settings/settings.dart';
+import '../../view_model/home_page.dart';
 import 'package:get/get.dart';
 
 import '../../shared/theme/light.dart';

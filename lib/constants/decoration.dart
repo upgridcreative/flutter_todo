@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/shared/theme/light.dart';
+import '../shared/theme/light.dart';
 
 BorderRadius borderRadius = BorderRadius.circular(12);
 TextStyle midTitle = const TextStyle(

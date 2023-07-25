@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/constants/decoration.dart';
-import 'package:flutter_todo/shared/components/appbar.dart';
-import 'package:flutter_todo/shared/theme/colors.dart';
-import 'package:flutter_todo/shared/theme/light.dart';
-import 'package:flutter_todo/view_model/category.dart';
+import '../../../constants/decoration.dart';
+import '../../../shared/components/appbar.dart';
+import '../../../shared/theme/colors.dart';
+import '../../../shared/theme/light.dart';
+import '../../../view_model/category.dart';
 import 'package:get/get.dart';
 
 import '../../../shared/components/custom_short_button.dart';

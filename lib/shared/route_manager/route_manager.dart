@@ -1,6 +1,6 @@
-import 'package:flutter_todo/animations/page_transition.dart';
-import 'package:flutter_todo/public.dart';
-import 'package:flutter_todo/view/home/home.dart';
+import '../../animations/page_transition.dart';
+import '../../public.dart';
+import '../../view/home/home.dart';
 
 class RouteManager {
   void getToHome() {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_todo/model/task/task_controller.dart';
-import 'package:flutter_todo/shared/theme/light.dart';
-import 'package:flutter_todo/view_model/task_view_model.dart';
+import '../../model/task/task_controller.dart';
+import '../../shared/theme/light.dart';
+import '../../view_model/task_view_model.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

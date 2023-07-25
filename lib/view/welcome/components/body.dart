@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/animations/animations.dart';
-import 'package:flutter_todo/view/welcome/components/auth_options.dart';
-import 'package:flutter_todo/view/welcome/components/intro.dart';
-import 'package:flutter_todo/view/welcome/components/logo.dart';
-import 'package:flutter_todo/view/welcome/components/sign_up.dart';
+
+import '../../../animations/animations.dart';
+import 'auth_options.dart';
+import 'intro.dart';
+import 'logo.dart';
+import 'sign_up.dart';
 
 class WelcomeScreenBody extends StatelessWidget {
   const WelcomeScreenBody({Key? key}) : super(key: key);

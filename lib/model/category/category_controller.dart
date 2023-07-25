@@ -1,4 +1,4 @@
-import 'package:flutter_todo/model/category/category.dart';
+import 'category.dart';
 import 'package:get/get.dart';
 
 class CategoryController extends GetxController {

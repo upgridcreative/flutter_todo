@@ -1,4 +1,4 @@
-import 'package:flutter_todo/model/task/task_controller.dart';
+import 'task_controller.dart';
 import 'package:hive/hive.dart';
 
 part 'task.g.dart';

@@ -1,6 +1,6 @@
-import 'package:flutter_todo/model/task/task.dart';
-import 'package:flutter_todo/repository/category.dart';
-import 'package:flutter_todo/shared/functions/date_functions.dart';
+import 'task.dart';
+import '../../repository/category.dart';
+import '../../shared/functions/date_functions.dart';
 import 'package:get/get.dart';
 
 class TaskController extends GetxController {

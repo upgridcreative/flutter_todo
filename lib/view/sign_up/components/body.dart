@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_todo/animations/animations.dart';
-import 'package:flutter_todo/shared/components/customProceedButton.dart';
-import 'package:flutter_todo/shared/components/customTextField.dart';
-import 'package:flutter_todo/shared/validitors.dart';
-import 'package:flutter_todo/view/sign_in/sign_in.dart';
-import 'package:flutter_todo/view_model/sign_up.dart';
+import '../../../animations/animations.dart';
+import '../../../shared/components/customProceedButton.dart';
+import '../../../shared/components/customTextField.dart';
+import '../../../shared/validitors.dart';
+import '../../sign_in/sign_in.dart';
+import '../../../view_model/sign_up.dart';
 
 import 'package:get/get.dart';
 

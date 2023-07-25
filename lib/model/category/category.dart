@@ -1,4 +1,4 @@
-import 'package:flutter_todo/model/category/category_controller.dart';
+import 'category_controller.dart';
 import 'package:hive/hive.dart';
 
 part 'category.g.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_todo/model/sign_up.dart';
-import 'package:flutter_todo/repository/service/api_manager.dart';
-import 'package:flutter_todo/repository/service/network_exceptions.dart';
+import '../model/sign_up.dart';
+import 'service/api_manager.dart';
+import 'service/network_exceptions.dart';
 
 class AuthenticationRepository {
   ApiManager apiManager = ApiManager();

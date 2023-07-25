@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_todo/repository/auth.dart';
-import 'package:flutter_todo/shared/route_manager/route_manager.dart';
 import 'package:get/get.dart';
+
+import '../repository/auth.dart';
+import '../shared/route_manager/route_manager.dart';
 
 class SignInViewModel extends GetxController {
   final repo = AuthenticationRepository();

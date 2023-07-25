@@ -1,5 +1,5 @@
-import 'package:flutter_todo/model/category/category.dart';
-import 'package:flutter_todo/model/category/category_controller.dart';
+import '../model/category/category.dart';
+import '../model/category/category_controller.dart';
 
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';

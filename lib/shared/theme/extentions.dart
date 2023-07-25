@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/shared/theme/dark.dart';
-import 'package:flutter_todo/shared/theme/light.dart';
-import 'package:flutter_todo/shared/theme/text.dart';
+import 'dark.dart';
+import 'light.dart';
+import 'text.dart';
 
 extension TextThemeExtention on ColorScheme {
   CustomTextFields get customTextStyle => CustomTextFields(

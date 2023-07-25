@@ -1,11 +1,11 @@
-import 'package:flutter_todo/model/category/category_controller.dart';
-import 'package:flutter_todo/model/task/task.dart';
-import 'package:flutter_todo/model/task/task_controller.dart';
-import 'package:flutter_todo/repository/category.dart';
-import 'package:flutter_todo/repository/task.dart';
-import 'package:flutter_todo/shared/functions/date_functions.dart';
-import 'package:get/get.dart';
 import 'package:collection/collection.dart';
+import '../model/category/category_controller.dart';
+import '../model/task/task.dart';
+import '../model/task/task_controller.dart';
+import '../repository/category.dart';
+import '../repository/task.dart';
+import '../shared/functions/date_functions.dart';
+import 'package:get/get.dart';
 
 
 class HomePageViewModel extends GetxController {

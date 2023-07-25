@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/model/category/category_controller.dart';
-import 'package:flutter_todo/shared/components/custom_short_button.dart';
-import 'package:flutter_todo/shared/theme/colors.dart';
-import 'package:flutter_todo/view_model/category.dart';
+import '../../../model/category/category_controller.dart';
+import '../../../shared/components/custom_short_button.dart';
+import '../../../shared/theme/colors.dart';
+import '../../../view_model/category.dart';
 
 import '../../../constants/decoration.dart';
 import 'package:get/get.dart';

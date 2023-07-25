@@ -1,5 +1,5 @@
-import 'package:flutter_todo/model/task/task_controller.dart';
-import 'package:flutter_todo/repository/task.dart';
+import '../model/task/task_controller.dart';
+import '../repository/task.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 

@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import './network_exceptions.dart';
+import 'network_exceptions.dart';
 
 class ApiManager {
   static const baseUrl = 'http://192.168.18.61:8000/';

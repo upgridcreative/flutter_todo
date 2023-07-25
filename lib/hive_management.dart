@@ -1,6 +1,6 @@
-import 'package:flutter_todo/model/category/category.dart';
-import 'package:flutter_todo/model/other/user.dart';
-import 'package:flutter_todo/model/task/task.dart';
+import 'model/category/category.dart';
+import 'model/other/user.dart';
+import 'model/task/task.dart';
 
 import 'package:hive/hive.dart';
 
