@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 class CategoriesTile extends StatefulWidget {
   final Color color;
   final CategoryController category;
-  
+
   const CategoriesTile({Key? key, required this.color, required this.category})
       : super(key: key);
 
@@ -26,7 +26,7 @@ class _CategoriesTileState extends State<CategoriesTile> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      ()=> Container(
+      () => Container(
         height: 54,
         padding: const EdgeInsets.all(12),
         margin: const EdgeInsets.all(8),
@@ -112,7 +112,7 @@ class _CategoriesTileState extends State<CategoriesTile> {
                     }
                     viewModel.updateCategory(
                       titleController.text,
-                      null, // Color
+                      // Color
                       widget.category, //Instance
                     );
                   },
