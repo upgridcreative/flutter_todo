@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:flutter_todo/model/category/category_controller.dart';
 import 'package:flutter_todo/model/task/task.dart';
 import 'package:flutter_todo/model/task/task_controller.dart';
@@ -40,8 +38,6 @@ class TaskRepository extends GetxController {
       ..content = content
       ..tempId = DateTime.now().toString()
       ..isChecked = false;
-
-    // newTask.save(); ///Todo: Check if this returns an erro
 
     box.put(newTask.tempId, newTask);
 

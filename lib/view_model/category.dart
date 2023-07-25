@@ -38,13 +38,12 @@ class CategoryPageViewModel extends GetxController {
     }
   }
 
-  void updateCategory(
-      String? title, CategoryController instance) {
+  void updateCategory(String? title, CategoryController instance) {
     if (_categoryRepository.hasCategoryWithTitle(title ?? '')) {
       //Todo: Show the error in the frontend
       return;
     }
-    _categoryRepository.editTitle(instance, title ?? instance.title.value);
+    instance.setTitle(title ?? instance.title.value);
   }
 
   int getTaskCountOf(CategoryController category) {

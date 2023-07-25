@@ -11,7 +11,7 @@ class CategoryRepository extends GetxController {
 
   CategoryRepository() {
     final storedCategories = box.values;
-    _categories = RxList(); //Init the varaible first
+    _categories = RxList(); //Init the variable first
 
     for (var element in storedCategories) {
       //Convert to `CategoryControllers` and add to `_categories`
@@ -37,19 +37,10 @@ class CategoryRepository extends GetxController {
   }
 
   void deleteCategory(CategoryController category) {
-    //! When sync is implemented , find a better way to delete in order to maintain sync status properly
     box.delete(category.tempId.value);
     
     _categories.remove(category);
   }
-
-  void editTitle(CategoryController instance, String title) =>
-      instance.setTitle(title);
-
-  void editColor(CategoryController instance, String color) =>
-      instance.setColor(color);
-
-
 
   bool hasCategoryWithTitle(String title) {
     return _categories.where((p0) => p0.title.value == title).isNotEmpty;

@@ -34,10 +34,4 @@ class CategoryController extends GetxController {
     hiveInstance.save();
   }
 
-  void setColor(String color) {
-    this.color(color);
-
-    hiveInstance.color = color;
-    hiveInstance.save();
-  }
 }

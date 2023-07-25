@@ -86,10 +86,6 @@ class TaskController extends GetxController {
     update();
   }
 
-  void updateController() {
-    update();
-  }
-
   void setDueDate(DateTime? newDate) {
     final formattedDate =
         newDate == null ? null : dateFormatter.format(newDate);
