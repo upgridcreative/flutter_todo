@@ -31,7 +31,7 @@ void main() async {
   Get.put(HomePageViewModel());
   Get.put(CategoryPageViewModel());
   Get.put(TaskViewModel());
-  Get.put(CalanderPageViewModel());
+  Get.put(CalendarPageViewModel());
 
   runApp(const Main());
 }

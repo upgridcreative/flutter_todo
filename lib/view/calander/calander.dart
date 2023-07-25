@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class CalendarPage extends StatelessWidget {
   CalendarPage({Key? key}) : super(key: key);
 
-  final CalanderPageViewModel viewModel = Get.find();
+  final CalendarPageViewModel viewModel = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

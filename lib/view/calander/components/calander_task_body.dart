@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class CalanderTaskViewSegment extends StatelessWidget {
   CalanderTaskViewSegment({Key? key}) : super(key: key);
-  final CalanderPageViewModel viewModel = Get.find();
+  final CalendarPageViewModel viewModel = Get.find();
 
   @override
   Widget build(BuildContext context) {
