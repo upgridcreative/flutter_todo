@@ -1,7 +1,8 @@
+import 'package:get/get.dart';
+
 import '../model/task/task_controller.dart';
 import '../repository/task.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+import '../shared/functions/date_functions.dart';
 
 class CalanderPageViewModel extends GetxController {
   final TaskRepository taskRepository = Get.find();
@@ -44,29 +45,6 @@ class CalanderPageViewModel extends GetxController {
 
   RxInt get currentDate => currentSelectedDate.value.day.obs;
 
-  DateTime findFirstDateOfTheWeek(DateTime dateTime) {
-    print(dateTime.subtract(Duration(days: dateTime.weekday)));
-    return dateTime.subtract(Duration(days: dateTime.weekday));
-  }
-
-  List<Map<String, int>> getNext7Days(DateTime startDate) {
-    List<Map<String, int>> days = <Map<String, int>>[];
-    for (int i = 0;
-        i <=
-            startDate.add(const Duration(days: 6)).difference(startDate).inDays;
-        i++) {
-      days.add(
-        {
-          DateFormat('EEE').format(
-            startDate.add(
-              Duration(days: i),
-            ),
-          ): startDate.add(Duration(days: i)).day
-        },
-      );
-    }
-    return days;
-  }
 
   void toggleUnfinishedTasksVisibility() {
     showUnFinishedTasks(!showUnFinishedTasks.value);

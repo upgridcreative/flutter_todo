@@ -28,4 +28,24 @@ String convertDueDateToName(String dueDate) {
   return 'Older';
 }
 
+DateTime findFirstDateOfTheWeek(DateTime dateTime) {
+  return dateTime.subtract(Duration(days: dateTime.weekday));
+}
 
+List<Map<String, int>> getNext7Days(DateTime startDate) {
+  List<Map<String, int>> days = <Map<String, int>>[];
+  for (int i = 0;
+      i <= startDate.add(const Duration(days: 6)).difference(startDate).inDays;
+      i++) {
+    days.add(
+      {
+        DateFormat('EEE').format(
+          startDate.add(
+            Duration(days: i),
+          ),
+        ): startDate.add(Duration(days: i)).day
+      },
+    );
+  }
+  return days;
+}
