@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../animations/page_transition.dart';
+import '../../../../animations/page_transition.dart';
 import '../../sign_up/sign_up.dart';
 
 class SignUpLink extends StatelessWidget {

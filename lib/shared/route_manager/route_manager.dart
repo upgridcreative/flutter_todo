@@ -1,6 +1,6 @@
 import '../../animations/page_transition.dart';
 import '../../public.dart';
-import '../../view/home/home.dart';
+import '../../view/core/home/home.dart';
 
 class RouteManager {
   void getToHome() {

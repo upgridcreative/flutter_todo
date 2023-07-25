@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../animations/animations.dart';
-import '../../../shared/components/customProceedButton.dart';
+import '../../../../animations/animations.dart';
+import '../../../../shared/components/customProceedButton.dart';
 import '../../sign_in/sign_in.dart';
 
 class AuthenticationButtons extends StatelessWidget {

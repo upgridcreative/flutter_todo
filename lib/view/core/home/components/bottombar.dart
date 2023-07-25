@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../shared/theme/light.dart';
+import '../../../../shared/theme/light.dart';
 
 List myBottomBar = ["home.svg", "schedule.svg", "refresh.svg", "setting.svg"];
 

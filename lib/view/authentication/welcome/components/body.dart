@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../animations/animations.dart';
+import '../../../../animations/animations.dart';
 import 'auth_options.dart';
 import 'intro.dart';
 import 'logo.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../todo/todo_detail.dart';
 
-import '../../../shared/components/todo_tile.dart';
-import '../../manage_categories/manage_categories.dart';
-import '../../../view_model/home_page.dart';
+import '../../todo/todo_tile.dart';
+import '../../categories/manage_categories.dart';
+import '../../../../view_model/home_page.dart';
 import 'package:get/get.dart';
 
 class HomeBodyComponent extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../shared/theme/colors.dart';
-import '../../../shared/theme/light.dart';
+import '../../../../shared/theme/colors.dart';
+import '../../../../shared/theme/light.dart';
 
-import '../../../constants/decoration.dart';
+import '../../../../constants/decoration.dart';
 
 
 class HomeComponent {

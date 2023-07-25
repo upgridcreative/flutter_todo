@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../constants/decoration.dart';
-import '../../../shared/components/appbar.dart';
-import '../../../shared/theme/colors.dart';
-import '../../../shared/theme/light.dart';
-import '../../../view_model/category.dart';
+import '../../../../constants/decoration.dart';
+import '../../../../shared/components/appbar.dart';
+import '../../../../shared/theme/light.dart';
+import '../../../../view_model/category.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/components/custom_short_button.dart';
+import '../../../../shared/components/custom_short_button.dart';
 import 'categoriestile.dart';
 
 class CategoryList extends StatelessWidget {

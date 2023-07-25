@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../repository/category.dart';
-import '../../shared/theme/colors.dart';
+import '../../../repository/category.dart';
+import '../../../shared/theme/colors.dart';
 import '../calander/calander.dart';
-import '../settings/settings.dart';
-import '../../view_model/home_page.dart';
+import '../../settings/settings.dart';
+import '../../../view_model/home_page.dart';
 import 'package:get/get.dart';
 
-import '../../shared/theme/light.dart';
+import '../../../shared/theme/light.dart';
 import 'components/body.dart';
 import 'components/bottombar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

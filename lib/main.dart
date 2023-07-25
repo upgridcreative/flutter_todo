@@ -9,7 +9,7 @@ import 'public.dart';
 import 'repository/category.dart';
 import 'repository/task.dart';
 import 'shared/theme/light.dart';
-import 'view/home/home.dart';
+import 'view/core/home/home.dart';
 import 'view_model/calander_view.dart';
 import 'view_model/category.dart';
 import 'view_model/home_page.dart';
