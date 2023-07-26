@@ -61,11 +61,21 @@ class TaskController extends GetxController {
 
   void updateTask(String content) {
     this.content.value = content;
+
+    hiveInstance.content = content;
+    hiveInstance.save();
+
+
     update(); // Update the User interface
   }
 
   void updateDescription(String description) {
     this.description.value = description;
+
+    hiveInstance.description = description;
+    hiveInstance.save();
+
+
     update(); // Update the User interface
   }
 
