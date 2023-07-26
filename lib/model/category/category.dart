@@ -1,3 +1,5 @@
+import 'package:flutter_todo/shared/functions/date_functions.dart';
+
 import 'category_controller.dart';
 import 'package:hive/hive.dart';
 
@@ -30,5 +32,13 @@ class Category extends HiveObject {
       color,
       title,
     );
+  }
+
+  @override
+  Future<void> save() {
+    
+    lastUpdateDate = dateFormatter.format(DateTime.now());
+    
+    return super.save();
   }
 }

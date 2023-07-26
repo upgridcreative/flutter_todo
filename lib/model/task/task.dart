@@ -1,3 +1,5 @@
+import 'package:flutter_todo/shared/functions/date_functions.dart';
+
 import 'task_controller.dart';
 import 'package:hive/hive.dart';
 
@@ -59,5 +61,10 @@ class Task extends HiveObject {
     );
   }
 
+  @override
+  Future<void> save() {
+    lastUpdateDate = dateFormatter.format(DateTime.now());
 
+    return super.save();
+  }
 }
