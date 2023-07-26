@@ -20,6 +20,9 @@ class Category extends HiveObject {
   @HiveField(4)
   String? isSynced;
 
+  @HiveField(12)
+  String? lastUpdateDate;
+
   CategoryController get asController {
     return CategoryController.fromHive(
       this,

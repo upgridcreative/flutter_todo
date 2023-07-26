@@ -42,6 +42,9 @@ class Task extends HiveObject {
   @HiveField(11)
   String? isSynced;
 
+  @HiveField(12)
+  String? lastUpdateDate;
+
   TaskController get asController {
     return TaskController.fromHive(
       this,
@@ -55,4 +58,6 @@ class Task extends HiveObject {
       childOrder,
     );
   }
+
+
 }

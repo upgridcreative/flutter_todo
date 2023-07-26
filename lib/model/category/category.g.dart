@@ -21,13 +21,14 @@ class CategoryAdapter extends TypeAdapter<Category> {
       ..realId = fields[1] as String?
       ..title = fields[2] as String
       ..color = fields[3] as String
-      ..isSynced = fields[4] as String?;
+      ..isSynced = fields[4] as String?
+      ..lastUpdateDate = fields[12] as String?;
   }
 
   @override
   void write(BinaryWriter writer, Category obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.tempId)
       ..writeByte(1)
@@ -37,7 +38,9 @@ class CategoryAdapter extends TypeAdapter<Category> {
       ..writeByte(3)
       ..write(obj.color)
       ..writeByte(4)
-      ..write(obj.isSynced);
+      ..write(obj.isSynced)
+      ..writeByte(12)
+      ..write(obj.lastUpdateDate);
   }
 
   @override
