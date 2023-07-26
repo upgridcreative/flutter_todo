@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_todo/view/authentication/wrapper.dart';
+import 'package:flutter_todo/view_model/auth_wrapper.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -9,7 +11,6 @@ import 'public.dart';
 import 'repository/category.dart';
 import 'repository/task.dart';
 import 'shared/theme/light.dart';
-import 'view/core/home/home.dart';
 import 'view_model/calander_view.dart';
 import 'view_model/category.dart';
 import 'view_model/home_page.dart';
@@ -28,6 +29,7 @@ void main() async {
   Get.put(CategoryRepository());
   Get.put(TaskRepository());
 
+  Get.put(AuthWrapperViewModel());
   Get.put(HomePageViewModel());
   Get.put(CategoryPageViewModel());
   Get.put(TaskViewModel());
@@ -55,8 +57,8 @@ class Main extends StatelessWidget {
         return GetMaterialApp(
           navigatorKey: navKey,
           theme: lightTextTheme,
-          home: const SafeArea(
-            child: HomeScreen(),
+          home: SafeArea(
+            child: AuthWrapper(),
           ),
           debugShowCheckedModeBanner: false,
         );
