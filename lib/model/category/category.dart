@@ -37,7 +37,7 @@ class Category extends HiveObject {
   @override
   Future<void> save() {
     
-    lastUpdateDate = dateFormatter.format(DateTime.now());
+    lastUpdateDate = DateTime.now().toString();
     
     return super.save();
   }
