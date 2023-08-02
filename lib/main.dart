@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_todo/view/authentication/wrapper.dart';
-import 'package:flutter_todo/view_model/auth_wrapper.dart';
+import 'sync/data/datasources/local_datasource.dart';
+import 'sync/data/datasources/remote_datasource.dart';
+import 'sync/data/repository/sync_downstrea.dart';
+import 'sync/data/repository/sync_upstream.dart';
+import 'view/authentication/wrapper.dart';
+import 'view_model/auth_wrapper.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -34,6 +38,11 @@ void main() async {
   Get.put(CategoryPageViewModel());
   Get.put(TaskViewModel());
   Get.put(CalendarPageViewModel());
+  Get.put(SyncDataUpSteam());
+  Get.put(SyncRemoteDataSource());
+  Get.put(SyncDataDownStream());
+  Get.put(SyncLocalDataSource());
+  
 
   runApp(const Main());
 }

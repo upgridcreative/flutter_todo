@@ -1,3 +1,5 @@
+import 'package:flutter_todo/sync/usecases/category_sync.dart';
+
 import '../model/category/category.dart';
 import '../model/category/category_controller.dart';
 
@@ -19,13 +21,25 @@ class CategoryRepository extends GetxController {
     }
   }
 
+  void refreshFromDB() {
+    final storedTasks = box.values;
+
+    for (var element in storedTasks) {
+      _categories.addIf(
+        _categories.where((p0) => p0.tempId.value == element.tempId).isEmpty,
+        element.asController,
+      );
+    }
+
+    update();
+  }
+
   RxList<CategoryController> get categories => _categories;
 
   void addCategoryFromValues(String title, String color) {
     final object = Category()
       ..tempId = DateTime.now().toString()
-      ..title = title
-      ..color = color;
+      ..title = title;
 
     addCategory(object);
   }
@@ -33,13 +47,22 @@ class CategoryRepository extends GetxController {
   void addCategory(Category category) {
     box.put(category.tempId, category);
 
+    CategorySyncHelper.addCategory(
+      content: category.title,
+      tempId: category.tempId,
+    );
+
     _categories.add(category.asController);
   }
 
   void deleteCategory(CategoryController category) {
     box.delete(category.tempId.value);
-    
+
     _categories.remove(category);
+
+    CategorySyncHelper.delete(
+      tempId: category.tempId.value,
+    );
   }
 
   bool hasCategoryWithTitle(String title) {
@@ -49,7 +72,20 @@ class CategoryRepository extends GetxController {
   CategoryController getCategoryByName(String name) {
     return _categories.where((p0) => p0.title.value == name).first;
   }
-   CategoryController getCategoryByTempId(String id) {
+
+  CategoryController getCategoryByTempId(String id) {
     return _categories.where((p0) => p0.tempId.value == id).first;
+  }
+
+  bool hasCategoryWithTempId(String tempId) {
+    return _categories.where((p0) => p0.tempId.value == tempId).isNotEmpty;
+  }
+
+  Category getHiveCategoryByTempId(String id) {
+    return box.values.where((p0) => p0.tempId == id).first;
+  }
+
+  bool hasHiveCategoryWithTempId(String tempId) {
+    return box.values.where((p0) => p0.tempId == tempId).isNotEmpty;
   }
 }

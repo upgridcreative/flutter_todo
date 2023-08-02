@@ -5,6 +5,7 @@ class AuthWrapperViewModel extends GetxController{
   final _storage = const FlutterSecureStorage();
 
   Future<bool> get isLoggedIn async {
+    // await _storage.delete(key: 'access');
     final isLoggedIn =  await _storage.read(key: 'access') != null;
     return isLoggedIn;
   }

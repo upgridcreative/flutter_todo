@@ -24,7 +24,6 @@ class TaskViewModel extends GetxController {
   void onInit() {
     super.onInit();
 
-
     todoTitleFocusNode.addListener(
       () {
         if (!todoTitleFocusNode.hasFocus) {
@@ -50,11 +49,15 @@ class TaskViewModel extends GetxController {
     task = currentTask;
     todoDescriptionController.text = task!.description.value ?? '';
     todoTitleController.text = task!.content.value;
-
   }
 
   void toggleCheck() {
     repository.toggleCheck(task!);
+  }
+
+  void deleteTask() {
+    repository.deleteTask(task!);
+    Get.back();
   }
 
   void setDueDate(DateTime? dueDate) {

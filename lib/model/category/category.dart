@@ -1,5 +1,3 @@
-import 'package:flutter_todo/shared/functions/date_functions.dart';
-
 import 'category_controller.dart';
 import 'package:hive/hive.dart';
 
@@ -7,6 +5,7 @@ part 'category.g.dart';
 
 @HiveType(typeId: 2)
 class Category extends HiveObject {
+
   @HiveField(0)
   late String tempId;
 
@@ -16,8 +15,6 @@ class Category extends HiveObject {
   @HiveField(2)
   late String title;
 
-  @HiveField(3)
-  late String color;
 
   @HiveField(4)
   String? isSynced;
@@ -29,16 +26,16 @@ class Category extends HiveObject {
     return CategoryController.fromHive(
       this,
       tempId,
-      color,
       title,
     );
   }
 
   @override
   Future<void> save() {
-    
     lastUpdateDate = DateTime.now().toString();
-    
+
     return super.save();
   }
+
+
 }

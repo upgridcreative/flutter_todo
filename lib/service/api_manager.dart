@@ -1,11 +1,14 @@
 import 'dart:io';
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 import 'network_exceptions.dart';
 
 class ApiManager {
+  final _storage = FlutterSecureStorage();
   static const baseUrl = 'http://10.0.2.2:8000/';
   //get method
   Future<Object> getResponse({required String endPoint}) async {
@@ -16,6 +19,27 @@ class ApiManager {
     } on SocketException {
       throw NoInternetException();
     }
+    return responseJson;
+  }
+
+  Future<Object> postResponseUsingDio({
+    required String endPoint,
+    Object? payload,
+  }) async {
+    final token = await _storage.read(key: 'access');
+    final dio = Dio();
+    dio.options.headers["Authorization"] = 'Bearer $token' ;
+    dynamic responseJson;
+    try {
+      final response = await dio.post(
+        baseUrl + endPoint,
+        data: payload,
+      );
+      responseJson = response;
+    } on SocketException {
+      throw NoInternetException();
+    }
+
     return responseJson;
   }
 

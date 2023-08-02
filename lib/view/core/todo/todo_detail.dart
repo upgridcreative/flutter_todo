@@ -268,6 +268,20 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                           )
                           .toList(),
                     ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      onTap: () {
+                        viewModel.deleteTask();
+                      },
+                      child: Container(
+                        width: 100,
+                        height: 50,
+                        child: const Text(
+                          'Delete',
+                          style: TextStyle(color: Colors.red, fontSize: 20),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),

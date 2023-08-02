@@ -1,2 +1,1 @@
-Refactor code according to a proper architecture (MVVM or something)
-
+When syncing upstream or both ways, ensure that any new changes to the model are written as a separate object and not edited in previous object

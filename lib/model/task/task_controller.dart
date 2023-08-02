@@ -1,3 +1,5 @@
+import 'package:flutter_todo/sync/usecases/task_sync.dart';
+
 import 'task.dart';
 import '../../repository/category.dart';
 import '../../shared/functions/date_functions.dart';
@@ -65,6 +67,7 @@ class TaskController extends GetxController {
     hiveInstance.content = content;
     hiveInstance.save();
 
+    TaskSyncHelper.updateContent(newContent: content, tempId: tempId.value);
 
     update(); // Update the User interface
   }
@@ -75,6 +78,8 @@ class TaskController extends GetxController {
     hiveInstance.description = description;
     hiveInstance.save();
 
+    TaskSyncHelper.updateDescription(
+        newDescription: description, tempId: tempId.value);
 
     update(); // Update the User interface
   }
@@ -85,6 +90,9 @@ class TaskController extends GetxController {
     hiveInstance.categoryTempId = tempId;
     hiveInstance.save();
 
+    TaskSyncHelper.addCategory(
+        categoryTempId: tempId, tempId: this.tempId.value);
+
     update();
   }
 
@@ -93,6 +101,9 @@ class TaskController extends GetxController {
 
     hiveInstance.categoryTempId = null;
     hiveInstance.save();
+
+    TaskSyncHelper.removeCategory(tempId: tempId.value);
+
     update();
   }
 
@@ -105,6 +116,8 @@ class TaskController extends GetxController {
     hive.due = formattedDate;
     hiveInstance.save();
 
+    TaskSyncHelper.setDue(dueDate: due.value, tempId: tempId.value);
+
     update();
   }
 
@@ -115,9 +128,8 @@ class TaskController extends GetxController {
       DateTime(now.year, now.month, now.day),
     );
   }
-  
-  String get category {
 
+  String get category {
     if (categoryTempId.value == null) {
       return '';
     }
