@@ -4,12 +4,12 @@ import 'package:flutter_todo/model/task/task_controller.dart';
 import 'package:flutter_todo/sync/usecases/task_sync.dart';
 import 'package:hive/hive.dart';
 import 'package:get/get.dart';
-import 'package:collection/collection.dart';
 
 class TaskRepository extends GetxController {
   final box = Hive.box<Task>('tasks');
 
   late final RxList<TaskController> _allTasks;
+  static final TaskRepository instance = Get.find();
 
   @override
   void onInit() {
@@ -88,5 +88,10 @@ class TaskRepository extends GetxController {
 
   bool hasHiveTaskWithTempId(String tempId) {
     return box.values.where((p0) => p0.tempId == tempId).isNotEmpty;
+  }
+
+  Future<void> onLogout() async{
+    await box.clear();
+    _allTasks.clear();
   }
 }

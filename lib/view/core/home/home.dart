@@ -32,9 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
         controller: _pageController,
         children: <Widget>[
           HomeBodyComponent(),
-           CalendarPage(),
+          CalendarPage(),
           HomeBodyComponent(),
-          const SettingsScreen()
+          SettingsScreen()
         ],
       ),
       bottomNavigationBar: HomeBottomBar(

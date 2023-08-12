@@ -11,6 +11,8 @@ class CategoryRepository extends GetxController {
 
   late final RxList<CategoryController> _categories;
 
+  static final CategoryRepository instance = Get.find();
+
   CategoryRepository() {
     final storedCategories = box.values;
     _categories = RxList(); //Init the variable first
@@ -87,5 +89,10 @@ class CategoryRepository extends GetxController {
 
   bool hasHiveCategoryWithTempId(String tempId) {
     return box.values.where((p0) => p0.tempId == tempId).isNotEmpty;
+  }
+
+  Future<void> onLogout() async {
+    await box.clear();
+    categories.clear();
   }
 }
