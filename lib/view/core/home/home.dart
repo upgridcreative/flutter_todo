@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../repository/category.dart';
 import '../../../shared/theme/colors.dart';
@@ -29,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        physics:const NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: <Widget>[
           HomeBodyComponent(),
