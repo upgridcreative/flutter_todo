@@ -1,5 +1,4 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../model/category/category_controller.dart';
 import '../repository/category.dart';
 import '../repository/task.dart';
 import '../view/authentication/welcome/welcome.dart';

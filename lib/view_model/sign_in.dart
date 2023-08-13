@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_todo/sync/usecases/sync.dart';
 import 'package:get/get.dart';
 
 import '../repository/auth.dart';
@@ -38,6 +39,7 @@ class SignInViewModel extends GetxController {
       case 'proceed':
         RouteManager().getToHome();
         disablePage(false);
+        SyncToolKit().syncData();
         break;
       case 'no-user-exists':
         disablePage.value = false;

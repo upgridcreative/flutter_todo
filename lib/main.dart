@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_todo/sync/usecases/sync.dart';
 import 'sync/data/datasources/local_datasource.dart';
 import 'sync/data/datasources/remote_datasource.dart';
 import 'sync/data/repository/sync_downstrea.dart';
@@ -42,7 +43,8 @@ void main() async {
   Get.put(SyncRemoteDataSource());
   Get.put(SyncDataDownStream());
   Get.put(SyncLocalDataSource());
-  
+
+  SyncToolKit().syncData();
 
   runApp(const Main());
 }

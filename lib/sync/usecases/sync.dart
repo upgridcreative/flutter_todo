@@ -11,7 +11,7 @@ class SyncToolKit {
   final localDataSource = SyncLocalDataSource.instance;
   final SyncDataUpSteam repo = Get.find();
   final SyncDataDownStream downRepo = Get.find();
-  final _storage = FlutterSecureStorage();
+  final _storage = const FlutterSecureStorage();
 
   List prepareSync() {
     final allTasks = localDataSource.getAllSyncTasks;
