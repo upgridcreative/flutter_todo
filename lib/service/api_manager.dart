@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/retry.dart';
 
 import 'network_exceptions.dart';
 
@@ -17,7 +18,7 @@ class ApiManager {
       final response = await http.get(Uri.parse(baseUrl + endPoint));
       responseJson = handleResponse(response);
     } on SocketException {
-      throw NoInternetException();
+      return NoInternetException();
     }
     return responseJson;
   }
@@ -37,7 +38,7 @@ class ApiManager {
       );
       responseJson = response;
     } on SocketException {
-      throw NoInternetException();
+      return NoInternetException();
     }
 
     return responseJson;
@@ -54,7 +55,7 @@ class ApiManager {
       );
       responseJson = handleResponse(response);
     } on SocketException {
-      throw NoInternetException();
+      return NoInternetException();
     }
     return responseJson;
   }

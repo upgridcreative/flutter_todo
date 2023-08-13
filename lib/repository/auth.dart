@@ -28,6 +28,7 @@ class AuthenticationRepository {
   }
 
   Future<String> signIn(String email, String password) async {
+
     final response = await apiManager.postResponse(
       endPoint: 'api/auth/login/',
       payload: {
@@ -41,7 +42,7 @@ class AuthenticationRepository {
 
   Future<String> handleAuthenticationResponse(response) async {
     if (response is NetworkException) {
-      return 'all-purpose'; //Return apprptre code for netwrk expection
+      return 'no-internet'; //Return apprptre code for netwrk expection
     }
 
     response as Map<String, dynamic>;

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart' as dio;
+import 'package:flutter_todo/service/network_exceptions.dart';
 import 'package:get/get.dart';
 
 import '../../../service/api_manager.dart';
@@ -15,6 +16,10 @@ class SyncDataDownStream extends GetxController {
       endPoint: 'api/sync/v1/',
       payload: payload,
     );
+
+    if (response is NetworkException) {
+      return;
+    }
 
     response as dio.Response;
 

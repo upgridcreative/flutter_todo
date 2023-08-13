@@ -44,11 +44,25 @@ class SignInViewModel extends GetxController {
         invalidEmail.value = true;
         update();
         break;
+      case 'no-internet':
+        disablePage.value = false;
+        _onNetwrokException();
+        break;
       case 'incorrect-password':
         disablePage.value = false;
         invalidPassword.value = true;
         update();
         break;
     }
+  }
+
+  void _onNetwrokException() {
+    if (Get.isSnackbarOpen) {
+      Get.closeCurrentSnackbar();
+    }
+    Get.snackbar(
+      'Server Error',
+      'Problem occurred while connecting to the server',
+    );
   }
 }

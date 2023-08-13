@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_todo/service/network_exceptions.dart';
 import 'package:get/get.dart';
 
 import '../../../service/api_manager.dart';
@@ -27,6 +28,15 @@ class SyncDataUpSteam extends GetxController {
       endPoint: 'api/sync/v1/',
       payload: upStreamActionData,
     );
+
+    if (response is NetworkException) {
+      return dio.Response(
+        requestOptions: dio.RequestOptions(
+          data: {},
+        ),
+        statusCode: 500,
+      );
+    }
 
     response as dio.Response;
 

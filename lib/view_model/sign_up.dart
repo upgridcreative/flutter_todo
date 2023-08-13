@@ -65,12 +65,26 @@ class SignUpController extends GetxController {
       case 'proceed':
         RouteManager().getToHome();
         break;
+      case 'no-internet':
+        disablePage.value = false;
+        _onNetwrokException();
+        break;
       case 'already-exists':
         disablePage.value = false;
         emailExists(true);
         update();
         break;
     }
+  }
+
+  void _onNetwrokException() {
+    if (Get.isSnackbarOpen) {
+      Get.closeCurrentSnackbar();
+    }
+    Get.snackbar(
+      'Server Error',
+      'Problem occurred while connecting to the server',
+    );
   }
 
   SignUpTabs get getCurrentTab => currentTab.value;
