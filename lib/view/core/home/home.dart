@@ -121,10 +121,11 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
           TextField(
             controller: descriptionTextEditingController,
             style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14.sp,
-                color: Colors.black87,
-                letterSpacing: -.1),
+              fontWeight: FontWeight.w400,
+              fontSize: 14.sp,
+              color: Colors.black87,
+              letterSpacing: -.1,
+            ),
             maxLines: 3,
             showCursor: true,
             decoration: InputDecoration(
