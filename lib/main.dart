@@ -1,3 +1,4 @@
+import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,6 +46,13 @@ void main() async {
   Get.put(SyncLocalDataSource());
 
   SyncToolKit().syncData();
+  final cron = Cron();
+  cron.schedule(
+    Schedule(minutes: 3),
+    () {
+      SyncToolKit().syncData();
+    },
+  );
 
   runApp(const Main());
 }
