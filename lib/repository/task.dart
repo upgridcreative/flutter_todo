@@ -1,7 +1,7 @@
-import 'package:flutter_todo/model/category/category_controller.dart';
-import 'package:flutter_todo/model/task/task.dart';
-import 'package:flutter_todo/model/task/task_controller.dart';
-import 'package:flutter_todo/sync/usecases/task_sync.dart';
+import '../model/category/category_controller.dart';
+import '../model/task/task.dart';
+import '../model/task/task_controller.dart';
+import '../sync/usecases/task_sync.dart';
 import 'package:hive/hive.dart';
 import 'package:get/get.dart';
 

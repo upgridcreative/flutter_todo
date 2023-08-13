@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/shared/theme/colors.dart';
-import 'package:flutter_todo/sync/usecases/sync.dart';
-import 'package:flutter_todo/view_model/auth_wrapper.dart';
+import '../../shared/theme/colors.dart';
+import '../../sync/usecases/sync.dart';
+import '../../view_model/auth_wrapper.dart';
 import "package:get/get.dart";
 
 class SettingsScreen extends StatelessWidget {

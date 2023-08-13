@@ -1,5 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_todo/sync/data/repository/sync_downstrea.dart';
+import '../data/repository/sync_downstrea.dart';
 import 'package:get/get.dart';
 
 import '../data/datasources/local_datasource.dart';

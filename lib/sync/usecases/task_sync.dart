@@ -1,5 +1,5 @@
-import 'package:flutter_todo/sync/data/datasources/local_datasource.dart';
-import 'package:flutter_todo/sync/data/models/task/task_hive.dart';
+import '../data/datasources/local_datasource.dart';
+import '../data/models/task/task_hive.dart';
 
 class TaskSyncHelper {
   static void addTask({

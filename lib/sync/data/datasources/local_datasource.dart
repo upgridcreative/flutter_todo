@@ -1,5 +1,5 @@
-import 'package:flutter_todo/sync/data/models/task/task_hive.dart';
-import 'package:flutter_todo/sync/data/models/category/category_hive.dart';
+import '../models/task/task_hive.dart';
+import '../models/category/category_hive.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 

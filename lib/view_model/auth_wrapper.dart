@@ -1,8 +1,8 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_todo/model/category/category_controller.dart';
-import 'package:flutter_todo/repository/category.dart';
-import 'package:flutter_todo/repository/task.dart';
-import 'package:flutter_todo/view/authentication/welcome/welcome.dart';
+import '../model/category/category_controller.dart';
+import '../repository/category.dart';
+import '../repository/task.dart';
+import '../view/authentication/welcome/welcome.dart';
 import 'package:get/get.dart';
 
 class AuthWrapperViewModel extends GetxController {

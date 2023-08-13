@@ -1,4 +1,4 @@
-import 'package:flutter_todo/sync/usecases/category_sync.dart';
+import '../../sync/usecases/category_sync.dart';
 
 import 'category.dart';
 import 'package:get/get.dart';

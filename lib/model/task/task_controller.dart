@@ -1,4 +1,4 @@
-import 'package:flutter_todo/sync/usecases/task_sync.dart';
+import '../../sync/usecases/task_sync.dart';
 
 import 'task.dart';
 import '../../repository/category.dart';

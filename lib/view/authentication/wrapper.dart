@@ -1,6 +1,6 @@
-import 'package:flutter_todo/view/authentication/welcome/welcome.dart';
-import 'package:flutter_todo/view/core/home/home.dart';
-import 'package:flutter_todo/view_model/auth_wrapper.dart';
+import 'welcome/welcome.dart';
+import '../core/home/home.dart';
+import '../../view_model/auth_wrapper.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';

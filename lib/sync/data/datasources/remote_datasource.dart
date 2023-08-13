@@ -1,8 +1,8 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_todo/model/category/category.dart';
-import 'package:flutter_todo/model/task/task.dart';
-import 'package:flutter_todo/repository/category.dart';
-import 'package:flutter_todo/repository/task.dart';
+import '../../../model/category/category.dart';
+import '../../../model/task/task.dart';
+import '../../../repository/category.dart';
+import '../../../repository/task.dart';
 import 'package:get/get.dart';
 
 class SyncRemoteDataSource extends GetxController {

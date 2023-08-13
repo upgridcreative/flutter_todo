@@ -1,7 +1,6 @@
-import 'package:flutter_todo/shared/functions/date_functions.dart';
+import 'package:hive/hive.dart';
 
 import 'task_controller.dart';
-import 'package:hive/hive.dart';
 
 part 'task.g.dart';
 
