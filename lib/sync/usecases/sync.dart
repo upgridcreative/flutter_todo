@@ -1,13 +1,21 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../data/repository/sync_downstrea.dart';
 import 'package:get/get.dart';
 
 import '../data/datasources/local_datasource.dart';
 import '../data/models/category/category_hive.dart';
 import '../data/models/task/task_hive.dart';
+import '../data/repository/sync_downstrea.dart';
 import '../data/repository/sync_upstream.dart';
 
 class SyncToolKit {
+  static final SyncToolKit _syncToolKit = SyncToolKit._internal();
+
+  SyncToolKit._internal();
+
+  factory SyncToolKit() {
+    return _syncToolKit;
+  }
+
   final localDataSource = SyncLocalDataSource.instance;
   final SyncDataUpSteam repo = Get.find();
   final SyncDataDownStream downRepo = Get.find();

@@ -2,13 +2,7 @@ import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_todo/sync/usecases/sync.dart';
-import 'sync/data/datasources/local_datasource.dart';
-import 'sync/data/datasources/remote_datasource.dart';
-import 'sync/data/repository/sync_downstrea.dart';
-import 'sync/data/repository/sync_upstream.dart';
-import 'view/authentication/wrapper.dart';
-import 'view_model/auth_wrapper.dart';
+import 'sync/usecases/sync.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -17,6 +11,12 @@ import 'public.dart';
 import 'repository/category.dart';
 import 'repository/task.dart';
 import 'shared/theme/light.dart';
+import 'sync/data/datasources/local_datasource.dart';
+import 'sync/data/datasources/remote_datasource.dart';
+import 'sync/data/repository/sync_downstrea.dart';
+import 'sync/data/repository/sync_upstream.dart';
+import 'view/authentication/wrapper.dart';
+import 'view_model/auth_wrapper.dart';
 import 'view_model/calander_view.dart';
 import 'view_model/category.dart';
 import 'view_model/home_page.dart';
@@ -45,7 +45,7 @@ void main() async {
   Get.put(SyncDataDownStream());
   Get.put(SyncLocalDataSource());
 
-  SyncToolKit().syncData();
+  SyncToolKit().syncData(); //Todo: only when the user is logged in
   final cron = Cron();
   cron.schedule(
     Schedule(minutes: 3),
