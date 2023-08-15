@@ -42,7 +42,10 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                 padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
                 child: Row(
                   children: [
-                    const Icon(Icons.arrow_back_ios),
+                    GestureDetector(
+                      onTap: Get.back,
+                      child: Icon(Icons.arrow_back_ios),
+                    ),
                     const SizedBox(width: 20),
                     Text(
                       'Detail Todo',
