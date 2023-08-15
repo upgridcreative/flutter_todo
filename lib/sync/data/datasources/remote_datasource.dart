@@ -108,17 +108,16 @@ class SyncRemoteDataSource extends GetxController {
 
       newTask.due = task.containsKey('due') ? task['due'] : null;
       newTask.categoryTempId =
-          task.containsKey('catagory') ? task['catagory'] : null;
+          task['catagory'] == null ? null : task['catagory'].toString();
 
+    
       todoRepository.box.add(newTask);
     }
 
     final syncToken = data['sync_token'];
     await _storage.write(key: 'syncToken', value: syncToken);
 
-
     todoRepository.refreshFromDB();
     categoryRepository.refreshFromDB();
-    
   }
 }
