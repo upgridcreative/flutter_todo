@@ -76,7 +76,7 @@ class CategoryRepository extends GetxController {
   }
 
   CategoryController getCategoryByTempId(String id) {
-    return _categories.where((p0) => p0.tempId.value == id).first;
+    return _categories.where((p0) => p0.tempId.value == id ||p0.hiveInstance.realId == id ).first;
   }
 
   bool hasCategoryWithTempId(String tempId) {

@@ -47,6 +47,7 @@ class SyncRemoteDataSource extends GetxController {
 
       newCategory.title = category['title'];
       newCategory.tempId = category['temp_id'];
+      newCategory.realId = category['id'].toString();
 
       categoryRepository.box.add(newCategory);
     }
