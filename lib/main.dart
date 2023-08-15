@@ -1,6 +1,8 @@
+import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'sync/usecases/sync.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -9,7 +11,12 @@ import 'public.dart';
 import 'repository/category.dart';
 import 'repository/task.dart';
 import 'shared/theme/light.dart';
-import 'view/core/home/home.dart';
+import 'sync/data/datasources/local_datasource.dart';
+import 'sync/data/datasources/remote_datasource.dart';
+import 'sync/data/repository/sync_downstrea.dart';
+import 'sync/data/repository/sync_upstream.dart';
+import 'view/authentication/wrapper.dart';
+import 'view_model/auth_wrapper.dart';
 import 'view_model/calander_view.dart';
 import 'view_model/category.dart';
 import 'view_model/home_page.dart';
@@ -28,10 +35,24 @@ void main() async {
   Get.put(CategoryRepository());
   Get.put(TaskRepository());
 
+  Get.put(AuthWrapperViewModel());
   Get.put(HomePageViewModel());
   Get.put(CategoryPageViewModel());
   Get.put(TaskViewModel());
   Get.put(CalendarPageViewModel());
+  Get.put(SyncDataUpSteam());
+  Get.put(SyncRemoteDataSource());
+  Get.put(SyncDataDownStream());
+  Get.put(SyncLocalDataSource());
+
+  SyncToolKit().syncData(); //Todo: only when the user is logged in
+  final cron = Cron();
+  cron.schedule(
+    Schedule(minutes: 1),
+    () {
+      SyncToolKit().syncData();
+    },
+  );
 
   runApp(const Main());
 }
@@ -55,8 +76,8 @@ class Main extends StatelessWidget {
         return GetMaterialApp(
           navigatorKey: navKey,
           theme: lightTextTheme,
-          home: const SafeArea(
-            child: HomeScreen(),
+          home: SafeArea(
+            child: AuthWrapper(),
           ),
           debugShowCheckedModeBanner: false,
         );

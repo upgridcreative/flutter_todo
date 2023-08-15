@@ -1,16 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../repository/category.dart';
-import '../../../shared/theme/colors.dart';
-import '../calander/calander.dart';
-import '../../settings/settings.dart';
-import '../../../view_model/home_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../repository/category.dart';
 import '../../../shared/theme/light.dart';
+import '../../../view_model/home_page.dart';
+import '../../settings/settings.dart';
+import '../calander/calander.dart';
 import 'components/body.dart';
 import 'components/bottombar.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -29,12 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        physics:const NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: <Widget>[
           HomeBodyComponent(),
-           CalendarPage(),
+          CalendarPage(),
           HomeBodyComponent(),
-          const SettingsScreen()
+          SettingsScreen()
         ],
       ),
       bottomNavigationBar: HomeBottomBar(
@@ -121,10 +120,11 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
           TextField(
             controller: descriptionTextEditingController,
             style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14.sp,
-                color: Colors.black87,
-                letterSpacing: -.1),
+              fontWeight: FontWeight.w400,
+              fontSize: 14.sp,
+              color: Colors.black87,
+              letterSpacing: -.1,
+            ),
             maxLines: 3,
             showCursor: true,
             decoration: InputDecoration(

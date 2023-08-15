@@ -28,13 +28,14 @@ class TaskAdapter extends TypeAdapter<Task> {
       ..categoryTempId = fields[8] as String?
       ..categoryRealId = fields[9] as String?
       ..due = fields[10] as String?
-      ..isSynced = fields[11] as String?;
+      ..isSynced = fields[11] as String?
+      ..lastUpdateDate = fields[12] as String?;
   }
 
   @override
   void write(BinaryWriter writer, Task obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.tempId)
       ..writeByte(1)
@@ -58,7 +59,9 @@ class TaskAdapter extends TypeAdapter<Task> {
       ..writeByte(10)
       ..write(obj.due)
       ..writeByte(11)
-      ..write(obj.isSynced);
+      ..write(obj.isSynced)
+      ..writeByte(12)
+      ..write(obj.lastUpdateDate);
   }
 
   @override

@@ -1,12 +1,16 @@
 import 'dart:io';
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/retry.dart';
 
 import 'network_exceptions.dart';
 
 class ApiManager {
-  static const baseUrl = 'http://192.168.18.61:8000/';
+  final _storage = FlutterSecureStorage();
+  static const baseUrl = 'http://15.206.82.105/';
   //get method
   Future<Object> getResponse({required String endPoint}) async {
     dynamic responseJson;
@@ -14,8 +18,29 @@ class ApiManager {
       final response = await http.get(Uri.parse(baseUrl + endPoint));
       responseJson = handleResponse(response);
     } on SocketException {
-      throw NoInternetException();
+      return NoInternetException();
     }
+    return responseJson;
+  }
+
+  Future<Object> postResponseUsingDio({
+    required String endPoint,
+    Object? payload,
+  }) async {
+    final token = await _storage.read(key: 'access');
+    final dio = Dio();
+    dio.options.headers["Authorization"] = 'Bearer $token' ;
+    dynamic responseJson;
+    try {
+      final response = await dio.post(
+        baseUrl + endPoint,
+        data: payload,
+      );
+      responseJson = response;
+    } on SocketException {
+      return NoInternetException();
+    }
+
     return responseJson;
   }
 
@@ -30,7 +55,7 @@ class ApiManager {
       );
       responseJson = handleResponse(response);
     } on SocketException {
-      throw NoInternetException();
+      return NoInternetException();
     }
     return responseJson;
   }
@@ -38,7 +63,7 @@ class ApiManager {
   //handle response
   dynamic handleResponse(http.Response response) {
     // final responseBody = jsonDecode(response.body);
-
+      print(response.body);
     switch (response.statusCode) {
       case 429:
         return ThrottleRequestException();

@@ -1,25 +1,40 @@
-import 'package:flutter_todo/model/category/category_controller.dart';
-import 'package:flutter_todo/model/task/task.dart';
-import 'package:flutter_todo/model/task/task_controller.dart';
+import '../model/category/category_controller.dart';
+import '../model/task/task.dart';
+import '../model/task/task_controller.dart';
+import '../sync/usecases/task_sync.dart';
 import 'package:hive/hive.dart';
 import 'package:get/get.dart';
-import 'package:collection/collection.dart';
 
 class TaskRepository extends GetxController {
   final box = Hive.box<Task>('tasks');
 
   late final RxList<TaskController> _allTasks;
+  static final TaskRepository instance = Get.find();
 
   @override
   void onInit() {
     super.onInit();
 
     final storedTasks = box.values;
-    _allTasks = RxList(); // init it first
+
+    _allTasks = RxList();
 
     for (var element in storedTasks) {
       _allTasks.add(element.asController);
     }
+  }
+
+  void refreshFromDB() {
+    final storedTasks = box.values;
+
+    for (var element in storedTasks) {
+      _allTasks.addIf(
+        _allTasks.where((p0) => p0.tempId.value == element.tempId).isEmpty,
+        element.asController,
+      );
+    }
+
+    update();
   }
 
   RxList<TaskController> get getAllTasks => _allTasks;
@@ -32,28 +47,27 @@ class TaskRepository extends GetxController {
     }
   }
 
-  //For now let's test
-  void addTaskFromValues(String content) {
-    final newTask = Task()
-      ..content = content
-      ..tempId = DateTime.now().toString()
-      ..isChecked = false;
-
-    box.put(newTask.tempId, newTask);
-
-    _allTasks.add(newTask.asController);
-  }
-
   void addTask(Task task) {
     box.put(task.tempId, task);
 
     _allTasks.add(task.asController);
+
+    TaskSyncHelper.addTask(
+      content: task.content,
+      tempId: task.tempId,
+      categoryTempId: task.categoryTempId,
+      description: task.description,
+      due: task.due,
+      isChecked: task.isChecked,
+    );
   }
 
   void deleteTask(TaskController task) {
-    box.delete(task.tempId);
+    task.hiveInstance.delete();
 
     _allTasks.remove(task);
+
+    TaskSyncHelper.delete(tempId: task.tempId.value);
   }
 
   void toggleCheck(TaskController task) {
@@ -61,5 +75,23 @@ class TaskRepository extends GetxController {
 
     task.hive.isChecked = task.isChecked.value;
     task.hive.save();
+
+    TaskSyncHelper.toggleIsChecked(
+      tempId: task.tempId.value,
+      isChecked: task.hive.isChecked,
+    );
+  }
+
+  Task getHiveTaskByTempId(String id) {
+    return box.values.where((p0) => p0.tempId == id).first;
+  }
+
+  bool hasHiveTaskWithTempId(String tempId) {
+    return box.values.where((p0) => p0.tempId == tempId).isNotEmpty;
+  }
+
+  Future<void> onLogout() async{
+    await box.clear();
+    _allTasks.clear();
   }
 }

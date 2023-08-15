@@ -1,7 +1,8 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '../model/sign_up.dart';
-import 'service/api_manager.dart';
-import 'service/network_exceptions.dart';
+import '../service/api_manager.dart';
+import '../service/network_exceptions.dart';
 
 class AuthenticationRepository {
   ApiManager apiManager = ApiManager();
@@ -27,6 +28,7 @@ class AuthenticationRepository {
   }
 
   Future<String> signIn(String email, String password) async {
+
     final response = await apiManager.postResponse(
       endPoint: 'api/auth/login/',
       payload: {
@@ -40,7 +42,7 @@ class AuthenticationRepository {
 
   Future<String> handleAuthenticationResponse(response) async {
     if (response is NetworkException) {
-      return 'all-purpose'; //Return apprptre code for netwrk expection
+      return 'no-internet'; //Return apprptre code for netwrk expection
     }
 
     response as Map<String, dynamic>;

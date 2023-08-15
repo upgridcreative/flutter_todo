@@ -44,9 +44,31 @@ class HomeBodyComponent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.more_vert),
-                    onPressed: () => Get.to(() => const ManageCategories()),
+                  PopupMenuButton<int>(
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        onTap: () async {
+                          await Future.delayed(
+                            const Duration(microseconds: 100),
+                          );
+                          Get.to(() => const ManageCategories());
+                        },
+                        value: 1,
+                        child: Row(
+                          children: const [
+                            Text(
+                              "Manage Categories",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                    offset: const Offset(0, 20),
+                    color: const Color(0xFFF2F2F2),
+                    child: const Icon(Icons.more_vert),
                   ),
                 ],
               ),

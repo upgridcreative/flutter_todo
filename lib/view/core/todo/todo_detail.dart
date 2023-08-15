@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+
 import '../../../model/task/task_controller.dart';
 import '../../../shared/theme/light.dart';
 import '../../../view_model/task_view_model.dart';
-import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TodoDetailPage extends StatefulWidget {
   TodoDetailPage({
@@ -51,7 +52,34 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                       ),
                     ),
                     const Spacer(),
-                    // const Icon(Icons.more_vert),
+                    PopupMenuButton<int>(
+                      itemBuilder: (context) => [
+                        PopupMenuItem(
+                          onTap: viewModel.deleteTask,
+                          value: 1,
+                          child: Row(
+                            children: const [
+                              Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Delete",
+                                style: TextStyle(
+                                  color: Colors.red,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                      offset: const Offset(0, 20),
+                      color: const Color(0xFFF2F2F2),
+                      child: const Icon(Icons.more_vert),
+                    ),
                   ],
                 ),
               ),
@@ -268,6 +296,8 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                           )
                           .toList(),
                     ),
+                    const SizedBox(height: 30),
+                 
                   ],
                 ),
               ),

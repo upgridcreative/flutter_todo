@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../todo/todo_tile.dart';
-import '../../todo/todo_detail.dart';
-import '../../../../view_model/calander_view.dart';
 import 'package:get/get.dart';
+
+import '../../../../view_model/calander_view.dart';
+import '../../todo/todo_detail.dart';
+import '../../todo/todo_tile.dart';
 
 class CalanderTaskViewSegment extends StatelessWidget {
   CalanderTaskViewSegment({Key? key}) : super(key: key);

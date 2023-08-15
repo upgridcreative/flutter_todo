@@ -1,5 +1,6 @@
-import 'task_controller.dart';
 import 'package:hive/hive.dart';
+
+import 'task_controller.dart';
 
 part 'task.g.dart';
 
@@ -42,6 +43,9 @@ class Task extends HiveObject {
   @HiveField(11)
   String? isSynced;
 
+  @HiveField(12)
+  String? lastUpdateDate;
+
   TaskController get asController {
     return TaskController.fromHive(
       this,
@@ -54,5 +58,12 @@ class Task extends HiveObject {
       due,
       childOrder,
     );
+  }
+
+  @override
+  Future<void> save() {
+    lastUpdateDate = DateTime.now().toString();
+
+    return super.save();
   }
 }
