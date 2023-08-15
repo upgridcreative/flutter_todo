@@ -10,7 +10,7 @@ import 'network_exceptions.dart';
 
 class ApiManager {
   final _storage = FlutterSecureStorage();
-  static const baseUrl = 'http://10.0.2.2:8000/';
+  static const baseUrl = 'http://15.206.82.105/';
   //get method
   Future<Object> getResponse({required String endPoint}) async {
     dynamic responseJson;
@@ -63,7 +63,7 @@ class ApiManager {
   //handle response
   dynamic handleResponse(http.Response response) {
     // final responseBody = jsonDecode(response.body);
-
+      print(response.body);
     switch (response.statusCode) {
       case 429:
         return ThrottleRequestException();
