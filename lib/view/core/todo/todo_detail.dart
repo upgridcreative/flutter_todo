@@ -199,7 +199,11 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                       onTap: () async {
                         final datePicked = await showDatePicker(
                           context: context,
-                          initialDate: DateTime.now(),
+                          initialDate: viewModel.task?.due.value != null
+                              ? DateTime.parse(
+                                  viewModel.task!.due.value!,
+                                )
+                              : DateTime.now(),
                           firstDate: DateTime(2000, 01, 01),
                           lastDate: DateTime(2069, 01, 01),
                         );
@@ -265,7 +269,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Colors.black,
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -297,7 +301,6 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                           .toList(),
                     ),
                     const SizedBox(height: 30),
-                 
                   ],
                 ),
               ),
