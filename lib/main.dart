@@ -48,7 +48,7 @@ void main() async {
   SyncToolKit().syncData(); //Todo: only when the user is logged in
   final cron = Cron();
   cron.schedule(
-    Schedule(minutes: 3),
+    Schedule(minutes: 1),
     () {
       SyncToolKit().syncData();
     },
