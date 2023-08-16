@@ -3,12 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+
 import '../../../../shared/components/customProceedButton.dart';
 import '../../../../shared/components/customTextField.dart';
 import '../../../../shared/components/custom_progress_button.dart';
 import '../../../../shared/validitors.dart';
 import '../../../../view_model/sign_up.dart';
-import 'package:get/get.dart';
 
 class SignUpScreenBodyCompletetion extends StatefulWidget {
   const SignUpScreenBodyCompletetion({Key? key}) : super(key: key);
@@ -20,25 +21,25 @@ class SignUpScreenBodyCompletetion extends StatefulWidget {
 
 class _SignUpScreenBodyCompletetionState
     extends State<SignUpScreenBodyCompletetion> {
-  bool iskeyboardVisivle = false;
-  // late final StreamSubscription keyboardStream;
+  bool isKeyboardVisible = false;
+  late final StreamSubscription keyboardStream;
   @override
   void initState() {
     super.initState();
-    // final keyboardVisibilityController = KeyboardVisibilityController();
+    final keyboardVisibilityController = KeyboardVisibilityController();
 
-    // iskeyboardVisivle = keyboardVisibilityController.isVisible;
-    // keyboardStream =
-    //     keyboardVisibilityController.onChange.listen((bool visible) {
-    //   iskeyboardVisivle = visible;
-    //   setState(() {});
-    // });
-    iskeyboardVisivle = true;
+    isKeyboardVisible = keyboardVisibilityController.isVisible;
+    keyboardStream =
+        keyboardVisibilityController.onChange.listen((bool visible) {
+      isKeyboardVisible = visible;
+      setState(() {});
+    });
+    isKeyboardVisible = true;
   }
 
   @override
   void dispose() {
-    // keyboardStream.cancel();
+    keyboardStream.cancel();
     super.dispose();
   }
 
@@ -56,20 +57,20 @@ class _SignUpScreenBodyCompletetionState
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               curve: Curves.decelerate,
-              height: iskeyboardVisivle
+              height: isKeyboardVisible
                   ? 50
                   : MediaQuery.of(context).size.height * 0.3,
               child: AnimatedContainer(
                 curve: Curves.linear,
                 duration: const Duration(milliseconds: 200),
-                height: iskeyboardVisivle
+                height: isKeyboardVisible
                     ? 0
                     : MediaQuery.of(context).size.height * 0.3,
                 child: AnimatedOpacity(
-                  child: SvgPicture.asset('assets/svg/sign_up.svg'),
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.linear,
-                  opacity: iskeyboardVisivle ? 0 : 1,
+                  opacity: isKeyboardVisible ? 0 : 1,
+                  child: SvgPicture.asset('assets/svg/sign_up.svg'),
                 ),
               ),
             ),
@@ -94,7 +95,7 @@ class _SignUpScreenBodyCompletetionState
                     child: Column(
                       children: [
                         CustomTextField(
-                          controller: controller.emaiController,
+                          controller: controller.emailController,
                           hint: 'Email',
                           textFieldType: CustomTextFieldType.email,
                           node: controller.emailFocusNode,

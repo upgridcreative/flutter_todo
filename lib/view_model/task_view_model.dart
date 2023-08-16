@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import '../model/category/category_controller.dart';
 import '../model/task/task_controller.dart';
 import '../repository/category.dart';
 import '../repository/task.dart';
-import '../shared/functions/date_functions.dart';
-import 'package:get/get.dart';
 
 class TaskViewModel extends GetxController {
-  TaskController? task;
+  final TaskController task;
 
   final TaskRepository repository = Get.find();
   final CategoryRepository categoryRepository = Get.find();
@@ -20,17 +20,30 @@ class TaskViewModel extends GetxController {
   final FocusNode todoTitleFocusNode = FocusNode();
   final FocusNode todoDescriptionFocusNode = FocusNode();
 
+  TaskViewModel({required this.task});
+
+  @override
+  void onClose() {
+    todoTitleController.dispose();
+    todoDescriptionController.dispose();
+
+    todoTitleFocusNode.dispose();
+    todoDescriptionFocusNode.dispose();
+    super.onClose();
+  }
+
   @override
   void onInit() {
-    super.onInit();
+    todoDescriptionController.text = task.description.value ?? '';
+    todoTitleController.text = task.content.value;
 
     todoTitleFocusNode.addListener(
       () {
         if (!todoTitleFocusNode.hasFocus) {
           if (todoTitleController.text.isEmpty) {
-            todoTitleController.text = task!.content.value;
+            todoTitleController.text = task.content.value;
           } else {
-            task!.updateTask(todoTitleController.text);
+            task.updateTask(todoTitleController.text);
           }
         }
       },
@@ -39,29 +52,25 @@ class TaskViewModel extends GetxController {
     todoDescriptionFocusNode.addListener(
       () {
         if (!todoDescriptionFocusNode.hasFocus) {
-          task!.updateDescription(todoDescriptionController.text);
+          task.updateDescription(todoDescriptionController.text);
         }
       },
     );
-  }
 
-  void setCurrentTask(TaskController currentTask) {
-    task = currentTask;
-    todoDescriptionController.text = task!.description.value ?? '';
-    todoTitleController.text = task!.content.value;
+    super.onInit();
   }
 
   void toggleCheck() {
-    repository.toggleCheck(task!);
+    repository.toggleCheck(task);
   }
 
   void deleteTask() {
-    repository.deleteTask(task!);
+    repository.deleteTask(task);
     Get.back();
   }
 
   void setDueDate(DateTime? dueDate) {
-    task!.setDueDate(dueDate);
+    task.setDueDate(dueDate);
   }
 
   RxList<CategoryController> get categories {

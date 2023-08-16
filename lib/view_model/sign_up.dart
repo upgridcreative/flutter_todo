@@ -1,15 +1,16 @@
-import 'package:flutter/cupertino.dart';
-import '../repository/auth.dart';
-import '../constants/enums/tabs.dart';
-import '../shared/route_manager/route_manager.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../constants/enums/tabs.dart';
+import '../repository/auth.dart';
+import '../shared/route_manager/route_manager.dart';
 
 class SignUpController extends GetxController {
   final repo = AuthenticationRepository();
 
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
-  final emaiController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   final firstNameFocusNode = FocusNode();
@@ -25,6 +26,21 @@ class SignUpController extends GetxController {
   Rx<SignUpTabs> currentTab = SignUpTabs.name.obs;
   RxBool disablePage = false.obs;
   RxBool emailExists = false.obs;
+
+  @override
+  void onClose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+
+    firstNameFocusNode.dispose();
+    lastNameFocusNode.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+
+    super.onClose();
+  }
 
   void nextTab(context) {
     lastNameFocusNode.unfocus();
@@ -58,7 +74,7 @@ class SignUpController extends GetxController {
       firstNameController.text,
       lastNameController.text,
       passwordController.text,
-      emaiController.text,
+      emailController.text,
     );
 
     switch (code) {
@@ -67,7 +83,7 @@ class SignUpController extends GetxController {
         break;
       case 'no-internet':
         disablePage.value = false;
-        _onNetwrokException();
+        _onNetworkException();
         break;
       case 'already-exists':
         disablePage.value = false;
@@ -77,7 +93,7 @@ class SignUpController extends GetxController {
     }
   }
 
-  void _onNetwrokException() {
+  void _onNetworkException() {
     if (Get.isSnackbarOpen) {
       Get.closeCurrentSnackbar();
     }

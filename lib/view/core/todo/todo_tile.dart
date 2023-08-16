@@ -1,12 +1,13 @@
-import 'package:flutter_svg/flutter_svg.dart';
-import '../../../model/task/task_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+
+import '../../../model/task/task_controller.dart';
 import '../../../repository/task.dart';
 import '../../../shared/functions/date_functions.dart';
 import '../../../shared/theme/light.dart';
 import '../home/components/components.dart';
-import 'package:get/get.dart';
 
 class TodoTile extends StatelessWidget {
   TodoTile({Key? key, required this.task}) : super(key: key);
