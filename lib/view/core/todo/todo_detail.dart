@@ -9,7 +9,7 @@ import 'components/todo_detail_fields.dart';
 import 'components/todo_detail_formfield.dart';
 
 class TodoDetailPage extends StatefulWidget {
-  TodoDetailPage({
+  const TodoDetailPage({
     Key? key,
     required this.task,
   }) : super(key: key);
@@ -21,17 +21,21 @@ class TodoDetailPage extends StatefulWidget {
 }
 
 class _TodoDetailPageState extends State<TodoDetailPage> {
-  final TaskViewModel viewModel = Get.find();
-
   @override
   initState() {
     super.initState();
+  }
 
-    viewModel.setCurrentTask(widget.task);
+  @override
+  void dispose() {
+    Get.delete<TaskViewModel>();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final TaskViewModel viewModel = Get.put(TaskViewModel(task: widget.task));
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -44,7 +48,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                   children: [
                     GestureDetector(
                       onTap: Get.back,
-                      child: Icon(Icons.arrow_back_ios),
+                      child: const Icon(Icons.arrow_back_ios),
                     ),
                     const SizedBox(width: 20),
                     Text(
@@ -94,9 +98,9 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TodoDetailFormFields(task: viewModel.task!),
+                  TodoDetailFormFields(task: viewModel.task),
                   const SizedBox(height: 25),
-                  DueDatePicker(task: viewModel.task!),
+                  DueDatePicker(),
                   const SizedBox(height: 60),
                   CategoryDropDownButton(),
                   const SizedBox(height: 30),

@@ -33,7 +33,6 @@ void main() async {
   Get.put(AuthWrapperViewModel());
   Get.put(HomePageViewModel());
   Get.put(CategoryPageViewModel());
-  Get.put(TaskViewModel());
   Get.put(CalendarPageViewModel());
   Get.put(SyncDataUpSteam());
   Get.put(SyncRemoteDataSource());
