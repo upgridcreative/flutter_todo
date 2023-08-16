@@ -11,7 +11,6 @@ class SyncRemoteDataSource extends GetxController {
   final _storage = const FlutterSecureStorage();
 
   void processData(data) async {
-    print(data);
     for (var category in data['catagories']) {
       final tempId = category['temp_id'];
       if (categoryRepository.hasHiveCategoryWithTempId(tempId)) {
@@ -66,22 +65,24 @@ class SyncRemoteDataSource extends GetxController {
 
         task as Map;
 
-        hiveTask.content =
-            task.containsKey('content') ? task['content'] : hiveTask.content;
+        hiveTask.content = task['content'] ?? hiveTask.content;
 
-        hiveTask.description = task.containsKey('discription')
-            ? task['discription']
-            : hiveTask.description;
+        hiveTask.description = task['discription'] ?? hiveTask.description;
 
-        hiveTask.isChecked = task.containsKey('is_checked')
-            ? task['is_checked']
-            : hiveTask.isChecked;
+        hiveTask.isChecked = task['is_checked'] ?? hiveTask.isChecked;
 
-        hiveTask.due = task.containsKey('due') ? task['due'] : hiveTask.due;
-        hiveTask.categoryTempId = task.containsKey('catagory')
-            ? task['catagory']
-            : hiveTask
-                .categoryTempId; // Ensure tempId as well as real id is fetched form backend
+        hiveTask.due = task['due'] ?? hiveTask.due;
+
+        //!Fields would be delivered no matter what, no need to check if key exists as it will always exist.
+        hiveTask.categoryTempId = task['catagory'] == null
+            ? null
+            : task['catagory']['temp_id'] ??
+                hiveTask
+                    .categoryTempId; // Ensure tempId as well as real id is fetched form backend
+
+        hiveTask.realId = task['catagory']['id'] != null ? task['catagory'].toString() :
+            hiveTask
+                .realId; // Ensure tempId as well as real id is fetched form backend
 
         hiveTask.save();
 
@@ -100,17 +101,14 @@ class SyncRemoteDataSource extends GetxController {
       newTask.content = task['content'];
       newTask.tempId = task['temp_id'];
 
-      newTask.description =
-          task.containsKey('discription') ? task['discription'] : null;
+      newTask.description = task['discription'];
 
-      newTask.isChecked =
-          task.containsKey('is_checked') ? task['is_checked'] : null;
+      newTask.isChecked = task['is_checked'];
 
       newTask.due = task.containsKey('due') ? task['due'] : null;
       newTask.categoryTempId =
-          task['catagory'] == null ? null : task['catagory'].toString();
+          task['catagory'] == null ? null : task['catagory']['temp_id'];
 
-    
       todoRepository.box.add(newTask);
     }
 
