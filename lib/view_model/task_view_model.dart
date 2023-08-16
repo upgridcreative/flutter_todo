@@ -41,7 +41,7 @@ class TaskViewModel extends GetxController {
       () {
         if (!todoTitleFocusNode.hasFocus) {
           if (todoTitleController.text.isEmpty) {
-            todoTitleController.text = task!.content.value;
+            todoTitleController.text = task.content.value;
           } else {
             task.updateTask(todoTitleController.text);
           }
