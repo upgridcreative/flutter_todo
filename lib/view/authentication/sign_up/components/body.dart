@@ -96,6 +96,7 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                         hint: 'First Name',
                         textFieldType: CustomTextFieldType.regular,
                         node: controller.firstNameFocusNode,
+                        autoFocus: true,
                         validator: (value) => lengthValidator(value, 3),
                         nextNode: controller.lastNameFocusNode,
                       ),
