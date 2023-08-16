@@ -1,27 +1,34 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_todo/sync/usecases/sync.dart';
 import 'package:get/get.dart';
 
 import '../repository/auth.dart';
 import '../shared/route_manager/route_manager.dart';
+import '../sync/usecases/sync.dart';
 
 class SignInViewModel extends GetxController {
   final repo = AuthenticationRepository();
 
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
   final loginFormKey = GlobalKey<FormState>();
 
-  final emailFocusNode = FocusNode();
-  final passwordFocusNode = FocusNode();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final FocusNode emailFocusNode = FocusNode();
+  final FocusNode passwordFocusNode = FocusNode();
 
   RxBool invalidEmail = false.obs;
   RxBool invalidPassword = false.obs;
   RxBool disablePage = false.obs;
 
-  void onWidgetDispose() {
-    //Dispose stuff
+  @override
+  void onClose() {
+    emailController.dispose();
+    passwordController.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+
+    super.onClose();
   }
+
 
   Future<void> signIn() async {
     if (!loginFormKey.currentState!.validate()) {
@@ -30,7 +37,7 @@ class SignInViewModel extends GetxController {
     invalidPassword.value = false;
     invalidEmail.value = false;
 
-    disablePage(true); //Disable touches from the page
+    disablePage(true); 
 
     final code =
         await repo.signIn(emailController.text, passwordController.text);
@@ -48,7 +55,7 @@ class SignInViewModel extends GetxController {
         break;
       case 'no-internet':
         disablePage.value = false;
-        _onNetwrokException();
+        _onNetworkException();
         break;
       case 'incorrect-password':
         disablePage.value = false;
@@ -58,7 +65,7 @@ class SignInViewModel extends GetxController {
     }
   }
 
-  void _onNetwrokException() {
+  void _onNetworkException() {
     if (Get.isSnackbarOpen) {
       Get.closeCurrentSnackbar();
     }

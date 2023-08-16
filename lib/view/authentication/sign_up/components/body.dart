@@ -20,18 +20,18 @@ class SignUpScreenBody extends StatefulWidget {
 }
 
 class _SignUpScreenBodyState extends State<SignUpScreenBody> {
-  bool iskeyboardVisivle = false;
+  bool isKeyboardVisible = false;
   late final StreamSubscription keyboardStream;
   @override
   void initState() {
     super.initState();
     final keyboardVisibilityController = KeyboardVisibilityController();
 
-    // iskeyboardVisivle = true;
+    isKeyboardVisible = keyboardVisibilityController.isVisible;
 
     keyboardStream =
         keyboardVisibilityController.onChange.listen((bool visible) {
-      iskeyboardVisivle = visible;
+      isKeyboardVisible = visible;
       setState(() {});
     });
   }
@@ -56,20 +56,20 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               curve: Curves.decelerate,
-              height: iskeyboardVisivle
+              height: isKeyboardVisible
                   ? 50
                   : MediaQuery.of(context).size.height * 0.3,
               child: AnimatedContainer(
                 curve: Curves.linear,
                 duration: const Duration(milliseconds: 200),
-                height: iskeyboardVisivle
+                height: isKeyboardVisible
                     ? 0
                     : MediaQuery.of(context).size.height * 0.3,
                 child: AnimatedOpacity(
-                  child: SvgPicture.asset('assets/svg/sign_up.svg'),
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.linear,
-                  opacity: iskeyboardVisivle ? 0 : 1,
+                  opacity: isKeyboardVisible ? 0 : 1,
+                  child: SvgPicture.asset('assets/svg/sign_up.svg'),
                 ),
               ),
             ),
@@ -153,8 +153,6 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
               ),
             ),
 
-            // if (!iskeyboardVisivle)
-            // const SizedBox(height: 100),
           ],
         ),
       ),

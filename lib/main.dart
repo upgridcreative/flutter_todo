@@ -2,7 +2,6 @@ import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'sync/usecases/sync.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -15,19 +14,15 @@ import 'sync/data/datasources/local_datasource.dart';
 import 'sync/data/datasources/remote_datasource.dart';
 import 'sync/data/repository/sync_downstrea.dart';
 import 'sync/data/repository/sync_upstream.dart';
+import 'sync/usecases/sync.dart';
 import 'view/authentication/wrapper.dart';
 import 'view_model/auth_wrapper.dart';
 import 'view_model/calander_view.dart';
 import 'view_model/category.dart';
 import 'view_model/home_page.dart';
-import 'view_model/sign_in.dart';
-import 'view_model/sign_up.dart';
 import 'view_model/task_view_model.dart';
 
 void main() async {
-  Get.put(SignUpController());
-  Get.put(SignInViewModel());
-
   await Hive.initFlutter();
   HiveManagement.registerAdapters();
   await HiveManagement.openBoxes();
@@ -46,6 +41,7 @@ void main() async {
   Get.put(SyncLocalDataSource());
 
   SyncToolKit().syncData(); //Todo: only when the user is logged in
+  
   final cron = Cron();
   cron.schedule(
     Schedule(minutes: 1),

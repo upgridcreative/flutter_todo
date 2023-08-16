@@ -20,17 +20,18 @@ class SignInScreenBody extends StatefulWidget {
 }
 
 class _SignInScreenBodyState extends State<SignInScreenBody> {
-  final SignInViewModel _viewModel = Get.find();
-  bool iskeyboardVisivle = false;
+  bool isKeyboardVisible = false;
   late final StreamSubscription keyboardStream;
   @override
   void initState() {
     super.initState();
+
     final keyboardVisibilityController = KeyboardVisibilityController();
+    isKeyboardVisible = keyboardVisibilityController.isVisible;
 
     keyboardStream =
         keyboardVisibilityController.onChange.listen((bool visible) {
-      iskeyboardVisivle = visible;
+      isKeyboardVisible = visible;
       setState(() {});
     });
   }
@@ -38,11 +39,14 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
   @override
   void dispose() {
     keyboardStream.cancel();
+    Get.delete<SignInViewModel>();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignInViewModel());
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
@@ -53,20 +57,20 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
             AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               curve: Curves.decelerate,
-              height: iskeyboardVisivle
+              height: isKeyboardVisible
                   ? 50
                   : MediaQuery.of(context).size.height * 0.3,
               child: AnimatedContainer(
                 curve: Curves.decelerate,
                 duration: const Duration(milliseconds: 200),
-                height: iskeyboardVisivle
+                height: isKeyboardVisible
                     ? 0
                     : MediaQuery.of(context).size.height * 0.3,
                 child: AnimatedOpacity(
-                  child: SvgPicture.asset('assets/svg/sign_in.svg'),
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.decelerate,
-                  opacity: iskeyboardVisivle ? 0 : 1,
+                  opacity: isKeyboardVisible ? 0 : 1,
+                  child: SvgPicture.asset('assets/svg/sign_in.svg'),
                 ),
               ),
             ),
@@ -84,19 +88,19 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
             const SizedBox(height: 20),
             Obx(
               () => Form(
-                key: _viewModel.loginFormKey,
+                key: controller.loginFormKey,
                 child: Column(
                   children: [
                     CustomTextField(
                       hint: 'Email',
                       textFieldType: CustomTextFieldType.email,
-                      controller: _viewModel.emailController,
+                      controller: controller.emailController,
                       validator: emailValidator,
-                      enabled: !_viewModel.disablePage.value,
-                      node: _viewModel.emailFocusNode,
-                      nextNode: _viewModel.passwordFocusNode,
+                      enabled: !controller.disablePage.value,
+                      node: controller.emailFocusNode,
+                      nextNode: controller.passwordFocusNode,
                       autoFocus: true,
-                      errorMessage: _viewModel.invalidEmail.value
+                      errorMessage: controller.invalidEmail.value
                           ? 'Email doesn\'t exist'
                           : null,
                     ),
@@ -104,12 +108,12 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
                     CustomTextField(
                       hint: 'Password',
                       textFieldType: CustomTextFieldType.password,
-                      controller: _viewModel.passwordController,
-                      enabled: !_viewModel.disablePage.value,
-                      node: _viewModel.passwordFocusNode,
-                      onFieldSubmitted: (value) => _viewModel.signIn(),
-                      errorMessage: _viewModel.invalidPassword.value
-                          ? 'Incorect Password'
+                      controller: controller.passwordController,
+                      enabled: !controller.disablePage.value,
+                      node: controller.passwordFocusNode,
+                      onFieldSubmitted: (value) => controller.signIn(),
+                      errorMessage: controller.invalidPassword.value
+                          ? 'Incorrect Password'
                           : null,
                     ),
                   ],
@@ -118,14 +122,14 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
             ),
             const SizedBox(height: 20),
             Obx(
-              () => _viewModel.disablePage.value
+              () => controller.disablePage.value
                   ? const CustomProgressButton(
-                      title: 'Loging in',
+                      title: 'Logging in',
                     )
                   : CustomProceedButton(
                       title: 'Login',
                       heightFactor: 1,
-                      onPressed: _viewModel.signIn,
+                      onPressed: controller.signIn,
                     ),
             ),
             const SizedBox(height: 10),
@@ -173,8 +177,6 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
                 ),
               ),
             ),
-            // if (!iskeyboardVisivle)
-            // const SizedBox(height: 100),
           ],
         ),
       ),
