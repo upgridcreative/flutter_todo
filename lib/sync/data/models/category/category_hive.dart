@@ -43,6 +43,7 @@ class SyncCategory extends HiveObject {
   Map<String,String> toJson() {
     return {
       'title': title!,
+      'catagory_id':tempId,
     };
   }
 }

@@ -54,6 +54,7 @@ class SyncTask extends HiveObject {
   Map<String, dynamic> toJson() {
     final values = {
       'content': content,
+      'todo_id':tempId,
       'discription': description,
       'is_checked': isChecked,
       'catagory_id': categoryTempId,
