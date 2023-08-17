@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_todo/constants/decoration.dart';
 import 'package:get/get.dart';
 
 import '../../../model/task/task_controller.dart';
@@ -27,7 +28,7 @@ class TodoTile extends StatelessWidget {
             Flexible(
               flex: 1,
               child: GestureDetector(
-                onTap: ()=> controller.toggleCheck(task),
+                onTap: () => controller.toggleCheck(task),
                 child: !task.isChecked.value
                     ? Container(
                         height: 25,
@@ -109,7 +110,10 @@ class TodoTile extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 6.0),
-                                child: HomeComponent.verticalDivider(),
+                                child: Text(
+                                  '|',
+                                  style: noteTag,
+                                ),
                               ),
                             if (task.categoryTempId.value != null)
                               Text(
