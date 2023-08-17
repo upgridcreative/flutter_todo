@@ -78,11 +78,14 @@ class SyncRemoteDataSource extends GetxController {
             ? null
             : task['catagory']['temp_id'] ??
                 hiveTask
-                    .categoryTempId; // Ensure tempId as well as real id is fetched form backend
+                    .categoryTempId; 
 
-        hiveTask.realId = task['catagory']['id'] != null ? task['catagory'].toString() :
-            hiveTask
-                .realId; // Ensure tempId as well as real id is fetched form backend
+        hiveTask.realId = task['catagory'] == null
+            ? null
+            : task['catagory']['id'] != null
+                ? task['catagory'].toString()
+                : hiveTask
+                    .realId; 
 
         hiveTask.save();
 
