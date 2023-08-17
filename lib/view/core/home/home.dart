@@ -33,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
         children: <Widget>[
           HomeBodyComponent(),
           CalendarPage(),
-          HomeBodyComponent(),
           SettingsScreen()
         ],
       ),
@@ -55,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             onClosing: () {},
             builder: (c) {
-              return AddTodoSheet();
+              return const AddTodoSheet();
             },
           ),
         ),
