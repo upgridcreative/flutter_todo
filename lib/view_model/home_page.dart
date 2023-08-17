@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 import '../model/category/category_controller.dart';
 import '../model/task/task.dart';
@@ -71,6 +72,12 @@ class HomePageViewModel extends GetxController {
       ..isChecked = false;
 
     taskRepository.addTask(newTask);
+  }
+
+  String get dateToday {
+    final day = DateTime.now().day.toString();
+
+     return '$day ${DateFormat('MMM').format(DateTime(0, DateTime.now().month))}';
   }
 
 
