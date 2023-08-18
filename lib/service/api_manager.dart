@@ -29,7 +29,7 @@ class ApiManager {
   }) async {
     final token = await _storage.read(key: 'access');
     final dio = Dio();
-    dio.options.headers["Authorization"] = 'Bearer $token' ;
+    dio.options.headers["Authorization"] = 'Bearer $token';
     dynamic responseJson;
     try {
       final response = await dio.post(
@@ -60,10 +60,30 @@ class ApiManager {
     return responseJson;
   }
 
+  Future<Object> postResponseWithToken(
+      {required String endPoint, Object? payload}) async {
+    dynamic responseJson;
+    final token = await _storage.read(key: 'access');
+
+    try {
+      final response = await http.post(
+        Uri.parse(baseUrl + endPoint),
+        body: payload,
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+      responseJson = handleResponse(response);
+    } on SocketException {
+      return NoInternetException();
+    }
+    return responseJson;
+  }
+
   //handle response
   dynamic handleResponse(http.Response response) {
     // final responseBody = jsonDecode(response.body);
-      print(response.body);
+    print(response.body);
     switch (response.statusCode) {
       case 429:
         return ThrottleRequestException();
