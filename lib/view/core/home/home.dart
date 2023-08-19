@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -27,12 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        physics:const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
         children: <Widget>[
           HomeBodyComponent(),
           CalendarPage(),
-          HomeBodyComponent(),
           SettingsScreen()
         ],
       ),
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             onClosing: () {},
             builder: (c) {
-              return AddTodoSheet();
+              return const AddTodoSheet();
             },
           ),
         ),
@@ -68,8 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class AddTodoSheet extends StatefulWidget {
-  AddTodoSheet({Key? key}) : super(key: key);
+class AddTodoSheet extends StatefulHookWidget {
+  const AddTodoSheet({Key? key}) : super(key: key);
 
   @override
   State<AddTodoSheet> createState() => _AddTodoSheetState();
@@ -79,15 +79,14 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
   final HomePageViewModel viewModel = Get.find();
   final CategoryRepository categoryRepository = Get.find();
 
-  final contextTextEditingController = TextEditingController();
-
-  final descriptionTextEditingController = TextEditingController();
-
   DateTime? _datePicked;
   String? categoryDropDownValue;
 
   @override
   Widget build(BuildContext context) {
+    final contextTextEditingController = useTextEditingController();
+
+    final descriptionTextEditingController = useTextEditingController();
     return Container(
       color: const Color(0xFFD2D3DB),
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),

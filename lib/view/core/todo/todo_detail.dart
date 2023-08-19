@@ -60,33 +60,41 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                       ),
                     ),
                     const Spacer(),
-                    PopupMenuButton<int>(
-                      itemBuilder: (context) => [
-                        PopupMenuItem(
-                          onTap: viewModel.deleteTask,
-                          value: 1,
-                          child: Row(
-                            children: const [
-                              Icon(
-                                Icons.delete,
-                                color: Colors.red,
+                    Obx(
+                      () => viewModel.showSaveButton.value
+                          ? IconButton(
+                              onPressed: viewModel.onSaveFields,
+                              icon: const Icon(Icons.check),
+                            )
+                          : PopupMenuButton<int>(
+                                itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                    onTap: viewModel.deleteTask,
+                                    value: 1,
+                                    child: Row(
+                                      children: const [
+                                        Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          "Delete",
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                                offset: const Offset(0, 20),
+                                color: const Color(0xFFF2F2F2),
+                                child: const Icon(Icons.more_vert),
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Delete",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                      offset: const Offset(0, 20),
-                      color: const Color(0xFFF2F2F2),
-                      child: const Icon(Icons.more_vert),
+                            
                     ),
                   ],
                 ),

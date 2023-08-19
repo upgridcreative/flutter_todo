@@ -2,6 +2,7 @@ import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_todo/shared/prefs/sharedPrefrences.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -39,8 +40,10 @@ void main() async {
   Get.put(SyncDataDownStream());
   Get.put(SyncLocalDataSource());
 
+  SharedPreferencesClass();
+
   SyncToolKit().syncData(); //Todo: only when the user is logged in
-  
+
   final cron = Cron();
   cron.schedule(
     Schedule(minutes: 1),

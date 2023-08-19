@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../../constants/decoration.dart';
 import '../../../model/task/task_controller.dart';
 import '../../../repository/task.dart';
 import '../../../shared/functions/date_functions.dart';
 import '../../../shared/theme/light.dart';
-import '../home/components/components.dart';
 
 class TodoTile extends StatelessWidget {
   TodoTile({Key? key, required this.task}) : super(key: key);
@@ -27,7 +27,7 @@ class TodoTile extends StatelessWidget {
             Flexible(
               flex: 1,
               child: GestureDetector(
-                onTap: ()=> controller.toggleCheck(task),
+                onTap: () => controller.toggleCheck(task),
                 child: !task.isChecked.value
                     ? Container(
                         height: 25,
@@ -109,7 +109,10 @@ class TodoTile extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 6.0),
-                                child: HomeComponent.verticalDivider(),
+                                child: Text(
+                                  '|',
+                                  style: noteTag,
+                                ),
                               ),
                             if (task.categoryTempId.value != null)
                               Text(

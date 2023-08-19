@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../shared/theme/light.dart';
 
-List myBottomBar = ["home.svg", "schedule.svg", "refresh.svg", "setting.svg"];
+List myBottomBar = ["home.svg", "schedule.svg", "setting.svg"];
 
 class HomeBottomBar extends StatefulWidget {
   const HomeBottomBar({Key? key, required this.onTap}) : super(key: key);

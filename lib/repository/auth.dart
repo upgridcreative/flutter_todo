@@ -28,7 +28,6 @@ class AuthenticationRepository {
   }
 
   Future<String> signIn(String email, String password) async {
-
     final response = await apiManager.postResponse(
       endPoint: 'api/auth/login/',
       payload: {
@@ -38,6 +37,27 @@ class AuthenticationRepository {
     );
 
     return handleAuthenticationResponse(response);
+  }
+
+  Future<String> resetPassword(String password) async {
+    final response = await apiManager.postResponseWithToken(
+      endPoint: 'api/auth/password/reset/',
+      payload: {
+        'password': password,
+      },
+    );
+
+    if (response is NetworkException) {
+      return 'no-internet';
+    }
+
+    response as Map<String, dynamic>;
+
+    if (response['code'] != 'successful') {
+      return response['code'];
+    }
+
+    return 'proceed';
   }
 
   Future<String> handleAuthenticationResponse(response) async {

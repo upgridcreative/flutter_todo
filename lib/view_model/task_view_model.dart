@@ -20,6 +20,8 @@ class TaskViewModel extends GetxController {
   final FocusNode todoTitleFocusNode = FocusNode();
   final FocusNode todoDescriptionFocusNode = FocusNode();
 
+  RxBool showSaveButton = false.obs;
+
   TaskViewModel({required this.task});
 
   @override
@@ -40,20 +42,31 @@ class TaskViewModel extends GetxController {
     todoTitleFocusNode.addListener(
       () {
         if (!todoTitleFocusNode.hasFocus) {
+          showSaveButton(false);
+
           if (todoTitleController.text.isEmpty) {
             todoTitleController.text = task.content.value;
           } else {
             task.updateTask(todoTitleController.text);
           }
+
+          return;
         }
+
+        showSaveButton(true);
       },
     );
 
     todoDescriptionFocusNode.addListener(
       () {
         if (!todoDescriptionFocusNode.hasFocus) {
+          showSaveButton(false);
+
           task.updateDescription(todoDescriptionController.text);
+          return;
         }
+
+        showSaveButton(true);
       },
     );
 
@@ -71,6 +84,10 @@ class TaskViewModel extends GetxController {
 
   void setDueDate(DateTime? dueDate) {
     task.setDueDate(dueDate);
+  }
+
+  void onSaveFields() {
+    Get.focusScope?.unfocus();
   }
 
   RxList<CategoryController> get categories {

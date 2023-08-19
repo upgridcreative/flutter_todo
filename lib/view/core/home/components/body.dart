@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../todo/todo_detail.dart';
-
-import '../../todo/todo_tile.dart';
-import '../../categories/manage_categories.dart';
-import '../../../../view_model/home_page.dart';
 import 'package:get/get.dart';
+
+import '../../../../view_model/home_page.dart';
+import '../../categories/manage_categories.dart';
+import '../../todo/todo_detail.dart';
+import '../../todo/todo_tile.dart';
 
 class HomeBodyComponent extends StatelessWidget {
   HomeBodyComponent({Key? key}) : super(key: key);
@@ -74,10 +74,10 @@ class HomeBodyComponent extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            const Text.rich(
+            Text.rich(
               TextSpan(
                 children: [
-                  TextSpan(
+                  const TextSpan(
                     text: 'Today, ',
                     style: TextStyle(
                       fontSize: 18,
@@ -86,8 +86,8 @@ class HomeBodyComponent extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: '6 December',
-                    style: TextStyle(
+                    text: controller.dateToday,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
