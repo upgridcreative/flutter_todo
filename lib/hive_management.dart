@@ -13,7 +13,6 @@ class HiveManagement {
     Hive.registerAdapter(TaskAdapter());
     Hive.registerAdapter(CategoryAdapter());
     Hive.registerAdapter(UserDataAdapter());
-    Hive.registerAdapter(MetaDataAdapter());
     Hive.registerAdapter(SyncTaskAdapter());
     Hive.registerAdapter(SyncCategoryAdapter());
   }
@@ -22,7 +21,6 @@ class HiveManagement {
     await Hive.openBox<Task>('tasks');
     await Hive.openBox<Category>('categories');
     await Hive.openBox<UserData>('user');
-    await Hive.openBox<MetaData>('meta');
     await Hive.openBox<SyncTask>('sync_tasks');
     await Hive.openBox<SyncCategory>('sync_categories');
   }
@@ -31,7 +29,6 @@ class HiveManagement {
     await Hive.openLazyBox<Task>('tasks');
     await Hive.openLazyBox<Category>('categories');
     await Hive.openLazyBox<UserData>('user');
-    await Hive.openLazyBox<MetaData>('meta');
   }
 
   static Future<void> deleteAll() async {
