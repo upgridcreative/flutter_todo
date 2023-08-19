@@ -1,77 +1,75 @@
 import 'package:flutter/material.dart';
-import '../../shared/theme/colors.dart';
-import '../../sync/usecases/sync.dart';
-import '../../view_model/auth_wrapper.dart';
+import 'package:flutter_todo/view/settings/views/privicy_policy.dart';
+import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import "package:get/get.dart";
+
+import '../../shared/components/appbar.dart';
+import '../../view_model/auth_wrapper.dart';
+import 'components/listTite.dart';
+import 'views/account.dart';
+import 'views/prefrences.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({Key? key}) : super(key: key);
   final AuthWrapperViewModel viewModel = Get.find();
   @override
   Widget build(BuildContext context) {
+    final settingsViewModel = Get.put(SettingPageViewModel());
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 20),
-            GestureDetector(
-              onTap: viewModel.logout,
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                height: 70,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorClass.primary.withAlpha(100)),
-                width: double.infinity,
-                child: Row(
-                  children: const [
-                    SizedBox(width: 30),
-                    Icon(Icons.logout, size: 30),
-                    Spacer(),
-                    Text(
-                      'Logout',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(width: 100),
-                  ],
+      body: ListView(
+        children: [
+          const MyAppBar(title: 'Settings Page'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              children: [
+                const SizedBox(height: 35),
+                CustomListTile(
+                  'Account & Privicy',
+                  Icons.person,
+                  navigate: () {
+                    Get.to(() => const AccountAndPrivacySettings());
+                  },
                 ),
-              ),
+                const SizedBox(height: 5),
+                CustomListTile(
+                  'Preferences',
+                  Icons.light_mode,
+                  navigate: () {
+                    Get.to(() => const PreferenceSettingsScreen());
+                  },
+                ),
+                const SizedBox(height: 5),
+                CustomListTile(
+                  'Privacy Policy',
+                  Icons.privacy_tip_sharp,
+                  navigate: () {
+                    Get.to(() => const PrivacyPolicyScreen());
+                  },
+                  showTrailingArrow: false,
+                ),
+                const SizedBox(height: 5),
+                CustomListTile(
+                  'Contact Me',
+                  Icons.contacts,
+                  navigate: () {
+                    settingsViewModel.contactMe();
+                  },
+                  showTrailingArrow: false,
+                ),
+                const SizedBox(height: 5),
+                CustomListTile(
+                  'Source code',
+                  Icons.source,
+                  navigate: () {
+                    settingsViewModel.sourceCode();
+                  },
+                  showTrailingArrow: false,
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
-            GestureDetector(
-              onTap: SyncToolKit().syncData,
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                height: 70,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: ColorClass.primary.withAlpha(100),
-                ),
-                width: double.infinity,
-                child: Row(
-                  children: const [
-                    SizedBox(width: 30),
-                    Icon(Icons.logout, size: 30),
-                    Spacer(),
-                    Text(
-                      'Manual Sync (Test)',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Spacer(),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
