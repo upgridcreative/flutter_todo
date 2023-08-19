@@ -19,10 +19,3 @@ class UserData extends HiveObject {
   @HiveField(4)
   late String refresh;
 }
-
-
-@HiveType(typeId: 4)
-class MetaData extends HiveObject {
-  @HiveField(0)
-  late String lastSyncToken;
-}
