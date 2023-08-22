@@ -2,7 +2,7 @@ import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_todo/shared/prefs/sharedPrefrences.dart';
+import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -10,6 +10,7 @@ import 'hive_management.dart';
 import 'public.dart';
 import 'repository/category.dart';
 import 'repository/task.dart';
+import 'shared/prefs/sharedPrefrences.dart';
 import 'shared/theme/light.dart';
 import 'sync/data/datasources/local_datasource.dart';
 import 'sync/data/datasources/remote_datasource.dart';
@@ -21,16 +22,17 @@ import 'view_model/auth_wrapper.dart';
 import 'view_model/calander_view.dart';
 import 'view_model/category.dart';
 import 'view_model/home_page.dart';
-import 'view_model/task_view_model.dart';
 
 void main() async {
   await Hive.initFlutter();
   HiveManagement.registerAdapters();
   await HiveManagement.openBoxes();
+  await SharedPreferencesClass().onInit();
 
   Get.put(CategoryRepository());
   Get.put(TaskRepository());
 
+  Get.put(SettingPageViewModel());
   Get.put(AuthWrapperViewModel());
   Get.put(HomePageViewModel());
   Get.put(CategoryPageViewModel());

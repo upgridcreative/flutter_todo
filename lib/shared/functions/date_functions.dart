@@ -1,3 +1,4 @@
+import 'package:flutter_todo/constants/enums/prefrences.dart';
 import 'package:intl/intl.dart';
 
 //! Constants; will be used throughout the packages
@@ -28,8 +29,15 @@ String convertDueDateToName(String dueDate) {
   return 'Older';
 }
 
-DateTime findFirstDateOfTheWeek(DateTime dateTime) {
-  return dateTime.subtract(Duration(days: dateTime.weekday));
+DateTime findFirstDateOfTheWeek(
+  DateTime dateTime,
+  FirstDayOfTheWeek preferedFirstDayOfTheWeek,
+) {
+  return dateTime.subtract(
+    Duration(
+      days: dateTime.weekday - (preferedFirstDayOfTheWeek.index),
+    ),
+  );
 }
 
 List<Map<String, int>> getNext7Days(DateTime startDate) {

@@ -17,6 +17,8 @@ class SettingPageViewModel extends GetxController {
   late Rx<SwipeAction> swipeRightAction;
   late Rx<SwipeAction> swipeLeftAction;
 
+  static final SettingPageViewModel instance = Get.find();
+
   @override
   onInit() {
     isSmartDateRecognitionEnabled =

@@ -1,3 +1,5 @@
+import 'package:flutter_todo/constants/enums/prefrences.dart';
+import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import 'package:get/get.dart';
 
 import '../model/task/task_controller.dart';
@@ -15,12 +17,17 @@ class CalendarPageViewModel extends GetxController {
 
   final RxBool showFinishedTasks = true.obs;
   final RxBool showUnFinishedTasks = true.obs;
+  late final Rx<FirstDayOfTheWeek> preferedFirstDayOfTheWeek;
 
   @override
   onInit() {
     super.onInit();
-    currentFirstWeekDay = findFirstDateOfTheWeek(dateTime);
-    daysOfWeek.value = getNext7Days(findFirstDateOfTheWeek(dateTime));
+    preferedFirstDayOfTheWeek = SettingPageViewModel.instance.firstDayOfTheWeek;
+
+    currentFirstWeekDay =
+        findFirstDateOfTheWeek(dateTime, preferedFirstDayOfTheWeek.value);
+    daysOfWeek.value = getNext7Days(
+        findFirstDateOfTheWeek(dateTime, preferedFirstDayOfTheWeek.value));
   }
 
   RxBool isCurrentDaySelected(int day) {
@@ -32,19 +39,22 @@ class CalendarPageViewModel extends GetxController {
       return;
     }
     currentSelectedDate.value = newDate;
-    daysOfWeek.value = getNext7Days(findFirstDateOfTheWeek(newDate));
-    currentFirstWeekDay = findFirstDateOfTheWeek(newDate);
+    daysOfWeek.value = getNext7Days(
+        findFirstDateOfTheWeek(newDate, preferedFirstDayOfTheWeek.value));
+    currentFirstWeekDay =
+        findFirstDateOfTheWeek(newDate, preferedFirstDayOfTheWeek.value);
     update();
   }
 
   void resetDate() {
-    currentFirstWeekDay = findFirstDateOfTheWeek(dateTime);
+    currentFirstWeekDay =
+        findFirstDateOfTheWeek(dateTime, preferedFirstDayOfTheWeek.value);
     currentSelectedDate(dateTime);
-    daysOfWeek.value = getNext7Days(findFirstDateOfTheWeek(dateTime));
+    daysOfWeek.value = getNext7Days(
+        findFirstDateOfTheWeek(dateTime, preferedFirstDayOfTheWeek.value));
   }
 
   RxInt get currentDate => currentSelectedDate.value.day.obs;
-
 
   void toggleUnfinishedTasksVisibility() {
     showUnFinishedTasks(!showUnFinishedTasks.value);

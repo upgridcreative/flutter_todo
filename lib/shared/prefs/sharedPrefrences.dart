@@ -10,14 +10,13 @@ class SharedPreferencesClass {
     return _singleton;
   }
 
-  SharedPreferencesClass._internal() {
-
-    onInit();
-  }
+  SharedPreferencesClass._internal();
 
   onInit() async {
     _prefs = await SharedPreferences.getInstance();
+    return;
   }
 
   SharedPreferences get prefs => _prefs;
+
 }
