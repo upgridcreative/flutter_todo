@@ -44,24 +44,29 @@ class _HomeScreenState extends State<HomeScreen> {
           _pageController.jumpToPage(val);
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: mainColor,
-        onPressed: () => Get.bottomSheet(
-          BottomSheet(
-            constraints: const BoxConstraints(
-              maxHeight: 350,
-              minHeight: 200,
+      floatingActionButton: AnimatedOpacity(
+        curve: Curves.linearToEaseOut,
+        duration: const Duration(milliseconds: 230),
+        opacity: _currentIndex == 2 ? 0 : 1,
+        child: FloatingActionButton(
+          backgroundColor: mainColor,
+          onPressed: () => Get.bottomSheet(
+            BottomSheet(
+              constraints: const BoxConstraints(
+                maxHeight: 350,
+                minHeight: 200,
+              ),
+              onClosing: () {},
+              builder: (c) {
+                return const AddTodoSheet();
+              },
             ),
-            onClosing: () {},
-            builder: (c) {
-              return const AddTodoSheet();
-            },
           ),
-        ),
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 32,
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 32,
+          ),
         ),
       ),
     );
