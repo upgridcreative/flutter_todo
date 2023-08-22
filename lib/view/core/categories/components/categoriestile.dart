@@ -58,8 +58,20 @@ class _CategoriesTileState extends State<CategoriesTile> {
               shape: RoundedRectangleBorder(borderRadius: borderRadius),
               itemBuilder: (context) => [
                 PopupMenuItem<String>(
+                  onTap: () async {
+                    await Future.delayed(
+                      const Duration(milliseconds: 10),
+                    );
+                    showDialog(
+                      context: context,
+                      builder: (context) => EditDialog(
+                        category: widget.category,
+                        titleController: titleController,
+                      ),
+                    );
+                  },
                   child: InkWell(
-                    onTap: showEditDilog,
+                    key: Key(widget.category.tempId.toString()),
                     child: const Text('Edit'),
                   ),
                 ),
@@ -74,57 +86,64 @@ class _CategoriesTileState extends State<CategoriesTile> {
       ),
     );
   }
+}
 
-  Future<dynamic> showEditDilog() async {
-    return await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: ColorClass.grey,
-          actionsPadding: const EdgeInsets.only(right: 12),
-          title: const Text("Edit"),
-          content: TextFormField(
-            controller: titleController..text = widget.category.title.value,
-            decoration: textFieldDecoration.copyWith(
-              hintText: "New title",
-            ),
-          ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    "Cancel",
-                    style: subTitle.copyWith(
-                      color: ColorClass.black70,
-                    ),
-                  ),
+class EditDialog extends StatelessWidget {
+  const EditDialog(
+      {Key? key, required this.titleController, required this.category})
+      : super(key: key);
+  final TextEditingController titleController;
+  final CategoryController category;
+
+  @override
+  Widget build(BuildContext context) {
+    final CategoryPageViewModel viewModel = Get.find();
+
+    return AlertDialog(
+      backgroundColor: ColorClass.grey,
+      actionsPadding: const EdgeInsets.only(right: 12),
+      title: const Text("Edit"),
+      content: TextFormField(
+        controller: titleController..text = category.title.value,
+        decoration: textFieldDecoration.copyWith(
+          hintText: "New title",
+        ),
+      ),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "Cancel",
+                style: subTitle.copyWith(
+                  color: ColorClass.black70,
                 ),
-                const SizedBox(width: 10),
-                CustomShortButton(
-                  onPressed: () {
-                    if (titleController.text.isEmpty) {
-                      return;
-                    }
-                    viewModel.updateCategory(
-                      titleController.text,
-                      // Color
-                      widget.category, //Instance
-                    );
-                  },
-                  title: 'Save',
-                  heightFactor: 0.25,
-                  customTextStyle: subTitle.copyWith(color: Colors.white),
-                )
-              ],
+              ),
+            ),
+            const SizedBox(width: 10),
+            CustomShortButton(
+              onPressed: () {
+                if (titleController.text.isEmpty) {
+                  return;
+                }
+                viewModel.updateCategory(
+                  titleController.text,
+                  category, //Instance
+                );
+                titleController.clear();
+                Get.back();
+              },
+              title: 'Save',
+              heightFactor: 0.25,
+              customTextStyle: subTitle.copyWith(color: Colors.white),
             )
           ],
-        );
-      },
+        )
+      ],
     );
   }
 }
