@@ -1,4 +1,8 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_todo/constants/enums/prefrences.dart';
+import 'package:flutter_todo/view/core/todo/components/delete_alert.dart';
+import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -8,7 +12,6 @@ import '../model/task/task_controller.dart';
 import '../repository/category.dart';
 import '../repository/task.dart';
 import '../shared/functions/date_functions.dart';
-
 
 class HomePageViewModel extends GetxController {
   final TaskRepository taskRepository = Get.find();
@@ -77,9 +80,8 @@ class HomePageViewModel extends GetxController {
   String get dateToday {
     final day = DateTime.now().day.toString();
 
-     return '$day ${DateFormat('MMM').format(DateTime(0, DateTime.now().month))}';
+    return '$day ${DateFormat('MMM').format(DateTime(0, DateTime.now().month))}';
   }
-
 
   RxList<TaskController> get dueToday {
     DateTime now = DateTime.now();
@@ -91,7 +93,7 @@ class HomePageViewModel extends GetxController {
     return RxList(tasksDueToday.toList());
   }
 
-    Map<String, List<TaskController>> getTasksByCategories() {
+  Map<String, List<TaskController>> getTasksByCategories() {
     final groupedByCategories = groupBy(
       taskRepository.getAllTasks,
       (TaskController element) => element.categoryTempId.toString(),
@@ -107,5 +109,63 @@ class HomePageViewModel extends GetxController {
     return RxList(groupedByCategory.toList());
   }
 
-  
+  Future<bool> confirmDismiss(
+      DismissDirection direction, TaskController todo) async {
+    switch (direction) {
+      case DismissDirection.startToEnd:
+        return await handleSwipeActions(
+          SettingPageViewModel.instance.swipeRightAction.value,
+          todo,
+        );
+      case DismissDirection.endToStart:
+        return await handleSwipeActions(
+          SettingPageViewModel.instance.swipeLeftAction.value,
+          todo,
+        );
+    }
+
+    return true;
+  }
+
+  Future<void> showRescheduleMenu(TaskController todo) async {
+    final newDate = await showDatePicker(
+      context: Get.context!,
+      initialDate: todo.due.value == null
+          ? DateTime.now()
+          : DateTime.parse(
+              todo.due.value!,
+            ),
+      firstDate: DateTime(2000, 01, 01),
+      lastDate: DateTime(2100, 01, 01),
+    );
+
+    todo.setDueDate(newDate);
+  }
+
+  Future<bool> showDeleteAlert(TaskController todo) async {
+    return await showDialog(
+      context: Get.context!,
+      builder: (c) => DeleteTodoDialog(viewModel: taskRepository, todo: todo),
+    );
+  }
+
+  Future<bool> handleSwipeActions(
+    SwipeAction switchAction,
+    TaskController todo,
+  ) async {
+    switch (switchAction) {
+      case SwipeAction.check:
+        toggleCheck(todo);
+        return false;
+      case SwipeAction.reschedule:
+        Future.delayed(const Duration(microseconds: 1)).then(
+          (value) => showRescheduleMenu(todo),
+        );
+        return false;
+      case SwipeAction.delete:
+        return await showDeleteAlert(todo);
+      case SwipeAction.nothing:
+        return false;
+    }
+  }
 }

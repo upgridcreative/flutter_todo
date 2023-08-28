@@ -100,6 +100,10 @@ class SettingPageViewModel extends GetxController {
     Get.back();
   }
 
+  RxBool get hasSwipeLeft => (swipeLeftAction.value != SwipeAction.nothing).obs;
+  RxBool get hasSwipeRight =>
+      (swipeRightAction.value != SwipeAction.nothing).obs;
+
   RxString getCurrentFirstDayOfTheWeek() =>
       getFirstDayOfTheWeekAsString(firstDayOfTheWeek.value).obs;
 
