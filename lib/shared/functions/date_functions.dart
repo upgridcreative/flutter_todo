@@ -1,4 +1,4 @@
-import 'package:flutter_todo/constants/enums/prefrences.dart';
+import '../../constants/enums/prefrences.dart';
 import 'package:intl/intl.dart';
 
 //! Constants; will be used throughout the packages
@@ -35,7 +35,9 @@ DateTime findFirstDateOfTheWeek(
 ) {
   return dateTime.subtract(
     Duration(
-      days: dateTime.weekday - (preferedFirstDayOfTheWeek.index),
+      days: dateTime.weekday == preferedFirstDayOfTheWeek.index
+          ? 0
+          : (dateTime.weekday).abs() + (7 - preferedFirstDayOfTheWeek.index),
     ),
   );
 }
