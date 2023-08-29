@@ -31,15 +31,16 @@ String convertDueDateToName(String dueDate) {
 
 DateTime findFirstDateOfTheWeek(
   DateTime dateTime,
-  FirstDayOfTheWeek preferedFirstDayOfTheWeek,
+  FirstDayOfTheWeek preferredFirstDayOfTheWeek,
 ) {
-  return dateTime.subtract(
-    Duration(
-      days: dateTime.weekday == preferedFirstDayOfTheWeek.index
-          ? 0
-          : (dateTime.weekday).abs() + (7 - preferedFirstDayOfTheWeek.index),
-    ),
+  return DateTime(
+    dateTime.year,
+    dateTime.month,
+    dateTime.day -
+        ((dateTime.weekday - preferredFirstDayOfTheWeek.index) % 7) +
+        1,
   );
+
 }
 
 List<Map<String, int>> getNext7Days(DateTime startDate) {
