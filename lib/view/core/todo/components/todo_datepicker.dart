@@ -13,7 +13,7 @@ class DueDatePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      ()=> GestureDetector(
+      () => GestureDetector(
         onTap: () async {
           final datePicked = await showDatePicker(
             context: context,
@@ -32,21 +32,20 @@ class DueDatePicker extends StatelessWidget {
           children: [
             Icon(
               Icons.date_range,
-              color: viewModel.task.due.value != null ? mainColor : Colors.black,
+              color:
+                  viewModel.task.due.value != null ? mainColor : Colors.black,
             ),
             const SizedBox(
               width: 20,
             ),
-            GestureDetector(
-              child: Text(
-                viewModel.task.due.value ?? 'Due date',
-                style: TextStyle(
-                  fontSize: 17.sp,
-                  fontWeight: FontWeight.w500,
-                  color: viewModel.task.due.value != null
-                      ? mainColor
-                      : mainColor.withOpacity(.4),
-                ),
+            Text(
+              viewModel.task.due.value ?? 'Due date',
+              style: TextStyle(
+                fontSize: 17.sp,
+                fontWeight: FontWeight.w500,
+                color: viewModel.task.due.value != null
+                    ? mainColor
+                    : mainColor.withOpacity(.4),
               ),
             ),
           ],
