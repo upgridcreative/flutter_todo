@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_todo/shared/datepicker/components/quick_dates_access.dart';
 import 'package:get/route_manager.dart';
+import 'package:intl/intl.dart' as itl;
 
 import 'components/themeData.dart';
 
@@ -776,7 +777,7 @@ class _DayPickerState extends State<_DayPicker> {
       decoration: BoxDecoration(),
       child: Column(
         children: [
-          const Text('Augest 2023'),
+          Text(itl.DateFormat.yMMM().format(widget.displayedMonth)),
           const SizedBox(height: 20),
           SizedBox(
             height: _maxDayPickerHeight,
