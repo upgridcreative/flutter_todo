@@ -1,9 +1,10 @@
-
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_todo/shared/datepicker/components/adslfjas.dart';
+import 'package:get/route_manager.dart';
 
 import 'components/themeData.dart';
 
@@ -32,6 +33,7 @@ class CustomDatePicker extends StatefulWidget {
     required DateTime lastDate,
     DateTime? currentDate,
     required this.onDateChanged,
+    required this.onSaved,
     this.onDisplayedMonthChanged,
     this.initialCalendarMode = DatePickerMode.day,
     this.selectableDayPredicate,
@@ -63,6 +65,8 @@ class CustomDatePicker extends StatefulWidget {
 
   /// The earliest allowable [DateTime] that the user can select.
   final DateTime firstDate;
+
+  final onSaved;
 
   /// The latest allowable [DateTime] that the user can select.
   final DateTime lastDate;
@@ -138,9 +142,6 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
     }
   }
 
-
-
-
   void _handleMonthChanged(DateTime date) {
     setState(() {
       if (_currentDisplayedMonthDate.year != date.year ||
@@ -199,16 +200,22 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
             ),
             height: 60,
             child: Row(
-              children: const [
-                Spacer(),
-                Text(
-                  'Cancel',
+              children: [
+                const Spacer(),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Text('Cancel'),
                 ),
-                SizedBox(width: 35),
-                Text(
-                  'Save',
+                const SizedBox(width: 35),
+                GestureDetector(
+                  onTap: () {
+                    widget.onSaved(_selectedDate);
+                  },
+                  child: const Text('Save'),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
               ],
             ),
           ),
@@ -237,6 +244,7 @@ class _MonthPicker extends StatefulWidget {
   /// The initial month to display.
   final DateTime initialMonth;
 
+  /// The initial month
   /// The current date.
   ///
   /// This date is subtly highlighted in the picker.
@@ -284,7 +292,7 @@ class _MonthPickerState extends State<_MonthPicker> {
   void initState() {
     super.initState();
     _currentMonth = widget.initialMonth;
-    
+
     _shortcutMap = const <ShortcutActivator, Intent>{
       SingleActivator(LogicalKeyboardKey.arrowLeft):
           DirectionalFocusIntent(TraversalDirection.left),
@@ -319,23 +327,21 @@ class _MonthPickerState extends State<_MonthPicker> {
     if (widget.initialMonth != oldWidget.initialMonth &&
         widget.initialMonth != _currentMonth) {
       // We can't interrupt this widget build with a scroll, so do it next frame
-    
+
     }
   }
 
   @override
   void dispose() {
-
     _dayGridFocus.dispose();
     super.dispose();
   }
 
   void _handleDateSelected(DateTime selectedDate) {
     _focusedDay = selectedDate;
+
     widget.onChanged(selectedDate);
   }
-
-
 
   /// Returns a focusable date for the given month.
   ///
@@ -362,10 +368,6 @@ class _MonthPickerState extends State<_MonthPicker> {
     }
     return null;
   }
-
-
-  
-
 
   /// Handler for when the overall day grid obtains or loses focus.
   void _handleGridFocusChange(bool focused) {
@@ -402,7 +404,6 @@ class _MonthPickerState extends State<_MonthPicker> {
           _nextDateInDirection(_focusedDay!, intent.direction);
       if (nextDate != null) {
         _focusedDay = nextDate;
-    
       }
     });
   }
@@ -469,120 +470,29 @@ class _MonthPickerState extends State<_MonthPicker> {
         Theme.of(context).colorScheme.onSurface.withOpacity(0.60);
 
     return Semantics(
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsetsDirectional.only(start: 16, end: 4),
-              height: 250,
-              child: Column(
-                children: [
-                  const SizedBox(height: 30),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.date_range_sharp,
-                        size: 22,
-                      ),
-                      SizedBox(width: 15),
-                      Text(
-                        'Today',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Spacer(),
-                      Text('Wed'),
-                      SizedBox(width: 10),
-                    ],
-                  ),
-                  const SizedBox(height: 25),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.sunny,
-                        size: 22,
-                      ),
-                      SizedBox(width: 15),
-                      Text(
-                        'Tomorrow',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Spacer(),
-                      Text('Thu'),
-                      SizedBox(width: 10),
-                    ],
-                  ),
-                  const SizedBox(height: 25),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.sunny,
-                        size: 22,
-                      ),
-                      SizedBox(width: 15),
-                      Text(
-                        'Next weekend',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Spacer(),
-                      Text('9, September'),
-                      SizedBox(width: 10),
-                    ],
-                  ),
-                  const SizedBox(height: 25),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.block,
-                        size: 22,
-                      ),
-                      SizedBox(width: 15),
-                      Text(
-                        'No Date',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            FocusableActionDetector(
-              shortcuts: _shortcutMap,
-              actions: _actionMap,
-              focusNode: _dayGridFocus,
-              onFocusChange: _handleGridFocusChange,
-              child: _FocusedDate(
-                date: _dayGridFocus.hasFocus ? _focusedDay : null,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  key: _pageViewKey,
-                  physics: NeverScrollableScrollPhysics(),
-                  cacheExtent: 10,
-                  itemBuilder: _buildItems,
-                  itemCount: DateUtils.monthDelta(
-                        widget.firstDate,
-                        widget.lastDate,
-                      ) +
-                      1,
-                ),
-              ),
-            ),
-          ],
+      child: FocusableActionDetector(
+        shortcuts: _shortcutMap,
+        actions: _actionMap,
+        focusNode: _dayGridFocus,
+        onFocusChange: _handleGridFocusChange,
+        child: _FocusedDate(
+          date: _dayGridFocus.hasFocus ? _focusedDay : null,
+          child: ListView.builder(
+            shrinkWrap: false,
+            key: _pageViewKey,
+            cacheExtent: 4,
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return const NameLater();
+              }
+              return _buildItems(context, index);
+            },
+            itemCount: DateUtils.monthDelta(
+                  widget.firstDate,
+                  widget.lastDate,
+                ) +
+                2,
+          ),
         ),
       ),
     );
@@ -842,7 +752,7 @@ class _DayPickerState extends State<_DayPicker> {
               // day of month before the rest of the date, as they are looking
               // for the day of month. To do that we prepend day of month to the
               // formatted full date.
-             
+
               // Set button to true to make the date selectable.
               button: true,
               selected: isSelectedDay,
