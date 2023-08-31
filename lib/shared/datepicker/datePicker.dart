@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_todo/shared/datepicker/components/adslfjas.dart';
+import 'package:flutter_todo/shared/datepicker/components/quick_dates_access.dart';
 import 'package:get/route_manager.dart';
 
 import 'components/themeData.dart';
@@ -170,6 +170,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       onChanged: _handleDayChanged,
       onDisplayedMonthChanged: _handleMonthChanged,
       selectableDayPredicate: widget.selectableDayPredicate,
+      setDate: widget.onSaved,
     );
   }
 
@@ -236,6 +237,7 @@ class _MonthPicker extends StatefulWidget {
     required this.selectedDate,
     required this.onChanged,
     required this.onDisplayedMonthChanged,
+    required this.setDate,
     this.selectableDayPredicate,
   })  : assert(!firstDate.isAfter(lastDate)),
         assert(!selectedDate.isBefore(firstDate)),
@@ -254,6 +256,9 @@ class _MonthPicker extends StatefulWidget {
   ///
   /// This date must be on or before the [lastDate].
   final DateTime firstDate;
+
+  /// This date must be on or before the [lastDate].
+  final setDate;
 
   /// The latest date the user is permitted to pick.
   ///
@@ -483,7 +488,7 @@ class _MonthPickerState extends State<_MonthPicker> {
             cacheExtent: 4,
             itemBuilder: (context, index) {
               if (index == 0) {
-                return const NameLater();
+                return QuickDatesAccess(saveDate: widget.setDate);
               }
               return _buildItems(context, index);
             },
