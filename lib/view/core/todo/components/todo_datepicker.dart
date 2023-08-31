@@ -14,13 +14,19 @@ class DueDatePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void openDraggableBottomSheet(context) {
+      final initDate = viewModel.task.due.value == null
+          ? DateTime.now()
+          : DateTime.parse(
+              viewModel.task.due.value!,
+            );
       showModalBottomSheet(
         context: context,
         builder: (context) => CustomDatePicker(
           initialDate: viewModel.task.due.value != null
               ? DateTime.parse(viewModel.task.due.value!)
               : DateTime.now(),
-          firstDate: DateTime.now(),
+          firstDate:
+              initDate.isAfter(DateTime.now()) ? DateTime.now() : initDate,
           lastDate: DateTime.now().add(
             const Duration(days: 1000),
           ),
