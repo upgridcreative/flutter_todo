@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_todo/shared/datepicker/datePicker.dart';
 import 'package:get/get.dart';
 
 import '../../../repository/category.dart';
@@ -52,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: mainColor,
           onPressed: () => Get.bottomSheet(
             BottomSheet(
+              enableDrag: false,
               constraints: const BoxConstraints(
                 maxHeight: 350,
                 minHeight: 200,
@@ -152,13 +154,17 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
             children: [
               GestureDetector(
                 onTap: () async {
-                  final newDate = await showDatePicker(
+                  showModalBottomSheet(
+                    enableDrag: true,
+                    builder: (context) => CustomDatePicker(
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2050, 01, 01),
+                      onDateChanged: (date) {},
+                      onSaved: _selectDate,
+                    ),
                     context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2000, 1, 1),
-                    lastDate: DateTime(2100, 1, 1),
                   );
-                  _selectDate(newDate);
                 },
                 child: Container(
                   margin: const EdgeInsets.only(right: 5),

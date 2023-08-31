@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_todo/shared/datepicker/datePicker.dart';
 import 'package:get/get.dart';
 
 import '../../../../shared/theme/light.dart';
@@ -12,21 +13,27 @@ class DueDatePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void openDraggableBottomSheet(context) {
+      showModalBottomSheet(
+        context: context,
+        builder: (context) => CustomDatePicker(
+          initialDate: viewModel.task.due.value != null
+              ? DateTime.parse(viewModel.task.due.value!)
+              : DateTime.now(),
+          firstDate: DateTime.now(),
+          lastDate: DateTime.now().add(
+            const Duration(days: 1000),
+          ),
+          onDateChanged: (onDateChanged) {},
+          onSaved: viewModel.setDueDate,
+        ),
+      );
+    }
+
     return Obx(
       () => GestureDetector(
         onTap: () async {
-          final datePicked = await showDatePicker(
-            context: context,
-            initialDate: viewModel.task.due.value != null
-                ? DateTime.parse(
-                    viewModel.task.due.value!,
-                  )
-                : DateTime.now(),
-            firstDate: DateTime(2000, 01, 01),
-            lastDate: DateTime(2069, 01, 01),
-          );
-
-          viewModel.setDueDate(datePicked);
+          openDraggableBottomSheet(context);
         },
         child: Row(
           children: [
@@ -35,9 +42,7 @@ class DueDatePicker extends StatelessWidget {
               color:
                   viewModel.task.due.value != null ? mainColor : Colors.black,
             ),
-            const SizedBox(
-              width: 20,
-            ),
+            const SizedBox(width: 20),
             Text(
               viewModel.task.due.value ?? 'Due date',
               style: TextStyle(

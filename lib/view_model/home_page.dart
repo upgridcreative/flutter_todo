@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/constants/enums/prefrences.dart';
+import 'package:flutter_todo/shared/datepicker/datePicker.dart';
 import 'package:flutter_todo/view/core/todo/components/delete_alert.dart';
 import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import 'package:get/get.dart';
@@ -128,18 +129,23 @@ class HomePageViewModel extends GetxController {
   }
 
   Future<void> showRescheduleMenu(TaskController todo) async {
-    final newDate = await showDatePicker(
+    final initDate = todo.due.value == null
+        ? DateTime.now()
+        : DateTime.parse(
+            todo.due.value!,
+          );
+    showModalBottomSheet(
       context: Get.context!,
-      initialDate: todo.due.value == null
-          ? DateTime.now()
-          : DateTime.parse(
-              todo.due.value!,
-            ),
-      firstDate: DateTime(2000, 01, 01),
-      lastDate: DateTime(2100, 01, 01),
+      builder: (context) => CustomDatePicker(
+        initialDate: initDate,
+        firstDate: initDate.isAfter(DateTime.now()) ? DateTime.now() : initDate,
+        lastDate: DateTime(2100, 01, 01),
+        onDateChanged: (date) {},
+        onSaved: (date) {
+          todo.setDueDate(date);
+        },
+      ),
     );
-
-    todo.setDueDate(newDate);
   }
 
   Future<bool> showDeleteAlert(TaskController todo) async {
