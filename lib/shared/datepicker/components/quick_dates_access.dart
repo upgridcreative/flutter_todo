@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/public.dart';
 import 'package:flutter_todo/shared/functions/date_functions.dart';
+import 'package:get/route_manager.dart';
 
 extension MyDateTime on DateTime {
   DateTime next(int day) {
@@ -34,9 +35,10 @@ class QuickDatesAccess extends StatelessWidget {
         children: [
           const SizedBox(height: 30),
           GestureDetector(
-            onTap: () => saveDate(
-              DateTime.now(),
-            ),
+            onTap: () {
+              saveDate(DateTime.now());
+              Get.back();
+            },
             child: Row(
               children: const [
                 Icon(
@@ -60,11 +62,12 @@ class QuickDatesAccess extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           GestureDetector(
-            onTap: () => saveDate(
-              DateTime.now().add(
-                const Duration(days: 1),
-              ),
-            ),
+            onTap: () {
+              saveDate(
+                DateTime.now().add(const Duration(days: 1)),
+              );
+              Get.back();
+            },
             child: Row(
               children: const [
                 Icon(
@@ -88,9 +91,10 @@ class QuickDatesAccess extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           GestureDetector(
-            onTap: () => saveDate(
-              DateTime.now().next(6),
-            ),
+            onTap: () {
+              saveDate(DateTime.now().next(6));
+              Get.back();
+            },
             child: Row(
               children: [
                 const Icon(
@@ -114,7 +118,10 @@ class QuickDatesAccess extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           GestureDetector(
-            onTap: () => saveDate(null),
+            onTap: () {
+              saveDate(null);
+              Get.back();
+            },
             child: Row(
               children: const [
                 Icon(

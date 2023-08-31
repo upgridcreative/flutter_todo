@@ -213,6 +213,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                 GestureDetector(
                   onTap: () {
                     widget.onSaved(_selectedDate);
+                    Get.back();
                   },
                   child: const Text('Save'),
                 ),
