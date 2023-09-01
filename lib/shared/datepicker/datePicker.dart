@@ -492,7 +492,7 @@ class _MonthPickerState extends State<_MonthPicker> {
               if (index == 0) {
                 return QuickDatesAccess(saveDate: widget.setDate);
               }
-              return _buildItems(context, index);
+              return _buildItems(context, index - 1);
             },
             itemCount: DateUtils.monthDelta(
                   widget.firstDate,
