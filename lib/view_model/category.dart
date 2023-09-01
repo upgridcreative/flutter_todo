@@ -40,10 +40,10 @@ class CategoryPageViewModel extends GetxController {
 
   void updateCategory(String? title, CategoryController instance) {
     if (_categoryRepository.hasCategoryWithTitle(title ?? '')) {
-      //Todo: Show the error in the frontend
       return;
     }
     instance.setTitle(title ?? instance.title.value);
+    _homePageViewModel.setTab(title!);
   }
 
   int getTaskCountOf(CategoryController category) {

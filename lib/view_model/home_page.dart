@@ -15,7 +15,8 @@ import 'settings_page_view_model.dart';
 class HomePageViewModel extends GetxController {
   final TaskRepository taskRepository = Get.find();
   final CategoryRepository categoryRepository = Get.find();
-  RxString currentTab = 'My Day'.obs; //Todo: Declare properly
+  RxString currentTab = 'My Day'.obs;
+  RxnString currentTabId = RxnString();
 
   List<String> getTabs() {
     final storedCatagories = categoryRepository.categories;
@@ -40,12 +41,18 @@ class HomePageViewModel extends GetxController {
     }
 
     final tabAsCategory =
-        categoryRepository.getCategoryByName(currentTab.value);
+        categoryRepository.getCategoryByTempId(currentTabId.value!);
 
     return getTasksByCategory(tabAsCategory);
   }
 
   void setTab(String categoryTitle) {
+    if (!['My Day', 'All'].contains(categoryTitle)) {
+      final tabAsCategory = categoryRepository.getCategoryByName(categoryTitle);
+      currentTabId.value = tabAsCategory.tempId.value;
+    } else {
+      currentTabId.value = null;
+    }
     currentTab(categoryTitle);
     update();
   }
@@ -53,7 +60,6 @@ class HomePageViewModel extends GetxController {
   void toggleCheck(TaskController task) => taskRepository.toggleCheck(task);
 
   void deleteTask(TaskController task) => taskRepository.deleteTask(task);
-
 
   String get dateToday {
     final day = DateTime.now().day.toString();
