@@ -1,18 +1,16 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/constants/enums/prefrences.dart';
-import 'package:flutter_todo/shared/datepicker/datePicker.dart';
-import 'package:flutter_todo/view/core/todo/components/delete_alert.dart';
-import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../constants/enums/prefrences.dart';
 import '../model/category/category_controller.dart';
-import '../model/task/task.dart';
 import '../model/task/task_controller.dart';
 import '../repository/category.dart';
 import '../repository/task.dart';
-import '../shared/functions/date_functions.dart';
+import '../shared/datepicker/datePicker.dart';
+import '../view/core/todo/components/delete_alert.dart';
+import 'settings_page_view_model.dart';
 
 class HomePageViewModel extends GetxController {
   final TaskRepository taskRepository = Get.find();
@@ -56,27 +54,6 @@ class HomePageViewModel extends GetxController {
 
   void deleteTask(TaskController task) => taskRepository.deleteTask(task);
 
-  void addTaskFromScratch(
-    String title, {
-    String? description,
-    DateTime? dueDate,
-    String? categoryTempId,
-  }) {
-    final tempId = DateTime.now().toString();
-
-    final String? formatedDate =
-        dueDate == null ? null : dateFormatter.format(dueDate);
-
-    final newTask = Task()
-      ..content = title
-      ..description = description
-      ..tempId = tempId
-      ..categoryTempId = categoryTempId
-      ..due = formatedDate
-      ..isChecked = false;
-
-    taskRepository.addTask(newTask);
-  }
 
   String get dateToday {
     final day = DateTime.now().day.toString();

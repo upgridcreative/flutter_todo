@@ -7,7 +7,7 @@ import '../../../repository/category.dart';
 import '../../../shared/datepicker/datePicker.dart';
 import '../../../shared/functions/date_functions.dart';
 import '../../../shared/theme/light.dart';
-import '../../../view_model/home_page.dart';
+import '../../../view_model/add_todo_view_model.dart';
 
 class AddTodoSheet extends StatefulHookWidget {
   const AddTodoSheet({Key? key}) : super(key: key);
@@ -17,17 +17,15 @@ class AddTodoSheet extends StatefulHookWidget {
 }
 
 class _AddTodoSheetState extends State<AddTodoSheet> {
-  final HomePageViewModel viewModel = Get.find();
   final CategoryRepository categoryRepository = Get.find();
 
-  DateTime? _datePicked;
   String? categoryDropDownValue;
 
   @override
   Widget build(BuildContext context) {
-    final contextTextEditingController = useTextEditingController();
-
+    final viewModel = Get.put(AddTodoViewModel());
     final descriptionTextEditingController = useTextEditingController();
+
     return Container(
       color: const Color(0xFFD2D3DB),
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
@@ -35,7 +33,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
       child: Column(
         children: [
           TextField(
-            controller: contextTextEditingController,
+            controller: viewModel.contextTextEditingController,
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 18.sp,
@@ -95,7 +93,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                       firstDate: DateTime.now(),
                       lastDate: DateTime(2050, 01, 01),
                       onDateChanged: (date) {},
-                      onSaved: _selectDate,
+                      onSaved: viewModel.selectDate,
                     ),
                     context: context,
                   );
@@ -109,16 +107,18 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                   ),
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Text(
-                    _datePicked == null
-                        ? 'No Date'
-                        : convertDueDateToName(
-                            dateFormatter.format(_datePicked!),
-                          ),
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: false ? Colors.white : Colors.black,
+                  child: Obx(
+                    () => Text(
+                      viewModel.datePicked.value == null
+                          ? 'No Date'
+                          : convertDueDateToName(
+                              dateFormatter.format(viewModel.datePicked.value!),
+                            ),
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: false ? Colors.white : Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -192,16 +192,16 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                   icon: const Icon(Icons.arrow_forward),
                   color: Colors.white.withOpacity(.9),
                   onPressed: () {
-                    if (contextTextEditingController.text == '') {
+                    if (viewModel.contextTextEditingController.text == '') {
                       return;
                     }
                     viewModel.addTaskFromScratch(
-                      contextTextEditingController.text,
+                      viewModel.contextTextEditingController.text,
                       description: descriptionTextEditingController.text,
                       categoryTempId: categoryDropDownValue,
-                      dueDate: _datePicked,
+                      dueDate: viewModel.datePicked.value,
                     );
-                    contextTextEditingController.clear();
+                    viewModel.contextTextEditingController.clear();
                     descriptionTextEditingController.clear();
 
                     Get.back();
@@ -213,11 +213,6 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
         ],
       ),
     );
-  }
-
-  _selectDate(newDate) {
-    _datePicked = newDate;
-    setState(() {});
   }
 
   _setCategoryDropDownValue(newValue) {
