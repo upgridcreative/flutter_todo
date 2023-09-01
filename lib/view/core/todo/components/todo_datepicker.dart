@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_todo/shared/datepicker/datePicker.dart';
+import 'package:flutter_todo/shared/functions/date_functions.dart';
 import 'package:get/get.dart';
 
 import '../../../../shared/theme/light.dart';
@@ -50,7 +51,11 @@ class DueDatePicker extends StatelessWidget {
             ),
             const SizedBox(width: 20),
             Text(
-              viewModel.task.due.value ?? 'Due date',
+              viewModel.task.due.value == null
+                  ? 'Due date'
+                  : convertDueDateToName(
+                      viewModel.task.due.value!,
+                    ),
               style: TextStyle(
                 fontSize: 17.sp,
                 fontWeight: FontWeight.w500,
