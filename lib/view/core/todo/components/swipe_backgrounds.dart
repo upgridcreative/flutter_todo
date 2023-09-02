@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../view_model/settings_page_view_model.dart';
@@ -64,7 +63,7 @@ class LeftBackGround extends StatelessWidget {
                   ),
                   Text(
                     SettingPageViewModel.instance
-                        .getCurrentRightSwipeAction()
+                        .getCurrentLeftSwipeAction()
                         .value,
                     style: TextStyle(
                       color: getColorForSwipeAction(
