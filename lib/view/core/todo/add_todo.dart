@@ -171,7 +171,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                         ),
                         alignment: Alignment.center,
                         child: Text(
-                          categoryDropDownValue ?? 'All',
+                          element.title.value,
                           style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
