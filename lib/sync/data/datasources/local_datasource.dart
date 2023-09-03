@@ -45,7 +45,9 @@ class SyncLocalDataSource extends GetxController {
           .millisecondsSinceEpoch
           .toString(); //Todo: Use uuid package
       category.uuid = uuid;
-      category.save();
+      if (category.isInBox) {
+        category.save();
+      }
     }
 
     if (!category.isActionTypeSet()) {

@@ -1,7 +1,9 @@
+import '../../constants/enums/prefrences.dart';
 import 'package:intl/intl.dart';
 
 //! Constants; will be used throughout the packages
 final DateFormat dateFormatter = DateFormat('yyyy-MM-dd');
+final DateFormat dateFormatterTwo = DateFormat.MMMMd();
 
 String convertDueDateToName(String dueDate) {
   final dueToDateTime = DateTime.parse(dueDate);
@@ -28,8 +30,18 @@ String convertDueDateToName(String dueDate) {
   return 'Older';
 }
 
-DateTime findFirstDateOfTheWeek(DateTime dateTime) {
-  return dateTime.subtract(Duration(days: dateTime.weekday));
+DateTime findFirstDateOfTheWeek(
+  DateTime dateTime,
+  FirstDayOfTheWeek preferredFirstDayOfTheWeek,
+) {
+  return DateTime(
+    dateTime.year,
+    dateTime.month,
+    dateTime.day -
+        ((dateTime.weekday - preferredFirstDayOfTheWeek.index) % 7) +
+        1,
+  );
+
 }
 
 List<Map<String, int>> getNext7Days(DateTime startDate) {

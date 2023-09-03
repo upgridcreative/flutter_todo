@@ -17,10 +17,12 @@ class SettingPageViewModel extends GetxController {
   late Rx<SwipeAction> swipeRightAction;
   late Rx<SwipeAction> swipeLeftAction;
 
+  static final SettingPageViewModel instance = Get.find();
+
   @override
   onInit() {
     isSmartDateRecognitionEnabled =
-        (_prefs.getBool('isSmartDateRecognitionEnabled') ?? true).obs;
+        (_prefs.getBool('isSmartDateRecognitionEnabled') ?? false).obs;
 
     firstDayOfTheWeek = (FirstDayOfTheWeek.values[
             (_prefs.getInt('firstDayOfTheWeek') ??
@@ -97,6 +99,10 @@ class SettingPageViewModel extends GetxController {
     swipeLeftAction(SwipeAction.values[actionIndex]);
     Get.back();
   }
+
+  RxBool get hasSwipeLeft => (swipeLeftAction.value != SwipeAction.nothing).obs;
+  RxBool get hasSwipeRight =>
+      (swipeRightAction.value != SwipeAction.nothing).obs;
 
   RxString getCurrentFirstDayOfTheWeek() =>
       getFirstDayOfTheWeekAsString(firstDayOfTheWeek.value).obs;

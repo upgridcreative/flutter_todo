@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../../constants/decoration.dart';
 import '../../../../shared/components/appbar.dart';
 import '../../../../shared/components/custom_short_button.dart';
+import '../../../../shared/theme/colors.dart';
 import '../../../../shared/theme/light.dart';
 import '../../../../view_model/category.dart';
 import 'categoriestile.dart';
@@ -56,57 +57,75 @@ class CategoryList extends StatelessWidget {
                             showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  backgroundColor: Colors.grey,
-                                  actionsPadding: const EdgeInsets.only(
-                                      right: 12, bottom: 10),
-                                  title: const Text("Create new Category"),
-                                  content: TextField(
-                                    autofocus: true,
-                                    style: const TextStyle(
-                                        color: Colors.black, letterSpacing: 1),
-                                    controller: titleController,
-                                    decoration: textFieldDecoration.copyWith(
-                                      hintText: "e.g. Personal,work",
-                                    ),
-                                  ),
-                                  actions: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text("Cancel",
-                                              style: subTitle.copyWith(
-                                                  color: Colors.black)),
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: ColorClass.grey,
+                                          borderRadius:
+                                              BorderRadius.circular(12),
                                         ),
-                                        const SizedBox(width: 10),
-                                        CustomShortButton(
-                                          onPressed: () {
-                                            if (titleController.text.isEmpty) {
-                                              return;
-                                            }
-                                            viewModel.addCategory(
-                                              titleController.text,
-                                            );
-                                            titleController.clear();
-                                            Get.back();
-                                          },
-                                          title: 'Save',
-                                          heightFactor: 0.25,
-                                          customTextStyle: subTitle.copyWith(
-                                            color: Colors.white,
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 30),
+                                        padding: const EdgeInsets.all(20),
+                                        width: double.infinity,
+                                        height: 150,
+                                        child: Column(children: [
+                                          TextField(
+                                            autofocus: true,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                letterSpacing: 1),
+                                            controller: titleController,
+                                            decoration:
+                                                textFieldDecoration.copyWith(
+                                              hintText: "e.g. Personal,work",
+                                            ),
                                           ),
-                                        )
-                                      ],
-                                    )
-                                  ],
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text("Cancel",
+                                                    style: subTitle.copyWith(
+                                                        color: Colors.black)),
+                                              ),
+                                              const SizedBox(width: 10),
+                                              CustomShortButton(
+                                                onPressed: () {
+                                                  if (titleController
+                                                      .text.isEmpty) {
+                                                    return;
+                                                  }
+                                                  viewModel.addCategory(
+                                                    titleController.text,
+                                                  );
+                                                  titleController.clear();
+                                                  Get.back();
+                                                },
+                                                title: 'Save',
+                                                heightFactor: 0.25,
+                                                customTextStyle:
+                                                    subTitle.copyWith(
+                                                  color: Colors.white,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ]),
+                                      ),
+                                       SizedBox(height: size.height/3 ,)
+                                    ],
+                                  ),
                                 );
+                               
                               },
                             );
                           },

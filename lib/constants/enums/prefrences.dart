@@ -1,11 +1,11 @@
 enum FirstDayOfTheWeek {
-  sunday,
   monday,
   tuesday,
   wednesday,
   thursday,
   friday,
   saturday,
+  sunday,
 }
 
 enum SwipeAction {
@@ -16,13 +16,13 @@ enum SwipeAction {
 }
 
 const firstDayOfTheWeekMapping = {
-  'Sunday': FirstDayOfTheWeek.sunday,
   'Monday': FirstDayOfTheWeek.monday,
   'Tuesday': FirstDayOfTheWeek.tuesday,
   'Wednesday': FirstDayOfTheWeek.wednesday,
   'Thursday': FirstDayOfTheWeek.thursday,
   'Friday': FirstDayOfTheWeek.friday,
   'Saturday': FirstDayOfTheWeek.saturday,
+  'Sunday': FirstDayOfTheWeek.sunday,
 };
 
 const swipeActionMapping = {
