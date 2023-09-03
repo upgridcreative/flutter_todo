@@ -22,7 +22,7 @@ class SettingPageViewModel extends GetxController {
   @override
   onInit() {
     isSmartDateRecognitionEnabled =
-        (_prefs.getBool('isSmartDateRecognitionEnabled') ?? true).obs;
+        (_prefs.getBool('isSmartDateRecognitionEnabled') ?? false).obs;
 
     firstDayOfTheWeek = (FirstDayOfTheWeek.values[
             (_prefs.getInt('firstDayOfTheWeek') ??
