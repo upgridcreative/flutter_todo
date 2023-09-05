@@ -64,21 +64,26 @@ class CategoryList extends StatelessWidget {
                                     children: [
                                       Container(
                                         decoration: BoxDecoration(
-                                          color: ColorClass.grey,
+                                          color: Theme.of(context).cardColor,
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
                                         margin: const EdgeInsets.symmetric(
-                                            horizontal: 30),
+                                          horizontal: 30,
+                                        ),
                                         padding: const EdgeInsets.all(20),
                                         width: double.infinity,
                                         height: 150,
                                         child: Column(children: [
                                           TextField(
                                             autofocus: true,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                letterSpacing: 1),
+                                            style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium
+                                                  ?.color,
+                                              letterSpacing: 1,
+                                            ),
                                             controller: titleController,
                                             decoration:
                                                 textFieldDecoration.copyWith(
@@ -93,9 +98,15 @@ class CategoryList extends StatelessWidget {
                                                 onPressed: () {
                                                   Navigator.of(context).pop();
                                                 },
-                                                child: Text("Cancel",
-                                                    style: subTitle.copyWith(
-                                                        color: Colors.black)),
+                                                child: Text(
+                                                  "Cancel",
+                                                  style: subTitle.copyWith(
+                                                    color: Theme.of(context)
+                                                        .textTheme
+                                                        .displaySmall
+                                                        ?.color,
+                                                  ),
+                                                ),
                                               ),
                                               const SizedBox(width: 10),
                                               CustomShortButton(
@@ -121,11 +132,10 @@ class CategoryList extends StatelessWidget {
                                           ),
                                         ]),
                                       ),
-                                       SizedBox(height: size.height/3 ,)
+                                      SizedBox(height: size.height / 3)
                                     ],
                                   ),
                                 );
-                               
                               },
                             );
                           },
@@ -145,12 +155,6 @@ class CategoryList extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: size.height * 0.05),
-                      Text(
-                        "Long Press To Drag",
-                        style: subTitle.copyWith(
-                          color: Colors.black.withOpacity(0.4),
-                        ),
-                      ),
                       const SizedBox(height: 10),
                     ],
                   ),
