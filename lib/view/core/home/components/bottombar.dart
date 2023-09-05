@@ -18,8 +18,10 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      selectedItemColor: mainColor,
+      selectedItemColor: Theme.of(context).primaryColor,
+      unselectedItemColor: Colors.white70,
       currentIndex: currentIndex,
+      backgroundColor: Theme.of(context).backgroundColor,
       type: BottomNavigationBarType.fixed,
       showSelectedLabels: false,
       showUnselectedLabels: false,
@@ -36,7 +38,9 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
             label: "",
             icon: SvgPicture.asset(
               "assets/icons/" + myBottomBar[index],
-              color: currentIndex == index ? mainColor : Colors.black,
+              color: currentIndex == index
+                  ? Theme.of(context).primaryColor
+                  : Theme.of(context).textTheme.displaySmall?.color,
             ),
           );
         },
