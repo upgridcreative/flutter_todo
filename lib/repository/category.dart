@@ -1,10 +1,9 @@
-import '../sync/usecases/category_sync.dart';
+import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 
 import '../model/category/category.dart';
 import '../model/category/category_controller.dart';
-
-import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import '../sync/usecases/category_sync.dart';
 
 class CategoryRepository extends GetxController {
   final box = Hive.box<Category>('categories');
