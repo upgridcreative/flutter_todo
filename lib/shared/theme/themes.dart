@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_todo/shared/theme/colors.dart';
+
+import 'colors.dart';
 
 final darkTheme = ThemeData(
   useMaterial3: true,
