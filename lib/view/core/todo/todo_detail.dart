@@ -56,7 +56,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 18.sp,
-                        color: Colors.black,
+                        color: Theme.of(context).textTheme.displayLarge?.color,
                       ),
                     ),
                     const Spacer(),
@@ -91,7 +91,7 @@ class _TodoDetailPageState extends State<TodoDetailPage> {
                                   ),
                                 ],
                                 offset: const Offset(0, 20),
-                                color: const Color(0xFFF2F2F2),
+                                color: Theme.of(context).cardColor,
                                 child: const Icon(Icons.more_vert),
                               ),
                             
