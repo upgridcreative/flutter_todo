@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart' as dio;
-import 'package:flutter_todo/service/network_exceptions.dart';
+import 'package:flutter_todo/repository/service/network_exceptions.dart';
 import 'package:get/get.dart';
 
-import '../../../service/api_manager.dart';
+import '../../../repository/service/api_manager.dart';
 import '../datasources/remote_datasource.dart';
 
 class SyncDataDownStream extends GetxController {
