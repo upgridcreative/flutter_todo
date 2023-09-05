@@ -7,7 +7,7 @@ import '../../../model/task/task_controller.dart';
 import '../../../shared/functions/date_functions.dart';
 import '../../../shared/theme/colors.dart';
 import '../../../shared/theme/light.dart';
-import '../../../view_model/home_page.dart';
+import '../../../view_model/home_page_view_model.dart';
 import '../../../view_model/settings_page_view_model.dart';
 import 'components/swipe_backgrounds.dart';
 

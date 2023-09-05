@@ -9,7 +9,7 @@ import '../../../../shared/animations/animations.dart';
 import '../../../components/customProceedButton.dart';
 import '../../../components/customTextField.dart';
 import '../../../../shared/validitors.dart';
-import '../../../../view_model/sign_up.dart';
+import '../../../../view_model/sign_up_view_model.dart';
 import '../../sign_in/sign_in.dart';
 
 class SignUpScreenBody extends StatefulWidget {

@@ -5,7 +5,7 @@ import '../../components/customProceedButton.dart';
 import '../../components/customTextField.dart';
 import '../../components/custom_progress_button.dart';
 import '../../../shared/validitors.dart';
-import '../../../view_model/reset_password.dart';
+import '../../../view_model/reset_password_view_model.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({Key? key}) : super(key: key);

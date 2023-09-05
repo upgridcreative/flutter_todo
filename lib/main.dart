@@ -20,10 +20,10 @@ import 'sync/data/repository/sync_downstrea.dart';
 import 'sync/data/repository/sync_upstream.dart';
 import 'sync/usecases/sync.dart';
 import 'view/authentication/wrapper.dart';
-import 'view_model/auth_wrapper.dart';
-import 'view_model/calander_view.dart';
-import 'view_model/category.dart';
-import 'view_model/home_page.dart';
+import 'view_model/auth_wrapper_view_model.dart';
+import 'view_model/calander_view_model.dart';
+import 'view_model/category_view_model.dart';
+import 'view_model/home_page_view_model.dart';
 
 void main() async {
   await Hive.initFlutter();

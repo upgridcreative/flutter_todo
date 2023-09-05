@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_screenutil/flutter_screenutil.dart";
 import '../../../shared/theme/colors.dart';
 import 'components/calander_task_body.dart';
-import '../../../view_model/calander_view.dart';
+import '../../../view_model/calander_view_model.dart';
 import 'package:get/get.dart';
 
 class CalendarPage extends StatelessWidget {

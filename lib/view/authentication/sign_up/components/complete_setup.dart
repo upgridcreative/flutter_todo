@@ -9,7 +9,7 @@ import '../../../components/customProceedButton.dart';
 import '../../../components/customTextField.dart';
 import '../../../components/custom_progress_button.dart';
 import '../../../../shared/validitors.dart';
-import '../../../../view_model/sign_up.dart';
+import '../../../../view_model/sign_up_view_model.dart';
 
 class SignUpScreenBodyCompletetion extends StatefulWidget {
   const SignUpScreenBodyCompletetion({Key? key}) : super(key: key);

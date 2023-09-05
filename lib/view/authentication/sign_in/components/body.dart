@@ -9,7 +9,7 @@ import '../../../components/customTextField.dart';
 import '../../../components/custom_progress_button.dart';
 import '../../../../shared/validitors.dart';
 import '../../sign_up/sign_up.dart';
-import '../../../../view_model/sign_in.dart';
+import '../../../../view_model/sign_in_view_model.dart';
 import 'package:get/get.dart';
 
 class SignInScreenBody extends StatefulWidget {

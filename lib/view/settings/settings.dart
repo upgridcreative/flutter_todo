@@ -4,7 +4,7 @@ import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import "package:get/get.dart";
 
 import '../components/appbar.dart';
-import '../../view_model/auth_wrapper.dart';
+import '../../view_model/auth_wrapper_view_model.dart';
 import 'components/listTite.dart';
 import 'views/account.dart';
 import 'views/prefrences.dart';
