@@ -2,6 +2,7 @@ import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_todo/shared/theme/themes.dart';
 import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -62,12 +63,6 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark,
-        statusBarColor: Colors.white,
-      ),
-    );
     return ScreenUtilInit(
       designSize: const Size(367, 800),
       minTextAdapt: true,
@@ -75,7 +70,9 @@ class Main extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           navigatorKey: navKey,
-          theme: lightTextTheme,
+          theme: lightTheme,
+          themeMode: ThemeMode.dark,
+          darkTheme: darkTheme,
           home: SafeArea(
             child: AuthWrapper(),
           ),
