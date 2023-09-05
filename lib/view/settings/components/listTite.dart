@@ -25,7 +25,7 @@ class CustomListTile extends StatelessWidget {
       onTap: navigate,
       child: Container(
         decoration: BoxDecoration(
-          color:  const Color(0xFFEEEEEE),
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(5),
         ),
         padding: EdgeInsets.symmetric(
@@ -45,7 +45,9 @@ class CustomListTile extends StatelessWidget {
                 fontSize: 18,
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w600,
-                color: titleColor ?? Colors.black,
+                color: titleColor ??
+                    Theme.of(context).textTheme.displayMedium?.color ??
+                    Colors.black,
               ),
             ),
             const Spacer(),
@@ -64,4 +66,3 @@ class CustomListTile extends StatelessWidget {
     );
   }
 }
-
