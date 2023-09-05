@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_todo/shared/theme/themes.dart';
 import 'package:flutter_todo/view_model/settings_page_view_model.dart';
+import 'package:flutter_todo/view_model/theme_view_model.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -42,7 +43,7 @@ void main() async {
   Get.put(SyncRemoteDataSource());
   Get.put(SyncDataDownStream());
   Get.put(SyncLocalDataSource());
-
+  Get.put(ThemeViewModel());
 
 
   final cron = Cron();
@@ -52,6 +53,8 @@ void main() async {
       SyncToolKit().syncData();
     },
   );
+
+
 
   runApp(const Main());
 }

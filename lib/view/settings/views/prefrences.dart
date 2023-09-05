@@ -13,7 +13,7 @@ class PreferenceSettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingPageViewModel viewModel = Get.find();
-    final ThemeViewModel themeViewModel = Get.put(ThemeViewModel());
+    final ThemeViewModel themeViewModel = Get.find();
     return SafeArea(
       child: Scaffold(
         body: ListView(
