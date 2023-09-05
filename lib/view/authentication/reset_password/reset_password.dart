@@ -23,10 +23,10 @@ class ResetPassword extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 50),
-                const Text(
+                Text(
                   'Reset Password',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                     fontFamily: 'Metro',
                     fontSize: 30,
                     fontWeight: FontWeight.w700,

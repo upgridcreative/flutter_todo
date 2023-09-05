@@ -75,10 +75,10 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
+            Text(
               'Sign In',
               style: TextStyle(
-                color: Colors.black,
+                color: Theme.of(context).textTheme.displayMedium?.color,
                 fontFamily: 'Metro',
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
@@ -145,16 +145,21 @@ class _SignInScreenBodyState extends State<SignInScreenBody> {
                   TextSpan(
                     text: 'Don\'t have an account? ',
                     style: TextStyle(
-                      color: Colors.black.withOpacity(.6),
+                      color: Theme.of(context)
+                          .textTheme
+                          .displaySmall
+                          ?.color
+                          ?.withOpacity(.5),
                       fontFamily: 'Metro',
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
-                    children: const [
+                    children: [
                       TextSpan(
                         text: 'Sign Up',
                         style: TextStyle(
-                          color: Colors.black,
+                          color:
+                              Theme.of(context).textTheme.displaySmall?.color,
                           fontFamily: 'Metro',
                           fontSize: 16,
                           fontWeight: FontWeight.w700,

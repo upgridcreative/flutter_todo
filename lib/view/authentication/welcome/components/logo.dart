@@ -11,7 +11,7 @@ class WelcomeScreenLogo extends StatelessWidget {
       height: 120,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: Colors.black,
+        color: Colors.white,
       ),
     );
   }

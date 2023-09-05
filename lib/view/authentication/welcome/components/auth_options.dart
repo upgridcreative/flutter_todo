@@ -35,7 +35,7 @@ class AuthenticationButtons extends StatelessWidget {
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: Colors.black,
+              color: Theme.of(context).textTheme.displaySmall!.color!.withOpacity(.5),
             ),
           ),
           child: Center(
@@ -48,10 +48,10 @@ class AuthenticationButtons extends StatelessWidget {
                   width: 30,
                 ),
                 const SizedBox(width: 10),
-                const Text(
+                Text(
                   'Continue With Google',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displaySmall?.color,
                     fontFamily: 'Metro',
                     fontSize: 19,
                     fontWeight: FontWeight.w600,

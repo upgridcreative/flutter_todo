@@ -77,10 +77,10 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Enter Your Name',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                     fontFamily: 'Metro',
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
@@ -113,7 +113,6 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                 ),
               ],
             ),
-
             const SizedBox(height: 20),
             CustomProceedButton(
               title: 'Next',
@@ -153,7 +152,6 @@ class _SignUpScreenBodyState extends State<SignUpScreenBody> {
                 ),
               ),
             ),
-
           ],
         ),
       ),
