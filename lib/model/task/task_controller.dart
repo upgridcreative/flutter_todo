@@ -1,9 +1,9 @@
-import '../../sync/usecases/task_sync.dart';
+import 'package:get/get.dart';
 
-import 'task.dart';
 import '../../repository/category.dart';
 import '../../shared/functions/date_functions.dart';
-import 'package:get/get.dart';
+import '../../sync/usecases/task_sync.dart';
+import 'task.dart';
 
 class TaskController extends GetxController {
   // final box = Hive.box('tasks');
