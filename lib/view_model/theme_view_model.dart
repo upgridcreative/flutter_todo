@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_todo/shared/prefs/sharedPrefrences.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,6 +10,8 @@ class ThemeViewModel extends GetxController {
   ThemeViewModel() {
     _isDarkTheme =
         (SharedPreferencesClass().prefs.getBool('DARK_MODE') ?? false).obs;
+
+    _setSystemOverlay();
   }
 
   void toggleTheme() {
@@ -16,6 +19,23 @@ class ThemeViewModel extends GetxController {
     SharedPreferencesClass().prefs.setBool('DARK_MODE', _isDarkTheme.value);
     Get.changeThemeMode(
       _isDarkTheme.value ? ThemeMode.dark : ThemeMode.light,
+    );
+    _setSystemOverlay();
+  }
+
+  void _setSystemOverlay() {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: _isDarkTheme.value ? Colors.black : Colors.white,
+        statusBarIconBrightness:
+            _isDarkTheme.value ? Brightness.light : Brightness.dark,
+        statusBarBrightness:
+            _isDarkTheme.value ? Brightness.light : Brightness.dark,
+        systemNavigationBarColor:
+            _isDarkTheme.value ? Colors.black : Colors.white,
+        systemNavigationBarIconBrightness:
+            _isDarkTheme.value ? Brightness.light : Brightness.dark,
+      ),
     );
   }
 
