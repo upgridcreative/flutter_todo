@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/theme/light.dart';
 import '../../../view_model/home_page_view_model.dart';
 import '../../settings/settings.dart';
 import '../calander/calander.dart';

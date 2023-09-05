@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../model/task/task_controller.dart';
-import '../../../../shared/theme/light.dart';
 import '../../../../view_model/task_view_model.dart';
 
 class TodoDetailFormFields extends StatelessWidget {

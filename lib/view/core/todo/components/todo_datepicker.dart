@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../components/datepicker/datePicker.dart';
 import '../../../../shared/functions/date_functions.dart';
 import '../../../../view_model/task_view_model.dart';
+import '../../../components/datepicker/datePicker.dart';
 
 class DueDatePicker extends StatelessWidget {
   DueDatePicker({Key? key}) : super(key: key);
