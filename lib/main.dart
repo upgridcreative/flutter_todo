@@ -43,9 +43,7 @@ void main() async {
   Get.put(SyncDataDownStream());
   Get.put(SyncLocalDataSource());
 
-  SharedPreferencesClass();
 
-  SyncToolKit().syncData(); //Todo: only when the user is logged in
 
   final cron = Cron();
   cron.schedule(
@@ -73,7 +71,7 @@ class Main extends StatelessWidget {
           theme: lightTheme,
           themeMode: ThemeMode.dark,
           darkTheme: darkTheme,
-          home: SafeArea(
+          home:  SafeArea(
             child: AuthWrapper(),
           ),
           debugShowCheckedModeBanner: false,
