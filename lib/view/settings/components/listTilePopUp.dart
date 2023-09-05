@@ -98,7 +98,7 @@ class CustomValueSelectPopUpDialog extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           constraints: BoxConstraints(
-            maxHeight: Get.height * .1.sp * values.length,
+            maxHeight: Get.height * .15.h * values.length * .85,
             maxWidth: Get.width * .8,
           ),
           alignment: Alignment.center,
