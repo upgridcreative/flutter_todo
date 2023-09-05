@@ -15,13 +15,13 @@ class CalanderTaskViewSegment extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text(
+            Text(
               "Tasks",
               style: TextStyle(
                 fontFamily: "Montserrat",
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: Color(0xff000000),
+                color: Theme.of(context).textTheme.displayMedium?.color,
                 height: 22 / 18,
               ),
               textAlign: TextAlign.center,
@@ -30,11 +30,11 @@ class CalanderTaskViewSegment extends StatelessWidget {
             Obx(
               () => Text(
                 viewModel.unfinishedTasksCount.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontFamily: "Montserrat",
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xff000000),
+                  color: Theme.of(context).textTheme.displayMedium?.color,
                   height: 22 / 18,
                 ),
                 textAlign: TextAlign.center,
@@ -47,8 +47,9 @@ class CalanderTaskViewSegment extends StatelessWidget {
                   iconSize: 15,
                   padding: EdgeInsets.zero,
                   onPressed: viewModel.toggleUnfinishedTasksVisibility,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_ios_new,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                   ),
                 ),
               ),
@@ -84,13 +85,13 @@ class CalanderTaskViewSegment extends StatelessWidget {
         ),
         Row(
           children: [
-            const Text(
+            Text(
               "Completed",
               style: TextStyle(
                 fontFamily: "Montserrat",
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: Color(0xff000000),
+                color: Theme.of(context).textTheme.displayMedium?.color,
                 height: 22 / 18,
               ),
               textAlign: TextAlign.center,
@@ -99,11 +100,11 @@ class CalanderTaskViewSegment extends StatelessWidget {
             Obx(
               () => Text(
                 viewModel.finishedTasksCount.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontFamily: "Montserrat",
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xff000000),
+                  color: Theme.of(context).textTheme.displayMedium?.color,
                   height: 22 / 18,
                 ),
                 textAlign: TextAlign.center,
@@ -116,8 +117,9 @@ class CalanderTaskViewSegment extends StatelessWidget {
                   iconSize: 15,
                   padding: EdgeInsets.zero,
                   onPressed: viewModel.togglefinishedTasksVisibility,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_ios_new,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                   ),
                 ),
               ),
