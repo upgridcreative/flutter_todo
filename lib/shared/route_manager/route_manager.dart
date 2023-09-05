@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../animations/page_transition.dart';
+import '../animations/page_transition.dart';
 import '../../public.dart';
 import '../../view/core/home/home.dart';
 

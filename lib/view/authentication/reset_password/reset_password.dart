@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../shared/components/customProceedButton.dart';
-import '../../../shared/components/customTextField.dart';
-import '../../../shared/components/custom_progress_button.dart';
+import '../../components/customProceedButton.dart';
+import '../../components/customTextField.dart';
+import '../../components/custom_progress_button.dart';
 import '../../../shared/validitors.dart';
 import '../../../view_model/reset_password.dart';
 

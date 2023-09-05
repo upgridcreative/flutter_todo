@@ -3,7 +3,7 @@ import 'package:flutter_todo/view/settings/views/privicy_policy.dart';
 import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import "package:get/get.dart";
 
-import '../../shared/components/appbar.dart';
+import '../components/appbar.dart';
 import '../../view_model/auth_wrapper.dart';
 import 'components/listTite.dart';
 import 'views/account.dart';

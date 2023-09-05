@@ -8,7 +8,7 @@ import '../model/category/category_controller.dart';
 import '../model/task/task_controller.dart';
 import '../repository/category.dart';
 import '../repository/task.dart';
-import '../shared/datepicker/datePicker.dart';
+import '../view/components/datepicker/datePicker.dart';
 import '../view/core/todo/components/delete_alert.dart';
 import 'settings_page_view_model.dart';
 

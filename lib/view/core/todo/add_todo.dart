@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../repository/category.dart';
-import '../../../shared/datepicker/datePicker.dart';
+import '../../components/datepicker/datePicker.dart';
 import '../../../shared/functions/date_functions.dart';
 import '../../../shared/theme/light.dart';
 import '../../../view_model/add_todo_view_model.dart';
