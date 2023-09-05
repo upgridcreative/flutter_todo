@@ -39,23 +39,30 @@ class _CategoriesTileState extends State<CategoriesTile> {
           children: [
             Text(
               widget.category.title.value,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
+                color: Theme.of(context).textTheme.displaySmall?.color,
               ),
             ),
             const Spacer(),
             Text(
               viewModel.getTaskCountOf(widget.category).toString(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
+                color: Theme.of(context).textTheme.displaySmall?.color,
                 fontWeight: FontWeight.bold,
               ),
             ),
             //!Edit button not showing pop up
             PopupMenuButton(
               padding: EdgeInsets.zero,
+              icon: Icon(
+                Icons.more_vert,
+                color: Theme.of(context).textTheme.displaySmall?.color,
+              ),
               shape: RoundedRectangleBorder(borderRadius: borderRadius),
+              color: Theme.of(context).cardColor,
               itemBuilder: (context) => [
                 PopupMenuItem<String>(
                   onTap: () async {
@@ -72,12 +79,20 @@ class _CategoriesTileState extends State<CategoriesTile> {
                   },
                   child: InkWell(
                     key: Key(widget.category.tempId.toString()),
-                    child: const Text('Edit'),
+                    child: Text(
+                      'Edit',
+                      style: TextStyle(
+                        color: Theme.of(context).textTheme.displayMedium?.color,
+                      ),
+                    ),
                   ),
                 ),
                 PopupMenuItem<String>(
                   onTap: () => viewModel.deleteCategory(widget.category),
-                  child: const Text('Delete'),
+                  child: Text(
+                    'Delete',
+                    style: TextStyle(color: Colors.red.withOpacity(.9)),
+                  ),
                 ),
               ],
             ),
@@ -100,14 +115,24 @@ class EditDialog extends StatelessWidget {
     final CategoryPageViewModel viewModel = Get.find();
 
     return AlertDialog(
-      backgroundColor: ColorClass.grey,
-      actionsPadding: const EdgeInsets.only(right: 12),
-      title: const Text("Edit"),
+      backgroundColor: Theme.of(context).cardColor,
+      actionsPadding: const EdgeInsets.only(right: 20, bottom: 15),
+      title: Text(
+        "Edit",
+        style: TextStyle(
+          color: Theme.of(context).textTheme.displayLarge?.color,
+        ),
+      ),
       content: TextFormField(
+        autofocus: true,
         controller: titleController..text = category.title.value,
         decoration: textFieldDecoration.copyWith(
+          contentPadding: EdgeInsets.zero,
           hintText: "New title",
         ),
+        style: TextStyle(
+          color: Theme.of(context).textTheme.displayMedium?.color,
+        )
       ),
       actions: [
         Row(
@@ -120,7 +145,7 @@ class EditDialog extends StatelessWidget {
               child: Text(
                 "Cancel",
                 style: subTitle.copyWith(
-                  color: ColorClass.black70,
+                  color: Theme.of(context).textTheme.displaySmall?.color,
                 ),
               ),
             ),

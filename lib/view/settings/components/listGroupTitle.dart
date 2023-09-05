@@ -10,10 +10,12 @@ class ListGroupTitle extends StatelessWidget {
       padding: EdgeInsets.only(left: 10, top: paddingtop),
       child: Text(
         title,
-        style: const TextStyle(
-          color: Colors.black,
-          fontFamily: 'MontserratB',
+        style: TextStyle(
+          color:
+              Theme.of(context).textTheme.displayLarge?.color ?? Colors.black,
+          fontFamily: 'Montserrat',
           fontSize: 21,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

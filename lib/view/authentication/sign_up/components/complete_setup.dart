@@ -78,10 +78,10 @@ class _SignUpScreenBodyCompletetionState
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Complete Setup',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                     fontFamily: 'Metro',
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
@@ -135,16 +135,20 @@ class _SignUpScreenBodyCompletetionState
                     ),
             ),
             const SizedBox(height: 10),
-            const Padding(
-              padding: EdgeInsets.only(left: 5.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 5.0),
               child: Text.rich(
                 TextSpan(
                   style: TextStyle(
-                    color: Colors.black38,
+                    color: Theme.of(context)
+                        .textTheme
+                        .displaySmall
+                        ?.color
+                        ?.withOpacity(.4),
                     fontFamily: 'Metro',
                     fontWeight: FontWeight.w500,
                   ),
-                  children: [
+                  children: const [
                     TextSpan(text: 'By continuing  you agree to our '),
                     TextSpan(
                       text: 'Terms of Conditions ',

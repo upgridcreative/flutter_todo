@@ -35,7 +35,7 @@ class CustomListTileWithSubtitle extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFFEEEEEE),
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(5),
         ),
         padding: const EdgeInsets.symmetric(
@@ -47,20 +47,22 @@ class CustomListTileWithSubtitle extends StatelessWidget {
           children: [
             Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 17,
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w600,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.displayMedium?.color ??
+                    Colors.black,
               ),
             ),
             Text(
               subText,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14,
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w400,
-                color: Colors.black,
+                color: Theme.of(context).textTheme.displaySmall?.color ??
+                    Colors.black,
               ),
             ),
           ],
@@ -92,11 +94,11 @@ class CustomValueSelectPopUpDialog extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 20),
           decoration: BoxDecoration(
-            color: const Color(0xFFEEEEEE),
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(10),
           ),
           constraints: BoxConstraints(
-            maxHeight: Get.height * .1.sp * values.length,
+            maxHeight: Get.height * .15.h * values.length * .85,
             maxWidth: Get.width * .8,
           ),
           alignment: Alignment.center,
@@ -107,8 +109,9 @@ class CustomValueSelectPopUpDialog extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, bottom: 30),
                 child: Text(
                   parentTitle,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontSize: 18,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -138,8 +141,14 @@ class CustomValueSelectPopUpDialog extends StatelessWidget {
                                     value,
                                     style: TextStyle(
                                       color: currentValue() == value
-                                          ? Colors.black.withAlpha(250)
-                                          : Colors.black.withAlpha(150),
+                                          ? Theme.of(context)
+                                              .textTheme
+                                              .displayMedium
+                                              ?.color
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .displaySmall
+                                              ?.color,
                                       fontWeight: FontWeight.w400,
                                       fontSize: 20,
                                     ),

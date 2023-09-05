@@ -33,7 +33,7 @@ class TodoDetailFormFields extends StatelessWidget {
                             shape: BoxShape.circle,
                             border: Border.all(
                               width: 2,
-                              color: mainColor,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
                         )
@@ -69,7 +69,7 @@ class TodoDetailFormFields extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 17.sp,
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                   ),
                 ),
               ),
@@ -79,11 +79,11 @@ class TodoDetailFormFields extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Flexible(
+              Flexible(
                 flex: 1,
                 child: Icon(
                   Icons.menu,
-                  color: mainColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               const SizedBox(width: 20),
@@ -99,7 +99,11 @@ class TodoDetailFormFields extends StatelessWidget {
                     hintText: 'Description',
                     hintStyle: TextStyle(
                       fontSize: 14.sp,
-                      color: const Color(0xFF828282),
+                      color: Theme.of(context)
+                          .textTheme
+                          .displaySmall
+                          ?.color
+                          ?.withOpacity(.6),
                     ),
                     contentPadding: EdgeInsets.zero,
                     border: InputBorder.none,
@@ -112,8 +116,16 @@ class TodoDetailFormFields extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: task.description.value != null
-                        ? const Color(0xFF828282)
-                        : const Color(0xFF828282).withOpacity(.7),
+                        ? Theme.of(context)
+                            .textTheme
+                            .displaySmall
+                            ?.color
+                            ?.withOpacity(.9)
+                        : Theme.of(context)
+                            .textTheme
+                            .displaySmall
+                            ?.color
+                            ?.withOpacity(.5),
                     fontWeight: task.description.value != null
                         ? FontWeight.w500
                         : FontWeight.w400,

@@ -9,14 +9,14 @@ class WelcomeIntro extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 0.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           SizedBox(height: 10),
           FittedBox(
             child: Text(
               'Manage Your Tasks',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.black,
+                color: Theme.of(context).textTheme.displayMedium?.color,
                 fontFamily: 'Metro',
                 fontSize: 25,
                 letterSpacing: 1.5,
@@ -29,7 +29,11 @@ class WelcomeIntro extends StatelessWidget {
             'Keep Track Of Your',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.black54,
+              color: Theme.of(context)
+                  .textTheme
+                  .displaySmall
+                  ?.color
+                  ?.withOpacity(.7),
               fontFamily: 'Metro',
               fontSize: 16,
               letterSpacing: 1.5,
@@ -37,11 +41,14 @@ class WelcomeIntro extends StatelessWidget {
             ),
           ),
           SizedBox(height: 5),
-
           Text(
             'Tasks and Habits.',
             style: TextStyle(
-              color: Colors.black54,
+              color: Theme.of(context)
+                  .textTheme
+                  .displaySmall
+                  ?.color
+                  ?.withOpacity(.7),
               fontFamily: 'Metro',
               fontSize: 16,
               letterSpacing: 1.5,

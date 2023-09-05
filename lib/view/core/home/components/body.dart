@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/shared/theme/colors.dart';
 import 'package:get/get.dart';
 
 import '../../../../view_model/home_page.dart';
@@ -55,11 +56,14 @@ class HomeBodyComponent extends StatelessWidget {
                         },
                         value: 1,
                         child: Row(
-                          children: const [
+                          children: [
                             Text(
                               "Manage Categories",
                               style: TextStyle(
-                                color: Colors.black,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .displayMedium
+                                    ?.color,
                               ),
                             )
                           ],
@@ -67,7 +71,7 @@ class HomeBodyComponent extends StatelessWidget {
                       ),
                     ],
                     offset: const Offset(0, 20),
-                    color: const Color(0xFFF2F2F2),
+                    color: Theme.of(context).cardColor,
                     child: const Icon(Icons.more_vert),
                   ),
                 ],
@@ -77,18 +81,19 @@ class HomeBodyComponent extends StatelessWidget {
             Text.rich(
               TextSpan(
                 children: [
-                  const TextSpan(
+                  TextSpan(
                     text: 'Today, ',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF80B231),
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
                   TextSpan(
                     text: controller.dateToday,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
+                      color: Theme.of(context).textTheme.displayMedium?.color,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -98,19 +103,13 @@ class HomeBodyComponent extends StatelessWidget {
             const SizedBox(height: 10),
             Flexible(
               child: Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+                decoration: const BoxDecoration(),
                 child: ListView.separated(
                   shrinkWrap: true,
                   separatorBuilder: (context, index) => Container(
                     height: 1,
                     width: double.infinity,
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                   ),
                   itemCount: controller.getTasks().length,
                   itemBuilder: (BuildContext context, int index) {
@@ -153,7 +152,7 @@ class CatagorySwitch extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(right: 5),
         decoration: BoxDecoration(
-          color: isActive ? const Color(0xFF484B6A) : const Color(0xFFEEEEEE),
+          color: isActive ? ColorClass.primary : Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(12),
         ),
         alignment: Alignment.center,
@@ -163,7 +162,9 @@ class CatagorySwitch extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: isActive ? Colors.white : Colors.black,
+            color: isActive
+                ? Colors.white
+                : Theme.of(context).textTheme.displaySmall?.color,
           ),
         ),
       ),

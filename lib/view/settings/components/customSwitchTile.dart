@@ -23,7 +23,7 @@ class _CustomSwitchTileState extends State<CustomSwitchTile> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFFEEEEEE),
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(5),
       ),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -32,11 +32,12 @@ class _CustomSwitchTileState extends State<CustomSwitchTile> {
         children: [
           Text(
             widget.title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 17,
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.w600,
-              color: Colors.black,
+              color: Theme.of(context).textTheme.displayMedium?.color ??
+                  Colors.black,
             ),
           ),
           const Spacer(),

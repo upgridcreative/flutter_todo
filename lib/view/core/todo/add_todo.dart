@@ -27,7 +27,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
     final descriptionTextEditingController = useTextEditingController();
 
     return Container(
-      color: const Color(0xFFD2D3DB),
+      color: Theme.of(context).cardColor,
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       height: 250,
       child: Column(
@@ -38,14 +38,14 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
               fontWeight: FontWeight.w600,
               fontSize: 18.sp,
               letterSpacing: 1.5,
-              color: Colors.black,
+              color: Theme.of(context).textTheme.displayMedium?.color,
             ),
             autofocus: true,
             decoration: InputDecoration(
               hintStyle: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
-                color: Colors.black.withOpacity(.8),
+                color: Theme.of(context).textTheme.displaySmall?.color,
               ),
               hintText: 'Eg. Finish Homework',
               border: InputBorder.none,
@@ -60,7 +60,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 14.sp,
-              color: Colors.black87,
+              color: Theme.of(context).textTheme.displaySmall?.color,
               letterSpacing: -.1,
             ),
             maxLines: 3,
@@ -71,7 +71,11 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                 fontSize: 14.sp,
                 letterSpacing: -.1,
                 wordSpacing: .004,
-                color: Colors.black.withOpacity(.87),
+                color: Theme.of(context)
+                    .textTheme
+                    .displaySmall
+                    ?.color
+                    ?.withOpacity(.6),
               ),
               hintText: 'Description',
               border: InputBorder.none,
@@ -102,7 +106,8 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                   margin: const EdgeInsets.only(right: 5),
                   height: 50,
                   decoration: BoxDecoration(
-                    color: false ? mainColor : const Color(0xFFEEEEEE),
+                    color:
+                        Theme.of(context).colorScheme.secondary.withOpacity(.5),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   alignment: Alignment.center,
@@ -117,7 +122,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: false ? Colors.white : Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -145,7 +150,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                   margin: const EdgeInsets.only(right: 5),
                   height: 30,
                   decoration: BoxDecoration(
-                    color: true ? mainColor : const Color(0xFFEEEEEE),
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   alignment: Alignment.center,
@@ -154,7 +159,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: true ? Colors.white : Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -166,12 +171,14 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
                         margin: const EdgeInsets.only(right: 5),
                         height: 30,
                         decoration: BoxDecoration(
-                          color: true ? mainColor : const Color(0xFFEEEEEE),
+                          color: true
+                              ? Theme.of(context).primaryColor
+                              : const Color(0xFFEEEEEE),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         alignment: Alignment.center,
                         child: Text(
-                          categoryDropDownValue ?? 'All',
+                          element.title.value,
                           style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -185,7 +192,7 @@ class _AddTodoSheetState extends State<AddTodoSheet> {
               const Spacer(),
               Container(
                 decoration: BoxDecoration(
-                  color: mainColor,
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: IconButton(

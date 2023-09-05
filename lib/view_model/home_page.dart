@@ -40,6 +40,12 @@ class HomePageViewModel extends GetxController {
       return dueToday;
     }
 
+    if (!categoryRepository.hasCategoryWithTempId(currentTabId.value!)) {
+      currentTabId.value = null;
+      currentTab('My Day');
+      return dueToday;
+    }
+
     final tabAsCategory =
         categoryRepository.getCategoryByTempId(currentTabId.value!);
 

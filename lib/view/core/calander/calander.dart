@@ -27,7 +27,7 @@ class CalendarPage extends StatelessWidget {
                       fontFamily: "Montserrat",
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
-                      color: const Color(0xff000000),
+                      color: Theme.of(context).textTheme.bodyLarge?.color,
                       height: 24 / 20,
                     ),
                   ),
@@ -35,14 +35,14 @@ class CalendarPage extends StatelessWidget {
                 const Spacer(),
                 GestureDetector(
                   onTap: () async {
-                final datePicked = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(2000, 01, 01),
-                          lastDate: DateTime(2069, 01, 01),
-                        );
+                    final datePicked = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000, 01, 01),
+                      lastDate: DateTime(2069, 01, 01),
+                    );
 
-                        viewModel.setDate(datePicked);
+                    viewModel.setDate(datePicked);
                   },
                   child: Container(
                     width: 50.h,
@@ -73,10 +73,10 @@ class CalendarPage extends StatelessWidget {
               height: 89.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: const Color(0XffD2D3DB),
+                color: Theme.of(context).cardColor,
               ),
               child: Obx(
-                ()=>  Row(
+                () => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: viewModel.daysOfWeek
@@ -93,7 +93,10 @@ class CalendarPage extends StatelessWidget {
                                   fontFamily: "Montserrat",
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xff000000),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall
+                                      ?.color,
                                   height: 15 / 12,
                                 ),
                                 textAlign: TextAlign.left,
@@ -107,7 +110,8 @@ class CalendarPage extends StatelessWidget {
                                   decoration: mapKey.values.first ==
                                           viewModel.currentDate.value
                                       ? BoxDecoration(
-                                          borderRadius: BorderRadius.circular(12),
+                                          borderRadius:
+                                              BorderRadius.circular(12),
                                           color: ColorClass.primary,
                                         )
                                       : null,
@@ -121,7 +125,10 @@ class CalendarPage extends StatelessWidget {
                                         color: mapKey.values.first ==
                                                 viewModel.currentDate.value
                                             ? Colors.white
-                                            : const Color(0xff010100),
+                                            : Theme.of(context)
+                                                .textTheme
+                                                .displaySmall
+                                                ?.color,
                                         height: 15 / 12,
                                       ),
                                       textAlign: TextAlign.left,

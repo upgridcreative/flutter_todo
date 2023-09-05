@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         duration: const Duration(milliseconds: 230),
         opacity: _currentIndex == 2 ? 0 : 1,
         child: FloatingActionButton(
-          backgroundColor: mainColor,
+          backgroundColor: Theme.of(context).primaryColor,
           onPressed: () => Get.bottomSheet(
             BottomSheet(
               enableDrag: false,

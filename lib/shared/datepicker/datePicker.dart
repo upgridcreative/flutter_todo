@@ -191,14 +191,14 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
           left: 0,
           right: 0,
           child: Container(
-            decoration: const BoxDecoration(
-              border: Border(
+            decoration:  BoxDecoration(
+              border: const Border(
                 top: BorderSide(
                   color: Colors.black87,
                   width: 1,
                 ),
               ),
-              color: Colors.white,
+              color: Theme.of(context).cardColor,
             ),
             height: 60,
             child: Row(

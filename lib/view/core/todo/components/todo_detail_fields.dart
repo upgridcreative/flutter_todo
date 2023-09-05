@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:get/get.dart";
 
-import '../../../../shared/theme/light.dart';
 import '../../../../view_model/task_view_model.dart';
 
 class CategoryDropDownButton extends StatelessWidget {
@@ -32,7 +31,7 @@ class CategoryDropDownButton extends StatelessWidget {
         hint: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: mainColor.withOpacity(.7),
+            color: Theme.of(context).colorScheme.secondary.withOpacity(.7),
           ),
           alignment: Alignment.center,
           child: const Padding(
@@ -56,7 +55,7 @@ class CategoryDropDownButton extends StatelessWidget {
               (element) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: mainColor.withOpacity(.7),
+                  color: Theme.of(context).colorScheme.secondary.withOpacity(.7),
                 ),
                 alignment: Alignment.center,
                 child: Padding(

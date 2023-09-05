@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_todo/view_model/home_page.dart';
 import 'package:get/get.dart';
 
-import '../../../constants/decoration.dart';
 import '../../../model/task/task_controller.dart';
-import '../../../repository/task.dart';
 import '../../../shared/functions/date_functions.dart';
+import '../../../shared/theme/colors.dart';
 import '../../../shared/theme/light.dart';
+import '../../../view_model/home_page.dart';
 import '../../../view_model/settings_page_view_model.dart';
 import 'components/swipe_backgrounds.dart';
 
@@ -16,7 +15,7 @@ class TodoTile extends StatelessWidget {
   TodoTile({Key? key, required this.task}) : super(key: key);
 
   final TaskController task;
-  final HomePageViewModel homePageViewModel= Get.find();
+  final HomePageViewModel homePageViewModel = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +52,7 @@ class TodoTile extends StatelessWidget {
                             shape: BoxShape.circle,
                             border: Border.all(
                               width: 2,
-                              color: mainColor,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                         )
@@ -66,6 +65,7 @@ class TodoTile extends StatelessWidget {
                           child: SvgPicture.asset(
                             "assets/icons/done.svg",
                             height: 25,
+                            color: ColorClass.primary,
                             width: 25,
                           ),
                         ),
@@ -87,8 +87,14 @@ class TodoTile extends StatelessWidget {
                           letterSpacing: -.01,
                           fontSize: 13.5.sp,
                           color: task.isChecked.value
-                              ? Colors.black.withOpacity(.6)
-                              : Colors.black,
+                              ? Theme.of(context)
+                                  .textTheme
+                                  .displaySmall
+                                  ?.color?.withOpacity(.7)
+                              : Theme.of(context)
+                                  .textTheme
+                                  .displayMedium
+                                  ?.color,
                           decoration: task.isChecked.value
                               ? TextDecoration.lineThrough
                               : null,
@@ -108,7 +114,7 @@ class TodoTile extends StatelessWidget {
                                     SvgPicture.asset(
                                       "assets/icons/calender.svg",
                                       color:
-                                          !task.isDue ? Colors.red : mainColor,
+                                          !task.isDue ? Colors.red.withOpacity(.9) : Theme.of(context).colorScheme.secondary,
                                     ),
                                     const SizedBox(width: 5),
                                     Text(
@@ -117,8 +123,8 @@ class TodoTile extends StatelessWidget {
                                         fontSize: 11,
                                         fontWeight: FontWeight.w700,
                                         color: !task.isDue
-                                            ? Colors.red
-                                            : mainColor,
+                                            ? Colors.red.withOpacity(.9)
+                                            : Theme.of(context).colorScheme.secondary,
                                       ),
                                     )
                                   ],
@@ -130,16 +136,22 @@ class TodoTile extends StatelessWidget {
                                       horizontal: 6.0),
                                   child: Text(
                                     '|',
-                                    style: noteTag,
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
                                   ),
                                 ),
                               if (task.categoryTempId.value != null)
                                 Text(
                                   task.category,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w700,
-                                    color: Colors.blue,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 ),
                             ],

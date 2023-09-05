@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/view_model/theme_view_model.dart';
 import 'package:get/get.dart';
 
 import '../../../view_model/settings_page_view_model.dart';
@@ -12,7 +13,7 @@ class PreferenceSettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingPageViewModel viewModel = Get.find();
-
+    final ThemeViewModel themeViewModel = Get.put(ThemeViewModel());
     return SafeArea(
       child: Scaffold(
         body: ListView(
@@ -28,6 +29,14 @@ class PreferenceSettingsScreen extends StatelessWidget {
                 title: 'Smart Date Recognition',
                 value: viewModel.isSmartDateRecognitionEnabled.value,
                 onTap: viewModel.toggleSmartDateRecognition,
+              ),
+            ),
+            const SizedBox(height: 5),
+            Obx(
+              () => CustomSwitchTile(
+                title: 'Dark Theme',
+                value: themeViewModel.isDarkTheme.value,
+                onTap: themeViewModel.toggleTheme,
               ),
             ),
             const SizedBox(height: 5),
