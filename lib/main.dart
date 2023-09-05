@@ -45,7 +45,6 @@ void main() async {
   Get.put(SyncLocalDataSource());
   Get.put(ThemeViewModel());
 
-
   final cron = Cron();
   cron.schedule(
     Schedule(minutes: 1),
@@ -53,8 +52,6 @@ void main() async {
       SyncToolKit().syncData();
     },
   );
-
-
 
   runApp(const Main());
 }
@@ -72,9 +69,13 @@ class Main extends StatelessWidget {
         return GetMaterialApp(
           navigatorKey: navKey,
           theme: lightTheme,
-          themeMode: ThemeMode.dark,
+          themeMode: SharedPreferencesClass().prefs.getBool('DARK_MODE') == null
+              ? ThemeMode.system
+              : SharedPreferencesClass().prefs.getBool('DARK_MODE') == true
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
           darkTheme: darkTheme,
-          home:  SafeArea(
+          home: const SafeArea(
             child: AuthWrapper(),
           ),
           debugShowCheckedModeBanner: false,
