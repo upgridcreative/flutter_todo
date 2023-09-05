@@ -1,10 +1,10 @@
+import 'package:get/get.dart';
+
 import '../model/category/category_controller.dart';
 import '../model/task/task_controller.dart';
 import '../repository/category.dart';
 import '../repository/task.dart';
 import 'home_page.dart';
-
-import 'package:get/get.dart';
 
 class CategoryPageViewModel extends GetxController {
   static CategoryPageViewModel get instance => Get.find();

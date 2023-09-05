@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_todo/shared/prefs/sharedPrefrences.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../shared/prefs/sharedPrefrences.dart';
 
 class ThemeViewModel extends GetxController {
   late RxBool _isDarkTheme;

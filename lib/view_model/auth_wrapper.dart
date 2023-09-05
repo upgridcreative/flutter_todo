@@ -1,8 +1,9 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
+
 import '../repository/category.dart';
 import '../repository/task.dart';
 import '../view/authentication/welcome/welcome.dart';
-import 'package:get/get.dart';
 
 class AuthWrapperViewModel extends GetxController {
   final _storage = const FlutterSecureStorage();
