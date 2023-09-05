@@ -3,14 +3,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+
 import '../../../../shared/animations/animations.dart';
+import '../../../../shared/validitors.dart';
+import '../../../../view_model/sign_in_view_model.dart';
 import '../../../components/customProceedButton.dart';
 import '../../../components/customTextField.dart';
 import '../../../components/custom_progress_button.dart';
-import '../../../../shared/validitors.dart';
 import '../../sign_up/sign_up.dart';
-import '../../../../view_model/sign_in_view_model.dart';
-import 'package:get/get.dart';
 
 class SignInScreenBody extends StatefulWidget {
   const SignInScreenBody({Key? key}) : super(key: key);
