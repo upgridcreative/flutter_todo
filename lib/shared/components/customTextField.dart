@@ -63,8 +63,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
           focusNode: widget.node,
           controller: widget.controller,
           keyboardType: getKeyboardType(widget.textFieldType),
-          style: const TextStyle(
-            color: Color(0xFF000000),
+          style: TextStyle(
+            color: Theme.of(context).textTheme.displayMedium?.color,
             fontWeight: FontWeight.w600,
             fontFamily: 'RHD',
             fontSize: 16,
@@ -88,32 +88,23 @@ class _CustomTextFieldState extends State<CustomTextField> {
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide.none,
             ),
-            fillColor: const Color(0xFFEEEEEE),
+            fillColor: Theme.of(context).cardColor,
             filled: true,
             contentPadding: const EdgeInsets.all(22),
             hintText: widget.hint,
             errorText: widget.errorMessage,
-            hintStyle: const TextStyle(
-              color: Colors.black54,
+            hintStyle: TextStyle(
+              color: Theme.of(context)
+                  .textTheme
+                  .displayMedium
+                  ?.color
+                  ?.withOpacity(.7),
               fontFamily: 'RHD',
               fontSize: 16,
               fontWeight: FontWeight.w400,
             ),
           ),
         ),
-        // if ((widget.errorMessage ?? '').isNotEmpty)
-        //   Padding(
-        //     padding: const EdgeInsets.only(left: 8.0, top: 5),
-        //     child: Text(
-        //       widget.errorMessage!,
-        //       style: TextStyle(
-        //         color: Colors.red.shade500,
-        //         fontFamily: 'Metro',
-        //         fontWeight: FontWeight.w600,
-        //         fontSize: 10,
-        //       ),
-        //     ),
-        //   ),
       ],
     );
   }

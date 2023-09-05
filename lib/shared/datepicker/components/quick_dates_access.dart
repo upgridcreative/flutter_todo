@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_todo/public.dart';
 import 'package:flutter_todo/shared/functions/date_functions.dart';
 import 'package:get/route_manager.dart';
+import 'package:intl/intl.dart';
 
 extension MyDateTime on DateTime {
   DateTime next(int day) {
@@ -17,6 +18,16 @@ extension MyDateTime on DateTime {
       this.year,
       this.month,
       this.day - (day == weekday ? 7 : (weekday - day) % DateTime.daysPerWeek),
+    );
+  }
+
+  String asString() {
+    return DateFormat.EEEE().format(
+      DateTime(
+        this.year,
+        this.month,
+        this.day,
+      ),
     );
   }
 }
@@ -40,23 +51,29 @@ class QuickDatesAccess extends StatelessWidget {
               Get.back();
             },
             child: Row(
-              children: const [
+              children: [
                 Icon(
                   Icons.date_range_sharp,
                   size: 22,
+                  color: Theme.of(context).primaryColor,
                 ),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 Text(
                   'Today',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                   ),
                 ),
-                Spacer(),
-                Text('Wed'),
-                SizedBox(width: 10),
+                const Spacer(),
+                Text(
+                  DateTime.now().asString(),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+                const SizedBox(width: 10),
               ],
             ),
           ),
@@ -69,23 +86,29 @@ class QuickDatesAccess extends StatelessWidget {
               Get.back();
             },
             child: Row(
-              children: const [
+              children: [
                 Icon(
                   Icons.sunny,
                   size: 22,
+                  color: Theme.of(context).primaryColor,
                 ),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 Text(
                   'Tomorrow',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                   ),
                 ),
-                Spacer(),
-                Text('Thu'),
-                SizedBox(width: 10),
+                const Spacer(),
+                Text(
+                  DateTime.now().add(const Duration(days: 1)).asString(),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
+                const SizedBox(width: 10),
               ],
             ),
           ),
@@ -97,21 +120,29 @@ class QuickDatesAccess extends StatelessWidget {
             },
             child: Row(
               children: [
-                const Icon(
+                Icon(
                   Icons.weekend,
                   size: 22,
+                  color: Theme.of(context).primaryColor,
                 ),
                 const SizedBox(width: 15),
-                const Text(
+                Text(
                   'Next weekend',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                   ),
                 ),
                 const Spacer(),
-                Text(dateFormatterTwo.format(DateTime.now().next(6))),
+                Text(
+                  dateFormatterTwo.format(
+                    DateTime.now().next(6),
+                  ),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                ),
                 const SizedBox(width: 10),
               ],
             ),
@@ -123,18 +154,19 @@ class QuickDatesAccess extends StatelessWidget {
               Get.back();
             },
             child: Row(
-              children: const [
+              children: [
                 Icon(
                   Icons.block,
                   size: 22,
+                  color: Theme.of(context).primaryColor,
                 ),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 Text(
                   'No Date',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black,
+                    color: Theme.of(context).textTheme.displayMedium?.color,
                   ),
                 )
               ],

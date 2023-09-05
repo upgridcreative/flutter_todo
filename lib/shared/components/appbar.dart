@@ -17,10 +17,11 @@ class MyAppBar extends StatelessWidget {
           const SizedBox(width: 10),
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 22,
-              color: Colors.black,
+              color: Theme.of(context).textTheme.displayMedium?.color ??
+                  Colors.black,
             ),
           ),
           const Spacer(),
