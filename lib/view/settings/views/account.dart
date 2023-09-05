@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/view/authentication/reset_password/reset_password.dart';
-import 'package:flutter_todo/view_model/settings_page_view_model.dart';
+import 'package:get/get.dart';
 
+import '../../../view_model/settings_page_view_model.dart';
+import '../../authentication/reset_password/reset_password.dart';
 import '../components/listGroupTitle.dart';
 import '../components/listTite.dart';
-import 'package:get/get.dart';
 
 class AccountAndPrivacySettings extends StatelessWidget {
   const AccountAndPrivacySettings({Key? key}) : super(key: key);

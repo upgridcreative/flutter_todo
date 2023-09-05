@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/shared/theme/colors.dart';
+
+import '../../../shared/theme/colors.dart';
 
 class CustomSwitchTile extends StatefulWidget {
   final String title;
