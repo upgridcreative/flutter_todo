@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
+
 part 'task_hive.g.dart';
 
 @HiveType(typeId: 10)

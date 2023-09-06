@@ -91,7 +91,6 @@ class SyncToolKit {
       baseTemplate['actions']?.add(action);
     }
 
-    print(baseTemplate);
 
     return [baseTemplate, categoryTempIds, taskTempIds];
   }
@@ -111,7 +110,7 @@ class SyncToolKit {
     final response = await repo.syncUpstream(unSyncedData);
 
     if (response.statusCode != 200) {
-      print('Fix error line 89 syncDatasupstream');
+      return;
     }
 
     final data = response.data;
