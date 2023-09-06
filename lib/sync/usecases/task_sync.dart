@@ -10,16 +10,16 @@ class TaskSyncHelper {
     String? categoryTempId,
     String? due,
   }) {
-    final new_task = SyncTask();
+    final newTask = SyncTask();
 
-    new_task.content = content;
-    new_task.tempId = tempId;
-    new_task.description = description;
-    new_task.isChecked = isChecked ?? false;
-    new_task.categoryTempId = categoryTempId;
-    new_task.due = due;
+    newTask.content = content;
+    newTask.tempId = tempId;
+    newTask.description = description;
+    newTask.isChecked = isChecked ?? false;
+    newTask.categoryTempId = categoryTempId;
+    newTask.due = due;
 
-    SyncLocalDataSource.instance.addTask(new_task);
+    SyncLocalDataSource.instance.addTask(newTask);
   }
 
   static void updateContent(
@@ -32,10 +32,10 @@ class TaskSyncHelper {
       return;
     }
 
-    final new_task = SyncTask()..content = newContent 
+    final newTask = SyncTask()..content = newContent 
     ..tempId = tempId;
 
-    SyncLocalDataSource.instance.updateTask(new_task);
+    SyncLocalDataSource.instance.updateTask(newTask);
     
   }
 
@@ -50,10 +50,10 @@ class TaskSyncHelper {
       return;
     }
 
-    final new_task = SyncTask()..description = newDescription 
+    final newTask = SyncTask()..description = newDescription 
     ..tempId = tempId;
 
-    SyncLocalDataSource.instance.updateTask(new_task);
+    SyncLocalDataSource.instance.updateTask(newTask);
       }
 
   static void toggleIsChecked(
@@ -66,10 +66,10 @@ class TaskSyncHelper {
       return;
     }
 
-    final new_task = SyncTask()..isChecked = isChecked 
+    final newTask = SyncTask()..isChecked = isChecked 
     ..tempId = tempId;
 
-    SyncLocalDataSource.instance.updateTask(new_task);
+    SyncLocalDataSource.instance.updateTask(newTask);
         
       }
   static void addCategory({required String tempId, required categoryTempId}) {
@@ -81,10 +81,10 @@ class TaskSyncHelper {
       return;
     }
 
-    final new_task = SyncTask()..categoryTempId = categoryTempId 
+    final newTask = SyncTask()..categoryTempId = categoryTempId 
     ..tempId = tempId;
 
-    SyncLocalDataSource.instance.updateTask(new_task);
+    SyncLocalDataSource.instance.updateTask(newTask);
         
   }
 
@@ -97,10 +97,10 @@ class TaskSyncHelper {
       return;
     }
 
-    final new_task = SyncTask()..categoryTempId = null 
+    final newTask = SyncTask()..categoryTempId = null 
     ..tempId = tempId;
 
-    SyncLocalDataSource.instance.updateTask(new_task);
+    SyncLocalDataSource.instance.updateTask(newTask);
         
   }
   static void setDue({required String tempId, required String? dueDate}) {
@@ -112,10 +112,10 @@ class TaskSyncHelper {
       return;
     }
 
-    final new_task = SyncTask()..due = dueDate 
+    final newTask = SyncTask()..due = dueDate 
     ..tempId = tempId;
 
-    SyncLocalDataSource.instance.updateTask(new_task);
+    SyncLocalDataSource.instance.updateTask(newTask);
         
   }
   static void delete({required String tempId}) {

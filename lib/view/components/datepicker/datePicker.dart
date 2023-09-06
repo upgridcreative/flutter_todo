@@ -774,7 +774,7 @@ class _DayPickerState extends State<_DayPicker> {
     }
 
     return DecoratedBox(
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Column(
         children: [
           Text(itl.DateFormat.yMMM().format(widget.displayedMonth)),

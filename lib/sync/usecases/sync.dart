@@ -113,7 +113,7 @@ class SyncToolKit {
       return;
     }
 
-    final data = response.data;
+    // final data = response.data;
     //Todo: map Real Id from tempIdMapping
 
     localDataSource.deleteEntries([...categoriesTempIds, ...taskTempIds]);

@@ -1,14 +1,10 @@
-import 'package:flutter/cupertino.dart';
-
-import 'sync/data/models/task/task_hive.dart';
-import 'sync/data/models/category/category_hive.dart';
-import 'package:http/http.dart';
+import 'package:hive/hive.dart';
 
 import 'model/category/category.dart';
 import 'model/other/user.dart';
 import 'model/task/task.dart';
-
-import 'package:hive/hive.dart';
+import 'sync/data/models/category/category_hive.dart';
+import 'sync/data/models/task/task_hive.dart';
 
 class HiveManagement {
   static void registerAdapters() {

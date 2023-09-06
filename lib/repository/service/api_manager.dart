@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'network_exceptions.dart';
 
 class ApiManager {
-  final _storage = FlutterSecureStorage();
+  final _storage = const FlutterSecureStorage();
   static const baseUrl = 'http://10.0.2.2:8000/';
 
 
@@ -84,7 +84,6 @@ class ApiManager {
   //handle response
   dynamic handleResponse(http.Response response) {
     // final responseBody = jsonDecode(response.body);
-    print(response.body);
     switch (response.statusCode) {
       case 429:
         return ThrottleRequestException();

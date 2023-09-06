@@ -72,10 +72,10 @@ class AuthenticationRepository {
       return response['code'];
     }
 
-    final _model = AuthenticationModel.fromJson(response);
+    final model = AuthenticationModel.fromJson(response);
 
-    await _storage.write(key: 'access', value: _model.accessToken);
-    await _storage.write(key: 'refresh', value: _model.refreshToken);
+    await _storage.write(key: 'access', value: model.accessToken);
+    await _storage.write(key: 'refresh', value: model.refreshToken);
 
     return 'proceed';
   }

@@ -112,6 +112,8 @@ class HomePageViewModel extends GetxController {
           SettingPageViewModel.instance.swipeLeftAction.value,
           todo,
         );
+      default:
+        break;
     }
 
     return true;

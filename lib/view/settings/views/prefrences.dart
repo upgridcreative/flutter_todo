@@ -3,9 +3,9 @@ import '../../../view_model/theme_view_model.dart';
 import 'package:get/get.dart';
 
 import '../../../view_model/settings_page_view_model.dart';
-import '../components/customSwitchTile.dart';
-import '../components/listGroupTitle.dart';
-import '../components/listTilePopUp.dart';
+import '../components/custom_switch_tile.dart';
+import '../components/list_group_tile.dart';
+import '../components/list_tile_pop_up.dart';
 
 class PreferenceSettingsScreen extends StatelessWidget {
   const PreferenceSettingsScreen({Key? key}) : super(key: key);

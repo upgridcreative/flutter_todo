@@ -15,18 +15,18 @@ extension MyDateTime on DateTime {
 
   DateTime previous(int day) {
     return DateTime(
-      this.year,
-      this.month,
-      this.day - (day == weekday ? 7 : (weekday - day) % DateTime.daysPerWeek),
+      year,
+      month,
+      day - (day == weekday ? 7 : (weekday - day) % DateTime.daysPerWeek),
     );
   }
 
   String asString() {
     return DateFormat.EEEE().format(
       DateTime(
-        this.year,
-        this.month,
-        this.day,
+        year,
+        month,
+        day,
       ),
     );
   }

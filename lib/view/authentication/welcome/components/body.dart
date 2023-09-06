@@ -24,13 +24,13 @@ class WelcomeScreenBody extends StatelessWidget {
               child: WelcomeIntro(),
             ),
             SlideAnimation(
-              child: AuthenticationButtons(),
               begin: Offset(0, 50),
+              child: AuthenticationButtons(),
             ),
             Spacer(),
             SlideAnimation(
-              child: SignUpLink(),
               begin: Offset(0, 50),
+              child: SignUpLink(),
             ),
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../view_model/settings_page_view_model.dart';
 import '../../authentication/reset_password/reset_password.dart';
-import '../components/listGroupTitle.dart';
+import '../components/list_group_tile.dart';
 import '../components/listTite.dart';
 
 class AccountAndPrivacySettings extends StatelessWidget {
