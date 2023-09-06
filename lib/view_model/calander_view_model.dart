@@ -1,4 +1,4 @@
-import 'package:flutter_todo/constants/enums/prefrences.dart';
+import 'package:flutter_todo/shared/enums/prefrences.dart';
 import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import 'package:get/get.dart';
 

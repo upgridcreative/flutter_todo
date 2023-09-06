@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../constants/enums/tabs.dart';
+import '../shared/enums/tabs.dart';
 import '../repository/auth.dart';
 import '../shared/route_manager/route_manager.dart';
 

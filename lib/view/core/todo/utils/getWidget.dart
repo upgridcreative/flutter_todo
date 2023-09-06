@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../constants/enums/prefrences.dart';
+import '../../../../shared/enums/prefrences.dart';
 
 Color getColorForSwipeAction(SwipeAction swipeAction) {
   switch (swipeAction) {

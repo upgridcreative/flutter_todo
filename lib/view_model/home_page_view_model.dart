@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../constants/enums/prefrences.dart';
+import '../shared/enums/prefrences.dart';
 import '../model/category/category_controller.dart';
 import '../model/task/task_controller.dart';
 import '../repository/category.dart';

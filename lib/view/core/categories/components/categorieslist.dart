@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../constants/decoration.dart';
+import '../../../../shared/theme/decoration.dart';
 import '../../../../shared/theme/light.dart';
 import '../../../../view_model/category_view_model.dart';
 import '../../../components/appbar.dart';

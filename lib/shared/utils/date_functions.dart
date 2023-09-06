@@ -1,4 +1,4 @@
-import '../../constants/enums/prefrences.dart';
+import '../enums/prefrences.dart';
 import 'package:intl/intl.dart';
 
 //! Constants; will be used throughout the packages
