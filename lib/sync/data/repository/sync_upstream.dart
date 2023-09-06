@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_todo/repository/service/network_exceptions.dart';
 import 'package:get/get.dart';
 
 import '../../../repository/service/api_manager.dart';
+import '../../../repository/service/network_exceptions.dart';
 
 class SyncDataUpSteam extends GetxController {
   static final SyncDataUpSteam instance = Get.find();

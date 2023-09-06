@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_todo/view/components/datepicker/components/quick_dates_access.dart';
+import 'components/quick_dates_access.dart';
 import 'package:get/route_manager.dart';
 import 'package:intl/intl.dart' as itl;
 

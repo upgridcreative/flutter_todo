@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../shared/theme/decoration.dart';
-import '../../../../shared/theme/light.dart';
 import '../../../../view_model/category_view_model.dart';
 import '../../../components/appbar.dart';
 import '../../../components/custom_short_button.dart';

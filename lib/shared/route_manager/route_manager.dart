@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
-import '../animations/page_transition.dart';
 import '../../public.dart';
 import '../../view/core/home/home.dart';
+import '../animations/page_transition.dart';
 
 class RouteManager {
   void getToHome() {

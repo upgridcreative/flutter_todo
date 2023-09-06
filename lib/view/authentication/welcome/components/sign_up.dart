@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../shared/animations/page_transition.dart';
 import '../../sign_up/sign_up.dart';
 

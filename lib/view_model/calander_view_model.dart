@@ -1,10 +1,10 @@
-import 'package:flutter_todo/shared/enums/prefrences.dart';
-import 'package:flutter_todo/view_model/settings_page_view_model.dart';
 import 'package:get/get.dart';
 
 import '../model/task/task_controller.dart';
 import '../repository/task.dart';
+import '../shared/enums/prefrences.dart';
 import '../shared/utils/date_functions.dart';
+import 'settings_page_view_model.dart';
 
 class CalendarPageViewModel extends GetxController {
   final TaskRepository taskRepository = Get.find();

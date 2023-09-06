@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/view_model/theme_view_model.dart';
+import '../../../view_model/theme_view_model.dart';
 import 'package:get/get.dart';
 
 import '../../../view_model/settings_page_view_model.dart';

@@ -5,11 +5,11 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../shared/utils/validitors.dart';
+import '../../../../view_model/sign_up_view_model.dart';
 import '../../../components/customProceedButton.dart';
 import '../../../components/customTextField.dart';
 import '../../../components/custom_progress_button.dart';
-import '../../../../shared/utils/validitors.dart';
-import '../../../../view_model/sign_up_view_model.dart';
 
 class SignUpScreenBodyCompletetion extends StatefulWidget {
   const SignUpScreenBodyCompletetion({Key? key}) : super(key: key);

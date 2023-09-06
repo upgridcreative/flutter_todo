@@ -1,5 +1,6 @@
-import '../enums/prefrences.dart';
 import 'package:intl/intl.dart';
+
+import '../enums/prefrences.dart';
 
 //! Constants; will be used throughout the packages
 final DateFormat dateFormatter = DateFormat('yyyy-MM-dd');

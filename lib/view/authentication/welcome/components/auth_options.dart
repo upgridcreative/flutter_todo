@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../shared/animations/animations.dart';
 import '../../../components/customProceedButton.dart';
 import '../../sign_in/sign_in.dart';

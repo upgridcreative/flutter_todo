@@ -2,9 +2,6 @@ import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_todo/shared/theme/themes.dart';
-import 'package:flutter_todo/view_model/settings_page_view_model.dart';
-import 'package:flutter_todo/view_model/theme_view_model.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -12,8 +9,8 @@ import 'hive_management.dart';
 import 'public.dart';
 import 'repository/category.dart';
 import 'repository/task.dart';
+import 'shared/theme/themes.dart';
 import 'singletons/shared_prefrences.dart';
-import 'shared/theme/light.dart';
 import 'sync/data/datasources/local_datasource.dart';
 import 'sync/data/datasources/remote_datasource.dart';
 import 'sync/data/repository/sync_downstrea.dart';
@@ -24,6 +21,8 @@ import 'view_model/auth_wrapper_view_model.dart';
 import 'view_model/calander_view_model.dart';
 import 'view_model/category_view_model.dart';
 import 'view_model/home_page_view_model.dart';
+import 'view_model/settings_page_view_model.dart';
+import 'view_model/theme_view_model.dart';
 
 void main() async {
   await Hive.initFlutter();

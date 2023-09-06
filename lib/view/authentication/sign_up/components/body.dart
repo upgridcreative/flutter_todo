@@ -6,10 +6,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../shared/animations/animations.dart';
-import '../../../components/customProceedButton.dart';
-import '../../../components/customTextField.dart';
 import '../../../../shared/utils/validitors.dart';
 import '../../../../view_model/sign_up_view_model.dart';
+import '../../../components/customProceedButton.dart';
+import '../../../components/customTextField.dart';
 import '../../sign_in/sign_in.dart';
 
 class SignUpScreenBody extends StatefulWidget {

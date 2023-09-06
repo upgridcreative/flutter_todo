@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/sync/usecases/sync.dart';
 import 'package:get/get.dart';
 
+import '../../sync/usecases/sync.dart';
 import '../../view_model/auth_wrapper_view_model.dart';
 import '../core/home/home.dart';
 import 'welcome/welcome.dart';
