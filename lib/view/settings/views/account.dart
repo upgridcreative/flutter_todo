@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/view/authentication/delete_account/delete_user.dart';
 import 'package:get/get.dart';
 
 import '../../../view_model/settings_page_view_model.dart';
@@ -29,12 +30,6 @@ class AccountAndPrivacySettings extends StatelessWidget {
               showTrailingArrow: false,
               navigate: () => Get.to(() => const ResetPassword()),
             ),
-            const SizedBox(height: 5),
-            const CustomListTile(
-              'Clear Sessions',
-              Icons.clear,
-              showTrailingArrow: false,
-            ),
             const ListGroupTitle('Account and sessions'),
             const SizedBox(height: 10),
             CustomListTile(
@@ -46,12 +41,15 @@ class AccountAndPrivacySettings extends StatelessWidget {
               navigate: viewModel.signOut,
             ),
             const SizedBox(height: 5),
-            const CustomListTile(
+            CustomListTile(
               'Delete account',
               Icons.delete,
               showTrailingArrow: false,
               iconColor: Colors.red,
               titleColor: Colors.red,
+              navigate: () => Get.to(
+                const DeletePassword(),
+              ),
             ),
           ],
         ),

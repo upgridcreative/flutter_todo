@@ -14,6 +14,7 @@ class CustomProceedButton extends StatelessWidget {
     this.heightFactor = 1,
     this.customTextStyle,
     this.onPressed,
+    this.color,
     this.customButtonType = CustomProceedButtonType.primary,
   }) : super(key: key);
 
@@ -22,6 +23,7 @@ class CustomProceedButton extends StatelessWidget {
   final TextStyle? customTextStyle;
   final CustomProceedButtonType customButtonType;
   final void Function()? onPressed;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class CustomProceedButton extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: ColorClass.primary,
+          color: color ?? ColorClass.primary,
         ),
         alignment: Alignment.center,
         child: Text(

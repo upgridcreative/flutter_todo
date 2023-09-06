@@ -8,6 +8,7 @@ class CustomProgressButton extends StatelessWidget {
     required this.title,
     this.heightFactor = 1,
     this.customTextStyle,
+    this.color,
     this.onPressed,
   }) : super(key: key);
 
@@ -15,6 +16,7 @@ class CustomProgressButton extends StatelessWidget {
   final double heightFactor;
   final TextStyle? customTextStyle;
   final void Function()? onPressed;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class CustomProgressButton extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: ColorClass.primary,
+        color: color ?? ColorClass.primary,
       ),
       alignment: Alignment.center,
       child: Row(

@@ -81,6 +81,26 @@ class ApiManager {
     return responseJson;
   }
 
+    Future<Object> deleteResponseWithToken(
+      {required String endPoint, Object? payload}) async {
+    dynamic responseJson;
+    final token = await _storage.read(key: 'access');
+
+    try {
+      final response = await http.delete(
+        Uri.parse(baseUrl + endPoint),
+        body: payload,
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+      responseJson = handleResponse(response);
+    } on SocketException {
+      return NoInternetException();
+    }
+    return responseJson;
+  }
+
   //handle response
   dynamic handleResponse(http.Response response) {
     // final responseBody = jsonDecode(response.body);

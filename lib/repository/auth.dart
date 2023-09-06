@@ -60,6 +60,28 @@ class AuthenticationRepository {
     return 'proceed';
   }
 
+    Future<String> deleteUser(String password) async {
+    final response = await apiManager.deleteResponseWithToken(
+      endPoint: 'api/users/delete/',
+      payload: {
+        'password': password,
+      },
+    );
+
+    if (response is NetworkException) {
+      return 'no-internet';
+    }
+
+    response as Map<String, dynamic>;
+
+    if (response['code'] != 'successful') {
+      return response['code'];
+    }
+
+    return 'proceed';
+  }
+
+
   Future<String> handleAuthenticationResponse(response) async {
     if (response is NetworkException) {
       return 'no-internet'; //Return apprptre code for netwrk expection
