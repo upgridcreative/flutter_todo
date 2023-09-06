@@ -12,7 +12,7 @@ import 'hive_management.dart';
 import 'public.dart';
 import 'repository/category.dart';
 import 'repository/task.dart';
-import 'singletons/sharedPrefrences.dart';
+import 'singletons/shared_prefrences.dart';
 import 'shared/theme/light.dart';
 import 'sync/data/datasources/local_datasource.dart';
 import 'sync/data/datasources/remote_datasource.dart';

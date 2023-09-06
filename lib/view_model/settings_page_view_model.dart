@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../constants/enums/prefrences.dart';
 import '../repository/category.dart';
 import '../repository/task.dart';
-import '../singletons/sharedPrefrences.dart';
+import '../singletons/shared_prefrences.dart';
 import '../view/authentication/welcome/welcome.dart';
 
 class SettingPageViewModel extends GetxController {
