@@ -39,7 +39,10 @@ class CategoryList extends StatelessWidget {
                       return CategoriesTile(
                         key: Key(index.toString()),
                         category: viewModel.categories[index],
-                        color: lightGreen.withOpacity(0.6),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .secondary
+                            .withOpacity(0.6),
                       );
                     },
                   ),
@@ -141,9 +144,9 @@ class CategoryList extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.add,
-                                color: mainColor,
+                                color: Theme.of(context).primaryColor,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 10),
