@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../model/task/task.dart';
 import '../repository/task.dart';
-import '../shared/functions/date_functions.dart';
+import '../shared/utils/date_functions.dart';
 
 class AddTodoViewModel extends GetxController {
   final TaskRepository taskRepository = Get.find();

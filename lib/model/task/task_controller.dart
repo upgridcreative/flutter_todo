@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../repository/category.dart';
-import '../../shared/functions/date_functions.dart';
+import '../../shared/utils/date_functions.dart';
 import '../../sync/usecases/task_sync.dart';
 import 'task.dart';
 

@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import '../../../../shared/animations/animations.dart';
 import '../../../components/customProceedButton.dart';
 import '../../../components/customTextField.dart';
-import '../../../../shared/validitors.dart';
+import '../../../../shared/utils/validitors.dart';
 import '../../../../view_model/sign_up_view_model.dart';
 import '../../sign_in/sign_in.dart';
 

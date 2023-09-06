@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/public.dart';
-import 'package:flutter_todo/shared/functions/date_functions.dart';
+import 'package:flutter_todo/shared/utils/date_functions.dart';
 import 'package:get/route_manager.dart';
 import 'package:intl/intl.dart';
 

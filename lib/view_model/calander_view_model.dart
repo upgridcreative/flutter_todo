@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../model/task/task_controller.dart';
 import '../repository/task.dart';
-import '../shared/functions/date_functions.dart';
+import '../shared/utils/date_functions.dart';
 
 class CalendarPageViewModel extends GetxController {
   final TaskRepository taskRepository = Get.find();

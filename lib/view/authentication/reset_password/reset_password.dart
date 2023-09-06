@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../components/customProceedButton.dart';
 import '../../components/customTextField.dart';
 import '../../components/custom_progress_button.dart';
-import '../../../shared/validitors.dart';
+import '../../../shared/utils/validitors.dart';
 import '../../../view_model/reset_password_view_model.dart';
 
 class ResetPassword extends StatelessWidget {
