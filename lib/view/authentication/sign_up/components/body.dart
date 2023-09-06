@@ -5,11 +5,11 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../animations/animations.dart';
-import '../../../../shared/components/customProceedButton.dart';
-import '../../../../shared/components/customTextField.dart';
-import '../../../../shared/validitors.dart';
-import '../../../../view_model/sign_up.dart';
+import '../../../../shared/animations/animations.dart';
+import '../../../../shared/utils/validitors.dart';
+import '../../../../view_model/sign_up_view_model.dart';
+import '../../../components/customProceedButton.dart';
+import '../../../components/customTextField.dart';
 import '../../sign_in/sign_in.dart';
 
 class SignUpScreenBody extends StatefulWidget {

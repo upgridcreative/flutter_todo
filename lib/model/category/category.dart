@@ -1,5 +1,6 @@
-import 'category_controller.dart';
 import 'package:hive/hive.dart';
+
+import 'category_controller.dart';
 
 part 'category.g.dart';
 

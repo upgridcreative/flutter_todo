@@ -13,6 +13,7 @@ class CustomListTile extends StatelessWidget {
   const CustomListTile(
     this.title,
     this.icon, {
+    super.key,
     this.navigate,
     this.showTrailingArrow = true,
     this.iconColor,

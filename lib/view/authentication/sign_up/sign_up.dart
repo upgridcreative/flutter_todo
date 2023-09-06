@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../view_model/sign_up.dart';
+import '../../../view_model/sign_up_view_model.dart';
 import 'components/body.dart';
 import 'components/complete_setup.dart';
 

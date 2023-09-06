@@ -1,15 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_todo/constants/enums/prefrences.dart';
-import 'package:flutter_todo/view/core/todo/components/delete_alert.dart';
-import 'package:flutter_todo/view_model/settings_page_view_model.dart';
+import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 
 import '../model/category/category_controller.dart';
 import '../model/task/task.dart';
 import '../model/task/task_controller.dart';
 import '../sync/usecases/task_sync.dart';
-import 'package:hive/hive.dart';
-import 'package:get/get.dart';
 
 class TaskRepository extends GetxController {
   final box = Hive.box<Task>('tasks');

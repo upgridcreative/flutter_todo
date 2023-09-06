@@ -1,9 +1,10 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
+
 import '../../../model/category/category.dart';
 import '../../../model/task/task.dart';
 import '../../../repository/category.dart';
 import '../../../repository/task.dart';
-import 'package:get/get.dart';
 
 class SyncRemoteDataSource extends GetxController {
   final CategoryRepository categoryRepository = Get.find();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../animations/page_transition.dart';
+
+import '../../../../shared/animations/page_transition.dart';
 import '../../sign_up/sign_up.dart';
 
 class SignUpLink extends StatelessWidget {
@@ -12,7 +13,7 @@ class SignUpLink extends StatelessWidget {
         GestureDetector(
           onTap: () => Navigator.of(context).push(
             PageTransition(
-              child:  SignUpScreen(),
+              child:  const SignUpScreen(),
               type: PageTransitionType.fromRight,
             ),
           ),

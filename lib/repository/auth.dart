@@ -1,8 +1,8 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../model/sign_up.dart';
-import '../service/api_manager.dart';
-import '../service/network_exceptions.dart';
+import 'service/api_manager.dart';
+import 'service/network_exceptions.dart';
 
 class AuthenticationRepository {
   ApiManager apiManager = ApiManager();
@@ -60,6 +60,28 @@ class AuthenticationRepository {
     return 'proceed';
   }
 
+    Future<String> deleteUser(String password) async {
+    final response = await apiManager.deleteResponseWithToken(
+      endPoint: 'api/users/delete/',
+      payload: {
+        'password': password,
+      },
+    );
+
+    if (response is NetworkException) {
+      return 'no-internet';
+    }
+
+    response as Map<String, dynamic>;
+
+    if (response['code'] != 'successful') {
+      return response['code'];
+    }
+
+    return 'proceed';
+  }
+
+
   Future<String> handleAuthenticationResponse(response) async {
     if (response is NetworkException) {
       return 'no-internet'; //Return apprptre code for netwrk expection
@@ -72,10 +94,10 @@ class AuthenticationRepository {
       return response['code'];
     }
 
-    final _model = AuthenticationModel.fromJson(response);
+    final model = AuthenticationModel.fromJson(response);
 
-    await _storage.write(key: 'access', value: _model.accessToken);
-    await _storage.write(key: 'refresh', value: _model.refreshToken);
+    await _storage.write(key: 'access', value: model.accessToken);
+    await _storage.write(key: 'refresh', value: model.refreshToken);
 
     return 'proceed';
   }

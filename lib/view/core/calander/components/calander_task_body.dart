@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../view_model/calander_view.dart';
+import '../../../../view_model/calander_view_model.dart';
 import '../../todo/todo_detail.dart';
 import '../../todo/todo_tile.dart';
 

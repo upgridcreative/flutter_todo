@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../shared/utils/validitors.dart';
+import '../../../view_model/delete_user_view_model.dart';
 import '../../components/customProceedButton.dart';
 import '../../components/customTextField.dart';
 import '../../components/custom_progress_button.dart';
-import '../../../shared/utils/validitors.dart';
-import '../../../view_model/reset_password_view_model.dart';
 
-class ResetPassword extends StatelessWidget {
-  const ResetPassword({Key? key}) : super(key: key);
+class DeletePassword extends StatelessWidget {
+  const DeletePassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ResetPasswordViewModel());
+    final controller = Get.put(DeleteUserViewModel());
 
     return SafeArea(
       child: Scaffold(
@@ -24,7 +24,7 @@ class ResetPassword extends StatelessWidget {
               children: [
                 const SizedBox(height: 50),
                 Text(
-                  'Reset Password',
+                  'Delete Account',
                   style: TextStyle(
                     color: Theme.of(context).textTheme.displayMedium?.color,
                     fontFamily: 'Metro',
@@ -40,29 +40,17 @@ class ResetPassword extends StatelessWidget {
                     child: Column(
                       children: [
                         CustomTextField(
-                          hint: 'New Password',
+                          hint: 'Password',
                           textFieldType: CustomTextFieldType.password,
-                          controller: controller.newPasswordTextController,
+                          controller: controller.passwordTextController,
                           validator: passwordValidator,
                           enabled: !controller.disablePage.value,
-                          node: controller.newPasswordFocusNode,
-                          nextNode: controller.confirmNewPasswordFocusNode,
+                          node: controller.passwordFocusNode,
                           autoFocus: true,
+                          errorMessage: controller.incorrectPassword.value ?
+                              'Incorrect Password' : null,
                         ),
                         const SizedBox(height: 5),
-                        CustomTextField(
-                          hint: 'Confirm Password',
-                          textFieldType: CustomTextFieldType.password,
-                          controller:
-                              controller.confirmNewPasswordTextController,
-                          enabled: !controller.disablePage.value,
-                          node: controller.confirmNewPasswordFocusNode,
-                          onFieldSubmitted: (value) =>
-                              controller.resetPassword(),
-                          errorMessage: controller.misMatchingPasswords.value
-                              ? 'Passwords Don\'t Match'
-                              : null,
-                        ),
                       ],
                     ),
                   ),
@@ -71,26 +59,17 @@ class ResetPassword extends StatelessWidget {
                 Obx(
                   () => controller.disablePage.value
                       ? const CustomProgressButton(
-                          title: 'Resetting Password',
+                          title: 'Deleting Account',
+                          color: Colors.red,
                         )
                       : CustomProceedButton(
-                          title: 'Reset Password',
+                          title: 'Delete Account',
                           heightFactor: 1,
-                          onPressed: controller.resetPassword,
+                          color: Colors.red,
+                          onPressed: controller.deleteAccount,
                         ),
                 ),
                 const SizedBox(height: 10),
-                const Center(
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontFamily: 'Metro',
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
               ],
             ),
           ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/view_model/theme_view_model.dart';
+import '../../../view_model/theme_view_model.dart';
 import 'package:get/get.dart';
 
 import '../../../view_model/settings_page_view_model.dart';
-import '../components/customSwitchTile.dart';
-import '../components/listGroupTitle.dart';
-import '../components/listTilePopUp.dart';
+import '../components/custom_switch_tile.dart';
+import '../components/list_group_tile.dart';
+import '../components/list_tile_pop_up.dart';
 
 class PreferenceSettingsScreen extends StatelessWidget {
   const PreferenceSettingsScreen({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class PreferenceSettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingPageViewModel viewModel = Get.find();
-    final ThemeViewModel themeViewModel = Get.put(ThemeViewModel());
+    final ThemeViewModel themeViewModel = Get.find();
     return SafeArea(
       child: Scaffold(
         body: ListView(

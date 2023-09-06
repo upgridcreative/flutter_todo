@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/view/authentication/reset_password/reset_password.dart';
-import 'package:flutter_todo/view_model/settings_page_view_model.dart';
-
-import '../components/listGroupTitle.dart';
-import '../components/listTite.dart';
+import 'package:flutter_todo/view/authentication/delete_account/delete_user.dart';
 import 'package:get/get.dart';
+
+import '../../../view_model/settings_page_view_model.dart';
+import '../../authentication/reset_password/reset_password.dart';
+import '../components/list_group_tile.dart';
+import '../components/listTite.dart';
 
 class AccountAndPrivacySettings extends StatelessWidget {
   const AccountAndPrivacySettings({Key? key}) : super(key: key);
@@ -29,12 +30,6 @@ class AccountAndPrivacySettings extends StatelessWidget {
               showTrailingArrow: false,
               navigate: () => Get.to(() => const ResetPassword()),
             ),
-            const SizedBox(height: 5),
-            const CustomListTile(
-              'Clear Sessions',
-              Icons.clear,
-              showTrailingArrow: false,
-            ),
             const ListGroupTitle('Account and sessions'),
             const SizedBox(height: 10),
             CustomListTile(
@@ -46,12 +41,15 @@ class AccountAndPrivacySettings extends StatelessWidget {
               navigate: viewModel.signOut,
             ),
             const SizedBox(height: 5),
-            const CustomListTile(
+            CustomListTile(
               'Delete account',
               Icons.delete,
               showTrailingArrow: false,
               iconColor: Colors.red,
               titleColor: Colors.red,
+              navigate: () => Get.to(
+                const DeletePassword(),
+              ),
             ),
           ],
         ),

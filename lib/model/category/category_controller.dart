@@ -1,7 +1,7 @@
-import '../../sync/usecases/category_sync.dart';
-
-import 'category.dart';
 import 'package:get/get.dart';
+
+import '../../sync/usecases/category_sync.dart';
+import 'category.dart';
 
 class CategoryController extends GetxController {
   late Category hiveInstance;

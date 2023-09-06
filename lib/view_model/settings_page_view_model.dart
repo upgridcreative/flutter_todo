@@ -2,10 +2,10 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../constants/enums/prefrences.dart';
 import '../repository/category.dart';
 import '../repository/task.dart';
-import '../shared/prefs/sharedPrefrences.dart';
+import '../shared/enums/prefrences.dart';
+import '../singletons/shared_prefrences.dart';
 import '../view/authentication/welcome/welcome.dart';
 
 class SettingPageViewModel extends GetxController {

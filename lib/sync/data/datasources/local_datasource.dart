@@ -1,7 +1,8 @@
-import '../models/task/task_hive.dart';
-import '../models/category/category_hive.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+
+import '../models/category/category_hive.dart';
+import '../models/task/task_hive.dart';
 
 class SyncLocalDataSource extends GetxController {
   final syncTaskBox = Hive.box<SyncTask>('sync_tasks');
@@ -87,14 +88,14 @@ class SyncLocalDataSource extends GetxController {
       return;
     }
 
-    final deletion_task = SyncTask()
+    final deletionTask = SyncTask()
       ..tempId = tempId
       ..actionType = 'delete'
       ..uuid = 'adfas';
 
-    deletion_task.actionType = 'todo_delete';
+    deletionTask.actionType = 'todo_delete';
 
-    syncTaskBox.add(deletion_task);
+    syncTaskBox.add(deletionTask);
   }
 
   void deleteCategory(String tempId) {

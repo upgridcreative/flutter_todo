@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../shared/theme/light.dart';
-
 List myBottomBar = ["home.svg", "schedule.svg", "setting.svg"];
 
 class HomeBottomBar extends StatefulWidget {

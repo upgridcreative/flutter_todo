@@ -4,10 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../model/task/task_controller.dart';
-import '../../../shared/functions/date_functions.dart';
 import '../../../shared/theme/colors.dart';
-import '../../../shared/theme/light.dart';
-import '../../../view_model/home_page.dart';
+import '../../../shared/utils/date_functions.dart';
+import '../../../view_model/home_page_view_model.dart';
 import '../../../view_model/settings_page_view_model.dart';
 import 'components/swipe_backgrounds.dart';
 

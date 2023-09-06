@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../../model/category/category_controller.dart';
-import '../../../../shared/components/custom_short_button.dart';
-import '../../../../shared/theme/colors.dart';
-import '../../../../view_model/category.dart';
-
-import '../../../../constants/decoration.dart';
 import 'package:get/get.dart';
+
+import '../../../../model/category/category_controller.dart';
+import '../../../../shared/theme/decoration.dart';
+import '../../../../view_model/category_view_model.dart';
+import '../../../components/custom_short_button.dart';
 
 class CategoriesTile extends StatefulWidget {
   final Color color;
